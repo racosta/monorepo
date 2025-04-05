@@ -18,13 +18,16 @@ ch2411.mkShell {
     kondo
     lazygit
     mdcat
+    openssl
     pre-commit
     python3
+    readline
     ripgrep
     starship
     tokei
     uv
     vim
+    zlib
   ];
 
   GREETING = "Hello, Nix!";
