@@ -1,5 +1,9 @@
 # monorepo
 
+Starting with a Nix shell and pre-commit hooks, then based on [kriscfoster/multi-language-bazel-monorepo](https://github.com/kriscfoster/multi-language-bazel-monorepo).
+
+Investigating how new features work with Bazel and bzlmod, etc.
+
 ## Nix
 
 In this repository, a Nix shell configuration is included in `shell.nix` which includes Bazel and
