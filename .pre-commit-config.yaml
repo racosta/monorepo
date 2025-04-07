@@ -64,3 +64,8 @@ repos                   :
     entry: mdl
     language: ruby
     files: \.(md|mdown|markdown|myst)$
+
+- repo: https://github.com/tekwizely/pre-commit-golang
+  rev: v1.0.0-rc.1
+  hooks:
+  - id: golangci-lint-mod

@@ -1,0 +1,6 @@
+go 1.23.3
+
+use (
+	./projects/go_hello_world
+	./projects/go_web
+)
