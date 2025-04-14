@@ -1,5 +1,4 @@
-load("@rules_python//python:defs.bzl", "py_test")
-load("@rules_python//python:py_library.bzl", "py_library")
+load("@aspect_rules_py//py:defs.bzl", "py_library", "py_test")
 
 py_library(
     name = "calculator",
