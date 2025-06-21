@@ -1,4 +1,2 @@
-bazel-bin
-bazel-monorepo
-bazel-out
-bazel-testlogs
+/bazel-*
+node_modules
