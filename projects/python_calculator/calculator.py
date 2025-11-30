@@ -1,4 +1,6 @@
 class Calculator:
+    """Calculator class with a variety of supported mathematical methods."""
+
     def add(self, x: int, y: int) -> int:
         """Adds two integers together.
 
