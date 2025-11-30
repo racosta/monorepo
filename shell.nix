@@ -1,11 +1,11 @@
 {
-  ch2505 ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-25.05.tar.gz") {}
+  ch2511 ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-25.11.tar.gz") {}
 }:
 
-ch2505.mkShell {
-  packages = with ch2505; [
+ch2511.mkShell {
+  packages = with ch2511; [
     bat
-    bazel_7
+    bazel_8
     bazel-buildtools
     difftastic
     #direnv
