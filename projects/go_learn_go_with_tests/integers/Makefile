@@ -1,4 +1,3 @@
-TEST_OUTPUT_OPTIONS = --test_output=all
+REPO_ROOT := $(shell git rev-parse --show-toplevel)
 
-test:
-	bazel test ${TEST_OUTPUT_OPTIONS} ...
+include $(REPO_ROOT)/makefiles/_go.mk
