@@ -64,6 +64,9 @@ repos                   :
   rev: v1.0.0-rc.4
   hooks:
   - id: golangci-lint-mod
+    args:
+    - --enable
+    - errcheck
 
 # The checkmake tool does not support include directives well, so creates many false positives
 # - repo: https://github.com/checkmake/checkmake.git

@@ -6,6 +6,7 @@ use (
 	./projects/go_learn_go_with_tests/hello_world
 	./projects/go_learn_go_with_tests/integers
 	./projects/go_learn_go_with_tests/iteration
+	./projects/go_learn_go_with_tests/pointers
 	./projects/go_learn_go_with_tests/structs
 	./projects/go_web
 )

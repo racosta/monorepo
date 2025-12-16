@@ -19,7 +19,8 @@ gowork-use: ## Add current Go module to the Go workspace
 		bazel run @rules_go//go work use $(shell git rev-parse --show-prefix | sed 's,/$$,,')
 
 gazelle: ## Run gazelle on current directory
-	bazel run //:gazelle -- $(shell git rev-parse --show-prefix | sed 's,/$$,,')
+	cd $(shell git rev-parse --show-toplevel) && \
+		bazel run //:gazelle -- $(shell git rev-parse --show-prefix | sed 's,/$$,,')
 
 all: build ## Default target (build)
 
