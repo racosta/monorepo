@@ -17,6 +17,7 @@ ch2511.mkShell {
     just
     kondo
     lazygit
+    lcov
     mdcat
     openssl
     pre-commit

@@ -2,3 +2,6 @@ bazel-bin
 bazel-monorepo
 bazel-out
 bazel-testlogs
+
+# Coverage report directory
+genhtml
