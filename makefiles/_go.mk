@@ -1,6 +1,6 @@
 TEST_OUTPUT_OPTIONS := --test_output=all
 
-.PHONY: help
+.PHONY: help gomod-init gowork-use gazelle all build run test coverage coverage-report benchmark clean pristine
 
 # <target_name>: ## <Help text for the target>
 # For example:
@@ -13,6 +13,20 @@ help: ## Show the help with the list of commands
 
 gomod-init: ## Initialize a Go module using current directory
 	bazel run @rules_go//go mod init github.com/racosta/monorepo/$(shell git rev-parse --show-prefix | sed 's,/$$,,')
+
+gowork-use: ## Add current Go module to the Go workspace
+	cd $(shell git rev-parse --show-toplevel) && \
+		bazel run @rules_go//go work use $(shell git rev-parse --show-prefix | sed 's,/$$,,')
+
+gazelle: ## Run gazelle on current directory
+	bazel run //:gazelle -- $(shell git rev-parse --show-prefix | sed 's,/$$,,')
+
+all: build ## Default target (build)
+
+build: ## Build the first Go binary
+	bazel query "kind('go_binary', ...)" --output=label | \
+		head -n 1 | \
+		xargs bazel build
 
 run: ## Run first Go binary
 	bazel query "kind('go_binary', ...)" --output=label | \
@@ -33,3 +47,9 @@ benchmark: ## Run bazel benchmark for Go tests
 	bazel query "kind('go_test', ...)" --output=label | \
 		head -n 1 | \
 		xargs -I{} bazel run {} -- -test.bench=. -test.benchmem
+
+clean: ## Clean Bazel output files
+	bazel clean
+
+pristine: ## Clean and purge all Bazel files
+	bazel clean --expunge
