@@ -30,6 +30,18 @@
     zlib
   ];
 
+  # Define a CI profile with packages needed for CI jobs
+  profiles.ci = {
+    packages = with pkgs; [
+      bazel_8
+      bazel-buildtools
+      git
+      go
+      jq
+      pre-commit
+    ];
+  };
+
   # Environment variables
   env.GREETING = "Hello, Nix!";
 
