@@ -3,6 +3,7 @@ go 1.25.4
 use (
 	./projects/go_hello_world
 	./projects/go_learn_go_with_tests/arrays
+	./projects/go_learn_go_with_tests/dependency_injection
 	./projects/go_learn_go_with_tests/hello_world
 	./projects/go_learn_go_with_tests/integers
 	./projects/go_learn_go_with_tests/iteration
