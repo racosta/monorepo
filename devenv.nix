@@ -23,11 +23,13 @@
     dev.module = {
       packages = with pkgs; [
         bat
+        blesh
         difftastic
         dua
         eza
         git
         go
+        gofumpt
         golangci-lint
         jq
         just
@@ -49,8 +51,13 @@
 
       enterShell = ''
         alias ls='eza --icons'
+
+        source "${pkgs.blesh}/share/blesh/ble.sh"
+
         eval "$(starship init bash)"
       '';
+
+      git-hooks.hooks.shellcheck.enable = true;
     };
   };
 
