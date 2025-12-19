@@ -17,16 +17,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6.0.0
-    - uses: cachix/install-nix-action@v31.8.4
+    - name: Setup Bazel with Caching
+      # Use the setup-bazel action for easy configuration and caching
+      uses: bazel-contrib/setup-bazel@0.16.0 # Check for the latest version
       with:
-        nix_path: nixpkgs=channel:nixos-25.11
-    - name: Install devenv.sh
-      run: nix profile add nixpkgs#devenv
-    - name: Run a multi-line command in the devenv shell
-      shell: devenv shell --profile ci bash -- -e {0}
-      run: |
-        bazel build //...
-    - name: Run a multi-line command in the devenv shell
-      shell: devenv shell --profile ci bash -- -e {0}
-      run: |
-        bazel test //...
+        # Optional: Use Bazelisk for automatic version management
+        bazelisk-cache: true
+        # Optional: Enable disk cache
+        disk-cache: ${{ github.workflow }}
+        # Optional: Enable repository cache
+        repository-cache: true
+    - name: Build all targets
+      run: bazel build //...
+    - name: Run tests
+      run: bazel test //...
+    # - uses: cachix/install-nix-action@v31.8.4
+    #   with:
+    #     nix_path: nixpkgs=channel:nixos-25.11
+    # - name: Install devenv.sh
+    #   run: nix profile add nixpkgs#devenv
+    # - name: Run a multi-line command in the devenv shell
+    #   shell: devenv shell --profile ci bash -- -e {0}
+    #   run: |
+    #     bazel build //...
+    # - name: Run a multi-line command in the devenv shell
+    #   shell: devenv shell --profile ci bash -- -e {0}
+    #   run: |
+    #     bazel test //...
