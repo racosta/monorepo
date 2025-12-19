@@ -31,7 +31,6 @@ func assertError(t testing.TB, got error, want error) {
 }
 
 func TestWallet(t *testing.T) {
-
 	t.Run("deposit", func(t *testing.T) {
 		wallet := Wallet{}
 		wallet.Deposit(Bitcoin(10))
@@ -54,5 +53,4 @@ func TestWallet(t *testing.T) {
 		assertError(t, err, ErrInsufficientFunds)
 		assertBalance(t, wallet, startingBalance)
 	})
-
 }

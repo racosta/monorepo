@@ -83,6 +83,10 @@ repos                   :
 - repo: https://github.com/tekwizely/pre-commit-golang
   rev: v1.0.0-rc.4
   hooks:
+  - id: go-fumpt
+    args:
+    - -d=false
+    - -w
   - id: golangci-lint-mod
     args:
     - --enable
