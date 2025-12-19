@@ -1,48 +1,60 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  # Packages available in the development shell
+  # 1. Define the "base" configuration (optional - common to all)
+  # Packages used everywhere (Dev + CI)
   packages = with pkgs; [
-    bat
     bazel_8
     bazel-buildtools
-    difftastic
-    dua
-    eza
     git
     go
-    golangci-lint
     jq
-    just
-    kondo
-    lazygit
-    lcov
-    mdcat
-    openssl
     pre-commit
-    python3
-    readline
-    ripgrep
-    starship
-    tokei
-    uv
-    vim
-    zlib
   ];
 
-  # Define a CI profile with packages needed for CI jobs
-  profiles.ci = {
-    packages = with pkgs; [
-      bazel_8
-      bazel-buildtools
-      git
-      go
-      jq
-      pre-commit
-    ];
+  # 2. Define the Profiles
+  profiles = {
+    # The 'ci' profile: only adds what's strictly necessary for the runner
+    ci.module = {
+      packages = with pkgs; [
+        lcov
+      ];
+      # You can even disable expensive checks in CI if needed
+      git-hooks.hooks.shellcheck.enable = false;
+    };
+
+    # The 'dev' profile: adds interactive tools and quality-of-life packages
+    dev.module = {
+      packages = with pkgs; [
+        bat
+        difftastic
+        dua
+        eza
+        golangci-lint
+        just
+        kondo
+        lazygit
+        lcov
+        mdcat
+        openssl
+        python3
+        readline
+        ripgrep
+        starship
+        tokei
+        uv
+        vim
+        zlib
+      ];
+
+      enterShell = ''
+        alias ls='eza --icons'
+        eval "$(starship init bash)"
+      '';
+    };
   };
 
-  # Environment variables
+  # Global environment variables
   env.GREETING = "Hello, Nix!";
 
   # # Enable devenv's built‑in pre-commit integration
@@ -56,10 +68,4 @@
   #     end-of-file-fixer.enable = true;
   #   };
   # };
-
-  # Shell hook (runs when entering `devenv shell`)
-  enterShell = ''
-    alias ls='eza --icons'
-    eval "$(starship init bash)"
-  '';
 }

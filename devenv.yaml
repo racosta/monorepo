@@ -1,9 +1,11 @@
 ---
 # yaml-language-server: $schema=https://devenv.sh/devenv.schema.json
-inputs:
+inputs :
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
     # url: github:NixOS/nixpkgs/nixos-25.11
+
+profile: dev
 
 # If you're using non-OSS software, you can set allowUnfree to true.
 # allowUnfree: true
