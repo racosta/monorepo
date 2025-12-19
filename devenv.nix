@@ -6,10 +6,6 @@
   packages = with pkgs; [
     bazel_8
     bazel-buildtools
-    git
-    go
-    jq
-    pre-commit
   ];
 
   # 2. Define the Profiles
@@ -30,13 +26,17 @@
         difftastic
         dua
         eza
+        git
+        go
         golangci-lint
+        jq
         just
         kondo
         lazygit
         lcov
         mdcat
         openssl
+        pre-commit
         python3
         readline
         ripgrep
