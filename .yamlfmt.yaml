@@ -1,0 +1,3 @@
+formatter:
+  indent: 2
+  indentless_arrays: true

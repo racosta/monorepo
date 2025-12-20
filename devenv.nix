@@ -4,7 +4,6 @@
 }:
 
 {
-  # 1. Define the "base" configuration (optional - common to all)
   # Packages used everywhere (Dev + CI)
   packages = with pkgs; [
     bazel_8
@@ -18,6 +17,7 @@
       packages = with pkgs; [
         lcov
       ];
+
       # You can even disable expensive checks in CI if needed
       git-hooks.hooks.shellcheck.enable = false;
     };
@@ -86,19 +86,23 @@
           checkmake.enable = false;
           deadnix.enable = true;
           end-of-file-fixer.enable = true;
-          flake8.enable = true;
-          flake8.args = [
-            "--max-line-length=120"
-          ];
+          flake8 = {
+            enable = true;
+            args = [
+              "--max-line-length=120"
+            ];
+          };
           gofmt.enable = true;
           golangci-lint.enable = true;
           golines.enable = true;
           govet.enable = true;
-          isort.enable = true;
-          isort.args = [
-            "--profile=black"
-            "--filter-files"
-          ];
+          isort = {
+            enable = true;
+            args = [
+              "--profile=black"
+              "--filter-files"
+            ];
+          };
           markdownlint.enable = true;
           # projects/python_calculator/calculator_test.py:3: error: Cannot find implementation or library stub for module named "calculator"  [import-not-found]
           # projects/python_calculator/calculator_test.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
@@ -113,12 +117,21 @@
           shfmt.enable = true;
           staticcheck.enable = true;
           trim-trailing-whitespace.enable = true;
-          # yamlfmt.enable = true;
-          yamllint.enable = true;
-          yamllint.args = [
-            "--format=parsable"
-            "--strict"
-          ];
+          yamlfmt = {
+            enable = true;
+            settings = {
+              configPath = ".yamlfmt.yaml";
+              lint-only = false;
+            };
+          };
+          yamllint = {
+            enable = true;
+            args = [
+              "--format=parsable"
+              "--strict"
+            ];
+            settings.configPath = ".yamllint.yaml";
+          };
         };
       };
     };
@@ -126,16 +139,4 @@
 
   # Global environment variables
   env.GREETING = "Hello, Nix!";
-
-  # # Enable devenv's built‑in pre-commit integration
-  # pre-commit = {
-  #   enable = true;
-
-  #   # devenv will automatically install hooks from .pre-commit-config.yaml
-  #   # and run them on `git commit`.
-  #   hooks = {
-  #     trailing-whitespace.enable = true;
-  #     end-of-file-fixer.enable = true;
-  #   };
-  # };
 }
