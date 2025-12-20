@@ -1,3 +1,4 @@
+// Package main provides a simple greeting function.
 package main
 
 import "fmt"
@@ -11,6 +12,7 @@ const (
 	frenchHelloPrefix  = "Bonjour, "
 )
 
+// Hello returns a greeting message in the specified language.
 func Hello(name, language string) string {
 	if name == "" {
 		name = "World"

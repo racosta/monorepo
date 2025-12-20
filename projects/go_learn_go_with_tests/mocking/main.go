@@ -1,3 +1,4 @@
+// Binary mocking_bin is a simple countdown program.
 package main
 
 import (

@@ -1,3 +1,4 @@
+// Binary go_web is a simple web server written in Go.
 package main
 
 import (
