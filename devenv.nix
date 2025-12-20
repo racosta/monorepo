@@ -1,4 +1,7 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   # 1. Define the "base" configuration (optional - common to all)
@@ -57,7 +60,49 @@
         eval "$(starship init bash)"
       '';
 
-      git-hooks.hooks.shellcheck.enable = true;
+      git-hooks.hooks = {
+        action-validator.enable = true;
+        black.enable = true;
+        check-added-large-files.enable = true;
+        check-json.enable = true;
+        check-symlinks.enable = true;
+        check-toml.enable = true;
+        check-yaml.enable = true;
+        # The checkmake tool does not support include directives well,
+        # so creates many false positives
+        checkmake.enable = false;
+        deadnix.enable = true;
+        end-of-file-fixer.enable = true;
+        flake8.enable = true;
+        flake8.args = [
+          "--max-line-length=120"
+        ];
+        golangci-lint.enable = true;
+        isort.enable = true;
+        isort.args = [
+          "--profile=black"
+          "--filter-files"
+        ];
+        markdownlint.enable = true;
+        # projects/python_calculator/calculator_test.py:3: error: Cannot find implementation or library stub for module named "calculator"  [import-not-found]
+        # projects/python_calculator/calculator_test.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+        # Found 1 error in 1 file (checked 4 source files)
+        # projects/python_web/main.py:3: error: Cannot find implementation or library stub for module named "flask"  [import-not-found]
+        # projects/python_web/main.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+        # Found 1 error in 1 file (checked 2 source files)
+        #mypy.enable = true;
+        nixfmt.enable = true;
+        shellcheck.enable = true;
+        shfmt.enable = true;
+        staticcheck.enable = true;
+        trim-trailing-whitespace.enable = true;
+        # yamlfmt.enable = true;
+        yamllint.enable = true;
+        yamllint.args = [
+          "--format=parsable"
+          "--strict"
+        ];
+      };
     };
   };
 

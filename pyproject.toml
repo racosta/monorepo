@@ -6,3 +6,6 @@ exclude = [
   "bazel-out",
   "bazel-testlogs"
 ]
+
+[tool.flake8]
+max-line-length = 120
