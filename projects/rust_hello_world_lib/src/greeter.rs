@@ -4,11 +4,13 @@ pub struct Greeter {
 
 impl Greeter {
   pub fn new(greeting: &str) -> Greeter {
-      Greeter { greeting: greeting.to_string(), }
+    Greeter {
+      greeting: greeting.to_string(),
+    }
   }
 
   pub fn greet(&self, thing: &str) -> String {
-      format!("{} {}", &self.greeting, thing)
+    format!("{} {}", &self.greeting, thing)
   }
 }
 
@@ -18,7 +20,7 @@ mod test {
 
   #[test]
   fn test_greeting() {
-      let hello = Greeter::new("Hi");
-      assert_eq!("Hi Rust", hello.greet("Rust"));
+    let hello = Greeter::new("Hi");
+    assert_eq!("Hi Rust", hello.greet("Rust"));
   }
 }

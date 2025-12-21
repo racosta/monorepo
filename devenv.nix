@@ -117,6 +117,12 @@
           #mypy.enable = true;
           nixfmt.enable = true;
           revive.enable = true;
+          rustfmt = {
+            enable = true;
+            description = "Format Rust code with rustfmt";
+            entry = "${pkgs.bazel_8}/bin/bazel run @rules_rust//:rustfmt";
+            types = [ "rust" ];
+          };
           shellcheck.enable = true;
           shfmt.enable = true;
           staticcheck.enable = true;
