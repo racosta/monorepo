@@ -10,6 +10,10 @@
     bazel-buildtools
   ];
 
+  languages.rust = {
+    enable = true;
+  };
+
   # 2. Define the Profiles
   profiles = {
     # The 'ci' profile: only adds what's strictly necessary for the runner
