@@ -45,6 +45,7 @@
         lazygit
         lcov
         mdcat
+        onefetch
         openssl
         pre-commit
         python3
@@ -63,6 +64,8 @@
         source "${pkgs.blesh}/share/blesh/ble.sh"
 
         eval "$(starship init bash)"
+
+        onefetch
       '';
 
       git-hooks.package = pkgs.prek;
