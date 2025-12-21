@@ -14,6 +14,9 @@ help: ## Show the help with the list of commands
 gomod-init: ## Initialize a Go module using current directory
 	bazel run @rules_go//go mod init github.com/racosta/monorepo/$(shell git rev-parse --show-prefix | sed 's,/$$,,')
 
+gomod-tidy: ## Tidy the Go module
+	bazel run @rules_go//go mod tidy
+
 gowork-use: ## Add current Go module to the Go workspace
 	cd $(shell git rev-parse --show-toplevel) && \
 		bazel run @rules_go//go work use $(shell git rev-parse --show-prefix | sed 's,/$$,,')
