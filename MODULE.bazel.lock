@@ -693,7 +693,7 @@
         "usagesDigest": "MIb4+znwzXRHpuwDWmgaaxIrxmf1jiNDwdRTVOVVJYU=",
         "recordedFileInputs": {
           "@@//third_party/rust/Cargo.lock": "6302d1fe57613e51215a4faa1f7f0d48b541d8f8b909498659d6bdd1bc1bfac1",
-          "@@//third_party/rust/Cargo.toml": "7480ae5d32fab29da56adb0c142d00109276a786218afb29ffc76e9f79ad60d2"
+          "@@//third_party/rust/Cargo.toml": "202e863733e783309f35dfb43ed47c3ddd665da72392c52bb7633aed91300f3e"
         },
         "recordedDirentsInputs": {},
         "envVariables": {
