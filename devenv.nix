@@ -1,7 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
-  # 1. Define the "base" configuration (optional - common to all)
   # Packages used everywhere (Dev + CI)
   packages = with pkgs; [
     bazel_8
@@ -15,6 +17,7 @@
       packages = with pkgs; [
         lcov
       ];
+
       # You can even disable expensive checks in CI if needed
       git-hooks.hooks.shellcheck.enable = false;
     };
@@ -24,6 +27,7 @@
       packages = with pkgs; [
         bat
         blesh
+        buildifier
         difftastic
         dua
         eza
@@ -57,22 +61,82 @@
         eval "$(starship init bash)"
       '';
 
-      git-hooks.hooks.shellcheck.enable = true;
+      git-hooks.package = pkgs.prek;
+      git-hooks = {
+        enable = true;
+
+        hooks = {
+          action-validator.enable = true;
+          black.enable = true;
+          buildifier = {
+            enable = true;
+            package = pkgs.buildifier;
+            description = "Format Bazel files with buildifier";
+            entry = "${pkgs.buildifier}/bin/buildifier";
+            types = [ "bazel" ];
+          };
+          check-added-large-files.enable = true;
+          check-json.enable = true;
+          check-merge-conflicts.enable = true;
+          check-symlinks.enable = true;
+          check-toml.enable = true;
+          check-yaml.enable = true;
+          # The checkmake tool does not support include directives well,
+          # so creates many false positives
+          checkmake.enable = false;
+          deadnix.enable = true;
+          end-of-file-fixer.enable = true;
+          flake8 = {
+            enable = true;
+            args = [
+              "--max-line-length=120"
+            ];
+          };
+          gofmt.enable = true;
+          golangci-lint.enable = true;
+          golines.enable = true;
+          govet.enable = true;
+          isort = {
+            enable = true;
+            args = [
+              "--profile=black"
+              "--filter-files"
+            ];
+          };
+          markdownlint.enable = true;
+          # projects/python_calculator/calculator_test.py:3: error: Cannot find implementation or library stub for module named "calculator"  [import-not-found]
+          # projects/python_calculator/calculator_test.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+          # Found 1 error in 1 file (checked 4 source files)
+          # projects/python_web/main.py:3: error: Cannot find implementation or library stub for module named "flask"  [import-not-found]
+          # projects/python_web/main.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+          # Found 1 error in 1 file (checked 2 source files)
+          #mypy.enable = true;
+          nixfmt.enable = true;
+          revive.enable = true;
+          shellcheck.enable = true;
+          shfmt.enable = true;
+          staticcheck.enable = true;
+          trim-trailing-whitespace.enable = true;
+          yamlfmt = {
+            enable = true;
+            settings = {
+              configPath = ".yamlfmt.yaml";
+              lint-only = false;
+            };
+          };
+          yamllint = {
+            enable = true;
+            args = [
+              "--format=parsable"
+              "--strict"
+            ];
+            settings.configPath = ".yamllint.yaml";
+          };
+        };
+      };
     };
   };
 
   # Global environment variables
   env.GREETING = "Hello, Nix!";
-
-  # # Enable devenv's built‑in pre-commit integration
-  # pre-commit = {
-  #   enable = true;
-
-  #   # devenv will automatically install hooks from .pre-commit-config.yaml
-  #   # and run them on `git commit`.
-  #   hooks = {
-  #     trailing-whitespace.enable = true;
-  #     end-of-file-fixer.enable = true;
-  #   };
-  # };
 }

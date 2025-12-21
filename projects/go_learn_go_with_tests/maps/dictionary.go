@@ -1,20 +1,22 @@
-package main
+// Package dictionary provides a simple in-memory dictionary with basic operations.
+package dictionary
 
 const (
 	// ErrNotFound means the definition could not be found for the given word
-	ErrNotFound = DictionaryErr("could not find the word you were looking for")
+	ErrNotFound = Err("could not find the word you were looking for")
 
 	// ErrWordExists means you are trying to add a word that is already known
-	ErrWordExists = DictionaryErr("cannot add word because it already exists")
+	ErrWordExists = Err("cannot add word because it already exists")
 
 	// ErrWordDoesNotExist occurs when trying to perform an operation on a word not in the dictionary
-	ErrWordDoesNotExist = DictionaryErr("cannot perform operation on word because it does not exist")
+	ErrWordDoesNotExist = Err("cannot perform operation on word because it does not exist")
 )
 
-// DictionaryErr are errors that can happen when interacting with the dictionary.
-type DictionaryErr string
+// Err are errors that can happen when interacting with the dictionary.
+type Err string
 
-func (e DictionaryErr) Error() string {
+// Error returns the error message.
+func (e Err) Error() string {
 	return string(e)
 }
 

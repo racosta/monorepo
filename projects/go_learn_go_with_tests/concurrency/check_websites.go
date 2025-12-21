@@ -1,3 +1,4 @@
+// Package concurrency provides functions for checking the availability of websites concurrently.
 package concurrency
 
 // WebsiteChecker checks a url, returning a bool.

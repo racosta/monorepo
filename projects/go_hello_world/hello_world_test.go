@@ -1,4 +1,7 @@
+//revive:disable:var-naming
 package go_hello_world
+
+//revive:enable:var-naming
 
 import "testing"
 

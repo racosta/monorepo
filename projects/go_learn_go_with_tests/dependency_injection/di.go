@@ -1,3 +1,4 @@
+// Binary dependency_injection_bin is the entry point for the application.
 package main
 
 import (
@@ -13,7 +14,7 @@ func Greet(writer io.Writer, name string) {
 }
 
 // MyGreeterHandler says Hello, world over HTTP.
-func MyGreeterHandler(w http.ResponseWriter, r *http.Request) {
+func MyGreeterHandler(w http.ResponseWriter, _ *http.Request) {
 	Greet(w, "world")
 }
 
