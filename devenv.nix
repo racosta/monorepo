@@ -49,6 +49,7 @@
         openssl
         pre-commit
         python3
+        python313Packages.pydocstyle
         readline
         ripgrep
         starship
@@ -119,6 +120,32 @@
           # Found 1 error in 1 file (checked 2 source files)
           #mypy.enable = true;
           nixfmt.enable = true;
+          no-commit-to-branch = {
+            enable = true;
+            description = "Protect branches from direct commits";
+            entry =
+              let
+                script = pkgs.writeShellScript "precommit-no-commit-to-branch" ''
+                  set -e
+                  current_branch=$(${pkgs.git}/bin/git symbolic-ref --short HEAD)
+
+                  # Check if the current branch is 'main'
+                  if [[ "$current_branch" = "main" ]]; then
+                    echo "Error: Cannot commit directly to the 'main' branch."
+                    echo "Please switch to a feature branch or use a pull request."
+                    exit 1 # Exit with a non-zero status to abort the commit
+                  fi
+                '';
+              in
+              builtins.toString script;
+            pass_filenames = false;
+          };
+          pydocstyle = {
+            enable = true;
+            description = "Run pydocstyle linter on Python code";
+            entry = "${pkgs.python313Packages.pydocstyle}/bin/pydocstyle --convention=google";
+            types = [ "python" ];
+          };
           revive.enable = true;
           rustfmt = {
             enable = true;

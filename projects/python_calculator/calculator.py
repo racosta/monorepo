@@ -1,4 +1,9 @@
+"""The Calculator class defines a simple arithmetic calculator."""
+
+
 class Calculator:
+    """The Calculator class defines a simple arithmetic calculator."""
+
     def add(self, x: int, y: int) -> int:
         """Adds two integers together.
 
@@ -7,5 +12,6 @@ class Calculator:
             y (int): Second addend
 
         Returns:
-            int: Sum"""
+            int: Sum
+        """
         return x + y
