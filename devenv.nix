@@ -118,7 +118,7 @@
           # projects/python_web/main.py:3: error: Cannot find implementation or library stub for module named "flask"  [import-not-found]
           # projects/python_web/main.py:3: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
           # Found 1 error in 1 file (checked 2 source files)
-          #mypy.enable = true;
+          mypy.enable = false;
           nixfmt.enable = true;
           no-commit-to-branch = {
             enable = true;

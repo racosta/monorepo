@@ -7,12 +7,13 @@ import (
 
 func TestCounter(t *testing.T) {
 	t.Run("incrementing the counter 3 times leaves it at 3", func(t *testing.T) {
+		wantedCount := 3
 		counter := NewCounter()
-		counter.Inc()
-		counter.Inc()
-		counter.Inc()
+		for range wantedCount {
+			counter.Inc()
+		}
 
-		assertCounter(t, counter, 3)
+		assertCounter(t, counter, wantedCount)
 	})
 
 	t.Run("it runs safely concurrently", func(t *testing.T) {
