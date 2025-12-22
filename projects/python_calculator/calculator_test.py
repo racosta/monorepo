@@ -1,17 +1,29 @@
-import unittest
+"""Unit tests for the Calculator class."""
 
+import pytest
 from calculator import Calculator
 
 
-class TestSum(unittest.TestCase):
-    def test_sum(self):
-        c = Calculator()
-        self.assertEqual(c.add(1, 2), 3)
+@pytest.mark.parametrize(
+    "a, b, want",
+    [
+        (1, 2, 3),
+        (-4, -11, -15),
+        (3, -7, -4),
+    ],
+    ids=[
+        "positive numbers :: 1 + 2 == 3",
+        "negative numbers :: -4 + -11 == -15",
+        "mixed numbers :: 3 + -7 == -4",
+    ],
+)
+def test_sum(a, b, want):
+    """Test computing a sum."""
+    c = Calculator()
+    got = c.add(a, b)
 
-    def test_sum_negative(self):
-        c = Calculator()
-        self.assertEqual(c.add(-4, -11), -15)
+    assert got == want, f"Want {want}, but got {got}"
 
 
 if __name__ == "__main__":
-    unittest.main()
+    raise SystemExit(pytest.main([__file__]))

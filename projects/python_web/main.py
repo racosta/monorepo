@@ -1,11 +1,18 @@
+"""A simple web application that uses a Calculator."""
+
 from random import randint
 
 from flask import Flask
 
-from projects.python_calculator.calculator import Calculator
+from projects.python_calculator import Calculator
 
 
-def create_app():
+def create_app() -> Flask:
+    """Create a Flask app.
+
+    Returns:
+        Flask : The web application
+    """
     app = Flask(__name__)
     my_calculator = Calculator()
 
