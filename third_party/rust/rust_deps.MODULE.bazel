@@ -18,9 +18,9 @@ crate = use_extension(
 )
 crate.from_cargo(
     name = "crates",
-    cargo_lockfile = "//third_party/rust:Cargo.lock",
+    cargo_lockfile = "//:Cargo.lock",
     manifests = [
-        "//third_party/rust:Cargo.toml",
+        "//:Cargo.toml",
     ],
 )
 use_repo(crate, "crates")

@@ -40,18 +40,17 @@
         gofumpt
         golangci-lint
         jq
-        just
         kondo
         lazygit
         lcov
         mdcat
         onefetch
         openssl
-        pre-commit
         python3
         python313Packages.pydocstyle
         readline
         ripgrep
+        rustlings
         starship
         tokei
         uv
