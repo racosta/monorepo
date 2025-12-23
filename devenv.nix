@@ -156,6 +156,13 @@
           shfmt.enable = true;
           staticcheck.enable = true;
           trim-trailing-whitespace.enable = true;
+          update-cargo-lock = {
+            enable = true;
+            description = "Update Cargo lock file";
+            entry = "${pkgs.cargo}/bin/cargo generate-lockfile";
+            files = "^third_party/rust/Cargo\\.toml$";
+            pass_filenames = false;
+          };
           yamlfmt = {
             enable = true;
             settings = {
