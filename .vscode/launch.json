@@ -1,0 +1,158 @@
+{
+  "configurations": [
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "name": "Debug //projects/rust_hello_world:rust_hello_world",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_hello_world:rust_hello_world'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_hello_world:rust_hello_world'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "name": "Debug //projects/rust_learn_rust_with_tests/hello_world:hello_bin",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_learn_rust_with_tests/hello_world:hello_bin'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_learn_rust_with_tests/hello_world:hello_bin'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "name": "Debug //projects/rust_learn_rust_with_tests/integers:integers_bin",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_learn_rust_with_tests/integers:integers_bin'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_learn_rust_with_tests/integers:integers_bin'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "name": "Debug //projects/rust_learn_rust_with_tests/iteration:iteration_bin",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_learn_rust_with_tests/iteration:iteration_bin'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_learn_rust_with_tests/iteration:iteration_bin'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "env": {
+        "BAZEL_TEST": "1",
+        "RUST_BACKTRACE": "all",
+        "TEST_TARGET": "//projects/rust_hello_world_lib:rust_hello_world_test",
+        "TEST_TMPDIR": "/home/racosta/src/monorepo/.vscode/bazel-test-tmp-projects_rust_hello_world_lib_rust_hello_world_test",
+        "TEST_UNDECLARED_OUTPUTS_ANNOTATIONS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-annotations-projects_rust_hello_world_lib_rust_hello_world_test",
+        "TEST_UNDECLARED_OUTPUTS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-outputs-projects_rust_hello_world_lib_rust_hello_world_test",
+        "TEST_WORKSPACE": "/home/racosta/src/monorepo"
+      },
+      "name": "Debug //projects/rust_hello_world_lib:rust_hello_world_test",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_hello_world_lib:rust_hello_world_test'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_hello_world_lib:rust_hello_world_test'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "env": {
+        "BAZEL_TEST": "1",
+        "RUST_BACKTRACE": "all",
+        "TEST_TARGET": "//projects/rust_learn_rust_with_tests/hello_world:hello_test",
+        "TEST_TMPDIR": "/home/racosta/src/monorepo/.vscode/bazel-test-tmp-projects_rust_learn_rust_with_tests_hello_world_hello_test",
+        "TEST_UNDECLARED_OUTPUTS_ANNOTATIONS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-annotations-projects_rust_learn_rust_with_tests_hello_world_hello_test",
+        "TEST_UNDECLARED_OUTPUTS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-outputs-projects_rust_learn_rust_with_tests_hello_world_hello_test",
+        "TEST_WORKSPACE": "/home/racosta/src/monorepo"
+      },
+      "name": "Debug //projects/rust_learn_rust_with_tests/hello_world:hello_test",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_learn_rust_with_tests/hello_world:hello_test'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_learn_rust_with_tests/hello_world:hello_test'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "env": {
+        "BAZEL_TEST": "1",
+        "RUST_BACKTRACE": "all",
+        "TEST_TARGET": "//projects/rust_learn_rust_with_tests/integers:integers_test",
+        "TEST_TMPDIR": "/home/racosta/src/monorepo/.vscode/bazel-test-tmp-projects_rust_learn_rust_with_tests_integers_integers_test",
+        "TEST_UNDECLARED_OUTPUTS_ANNOTATIONS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-annotations-projects_rust_learn_rust_with_tests_integers_integers_test",
+        "TEST_UNDECLARED_OUTPUTS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-outputs-projects_rust_learn_rust_with_tests_integers_integers_test",
+        "TEST_WORKSPACE": "/home/racosta/src/monorepo"
+      },
+      "name": "Debug //projects/rust_learn_rust_with_tests/integers:integers_test",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_learn_rust_with_tests/integers:integers_test'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_learn_rust_with_tests/integers:integers_test'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "env": {
+        "BAZEL_TEST": "1",
+        "RUST_BACKTRACE": "all",
+        "TEST_TARGET": "//projects/rust_learn_rust_with_tests/iteration:iteration_test",
+        "TEST_TMPDIR": "/home/racosta/src/monorepo/.vscode/bazel-test-tmp-projects_rust_learn_rust_with_tests_iteration_iteration_test",
+        "TEST_UNDECLARED_OUTPUTS_ANNOTATIONS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-annotations-projects_rust_learn_rust_with_tests_iteration_iteration_test",
+        "TEST_UNDECLARED_OUTPUTS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-outputs-projects_rust_learn_rust_with_tests_iteration_iteration_test",
+        "TEST_WORKSPACE": "/home/racosta/src/monorepo"
+      },
+      "name": "Debug //projects/rust_learn_rust_with_tests/iteration:iteration_test",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_learn_rust_with_tests/iteration:iteration_test'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_learn_rust_with_tests/iteration:iteration_test'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    },
+    {
+      "cwd": "/home/racosta/src/monorepo",
+      "env": {
+        "BAZEL_TEST": "1",
+        "RUST_BACKTRACE": "all",
+        "TEST_TARGET": "//projects/rust_one_hundred_exercises/01_intro/00_welcome:welcome_00_test",
+        "TEST_TMPDIR": "/home/racosta/src/monorepo/.vscode/bazel-test-tmp-projects_rust_one_hundred_exercises_01_intro_00_welcome_welcome_00_test",
+        "TEST_UNDECLARED_OUTPUTS_ANNOTATIONS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-annotations-projects_rust_one_hundred_exercises_01_intro_00_welcome_welcome_00_test",
+        "TEST_UNDECLARED_OUTPUTS_DIR": "/home/racosta/src/monorepo/.vscode/bazel-test-outputs-projects_rust_one_hundred_exercises_01_intro_00_welcome_welcome_00_test",
+        "TEST_WORKSPACE": "/home/racosta/src/monorepo"
+      },
+      "name": "Debug //projects/rust_one_hundred_exercises/01_intro/00_welcome:welcome_00_test",
+      "request": "custom",
+      "sourceLanguages": [
+        "rust"
+      ],
+      "targetCreateCommands": [
+        "script import subprocess, os, sys; result = subprocess.run(['bazel', 'run', '--compilation_mode=dbg', '--strip=never', '--run_under=@rules_rust//tools/vscode:get_binary_path', '//projects/rust_one_hundred_exercises/01_intro/00_welcome:welcome_00_test'], stdout=subprocess.PIPE, text=True, cwd='${workspaceFolder}'); binary_path = result.stdout.strip().splitlines()[-1]; assert binary_path, 'No binary path output for //projects/rust_one_hundred_exercises/01_intro/00_welcome:welcome_00_test'; abs_path = os.path.join('${workspaceFolder}', binary_path); lldb.debugger.CreateTarget(abs_path)"
+      ],
+      "type": "lldb"
+    }
+  ],
+  "version": "0.2.0"
+}
