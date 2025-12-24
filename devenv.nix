@@ -55,6 +55,7 @@
         tokei
         uv
         vim
+        workshop-runner
         zlib
       ];
 
