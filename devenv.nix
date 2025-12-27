@@ -66,7 +66,7 @@
 
         eval "$(starship init bash)"
 
-        onefetch
+        onefetch --nerd-fonts --number-of-languages=8
       '';
 
       git-hooks.package = pkgs.prek;
