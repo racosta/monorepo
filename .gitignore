@@ -23,3 +23,5 @@ third_party/rust/target
 
 # rust-analyzer
 rust-project.json
+
+.vscode/launch.json
