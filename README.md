@@ -15,6 +15,4 @@ and using `devenv shell`.
 
 ## Pre-commit
 
-This repository also makes use of the [pre-commit](https://pre-commit.com/) framework. The pre-commit
-tool itself is included in the Nix shell, but the hooks must be installed after cloning using the
-command `pre-commit install`.
+Pre-commit hooks are managed in devenv via [Git hooks](https://devenv.sh/git-hooks/).
