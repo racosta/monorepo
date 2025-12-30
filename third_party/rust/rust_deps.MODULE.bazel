@@ -1,4 +1,4 @@
-"""Rust third-party dependency configuration for Bazel."""
+"""Rust toolchain and third-party dependency configuration for Bazel."""
 
 bazel_dep(name = "rules_rust", version = "0.68.1")
 

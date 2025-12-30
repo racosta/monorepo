@@ -1,4 +1,4 @@
-"""Golang third-party dependency configuration for Bazel."""
+"""Golang toolchain and third-party dependency configuration for Bazel."""
 
 bazel_dep(name = "rules_go", version = "0.59.0")
 
