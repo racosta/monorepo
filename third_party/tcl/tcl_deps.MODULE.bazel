@@ -1,0 +1,7 @@
+"""Tcl third-party dependency configuration for Bazel."""
+
+bazel_dep(name = "rules_tcl", version = "0.1.1")
+
+register_toolchains(
+    "@rules_tcl//tcl/toolchain",
+)
