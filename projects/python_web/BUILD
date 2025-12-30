@@ -1,12 +1,11 @@
 load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_test")
-load("@pypi//:requirements.bzl", "requirement")
 
 py_library(
     name = "main_lib",
     srcs = ["main.py"],
     deps = [
         "//projects/python_calculator:calculator",
-        requirement("flask"),
+        "@pypi//flask",
     ],
 )
 
@@ -27,6 +26,6 @@ py_test(
     imports = ["."],
     deps = [
         ":main_lib",
-        requirement("pytest"),
+        "@pypi//pytest",
     ],
 )

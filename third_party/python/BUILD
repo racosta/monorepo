@@ -1,21 +1,22 @@
-load("@python//3.11:defs.bzl", compile_pip_requirements_3_11 = "compile_pip_requirements")
-load("@python//3.12:defs.bzl", compile_pip_requirements_3_12 = "compile_pip_requirements")
-load("@python//3.13:defs.bzl", compile_pip_requirements_3_13 = "compile_pip_requirements")
+load("@rules_uv//uv:pip.bzl", "pip_compile")
 
-compile_pip_requirements_3_11(
+pip_compile(
     name = "requirements_3_11",
-    src = "requirements.in",
+    py3_runtime = "@python_3_11//:py3_runtime",
+    requirements_in = "requirements.in",
     requirements_txt = "requirements_lock_3_11.txt",
 )
 
-compile_pip_requirements_3_12(
+pip_compile(
     name = "requirements_3_12",
-    src = "requirements.in",
+    py3_runtime = "@python_3_12//:py3_runtime",
+    requirements_in = "requirements.in",
     requirements_txt = "requirements_lock_3_12.txt",
 )
 
-compile_pip_requirements_3_13(
+pip_compile(
     name = "requirements_3_13",
-    src = "requirements.in",
+    py3_runtime = "@python_3_13//:py3_runtime",
+    requirements_in = "requirements.in",
     requirements_txt = "requirements_lock_3_13.txt",
 )

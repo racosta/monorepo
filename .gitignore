@@ -25,3 +25,6 @@ third_party/rust/target
 rust-project.json
 
 .vscode/launch.json
+
+# Aspect Rules Py virtual environments
+.*.venv
