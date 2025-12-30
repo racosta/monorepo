@@ -6,7 +6,7 @@ Investigating how new features work with Bazel and bzlmod, etc.
 
 ## Devenv
 
-In this repository, the environment is managed using [devenv](devenv.sha) and includes Bazel and other tools used in
+In this repository, the environment is managed using [devenv](devenv.sh) and includes Bazel and other tools used in
 this repository.
 
 Nix is a prerequisite. Visit [devenv::Getting started](https://devenv.sh/getting-started/) and use the
