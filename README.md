@@ -6,7 +6,7 @@ Investigating how new features work with Bazel and bzlmod, etc.
 
 ## Devenv
 
-In this repository, the environment is managed using [devenv](devenv.sha) and includes Bazel and other tools used in
+In this repository, the environment is managed using [devenv](devenv.sh) and includes Bazel and other tools used in
 this repository.
 
 Nix is a prerequisite. Visit [devenv::Getting started](https://devenv.sh/getting-started/) and use the
@@ -15,6 +15,4 @@ and using `devenv shell`.
 
 ## Pre-commit
 
-This repository also makes use of the [pre-commit](https://pre-commit.com/) framework. The pre-commit
-tool itself is included in the Nix shell, but the hooks must be installed after cloning using the
-command `pre-commit install`.
+Pre-commit hooks are managed in devenv via [Git hooks](https://devenv.sh/git-hooks/).
