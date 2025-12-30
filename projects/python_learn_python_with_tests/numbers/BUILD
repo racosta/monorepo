@@ -1,5 +1,4 @@
 load("@aspect_rules_py//py:defs.bzl", "py_library", "py_test")
-load("@pypi//:requirements.bzl", "requirement")
 
 py_library(
     name = "numbers_lib",
@@ -12,6 +11,6 @@ py_test(
     imports = ["."],
     deps = [
         ":numbers_lib",
-        requirement("pytest"),
+        "@pypi//pytest",
     ],
 )
