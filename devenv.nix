@@ -40,6 +40,7 @@
         gofumpt
         golangci-lint
         jq
+        keep-sorted
         kondo
         lazygit
         lcov
@@ -110,6 +111,13 @@
               "--profile=black"
               "--filter-files"
             ];
+          };
+          keep-sorted = {
+            enable = true;
+            description = "Ensure sections of files are sorted using keep-sorted";
+            entry = "${pkgs.keep-sorted}/bin/keep-sorted";
+            pass_filenames = true;
+            files = "\\.(bazel|bzl|BUILD|WORKSPACE|nix|in|txt|md|rs|py|go)$";
           };
           markdownlint.enable = true;
           # projects/python_calculator/calculator_test.py:3: error: Cannot find implementation or library stub for module named "calculator"  [import-not-found]

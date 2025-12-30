@@ -1,2 +1,4 @@
+# keep-sorted start
 flask==3.1.0; python_version >= '3.11'
 pytest==8.3.5
+# keep-sorted end
