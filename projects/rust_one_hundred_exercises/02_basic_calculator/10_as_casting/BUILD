@@ -1,12 +1,14 @@
 load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test")
 
+LIB_NAME = "as_cast"
+
 rust_library(
-    name = "as_cast",
+    name = LIB_NAME,
     srcs = ["src/lib.rs"],
     edition = "2021",
 )
 
 rust_test(
-    name = "as_cast_test",
-    crate = ":as_cast",
+    name = "{lib_name}_test".format(lib_name = LIB_NAME),
+    crate = ":{lib_name}".format(lib_name = LIB_NAME),
 )
