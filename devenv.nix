@@ -155,6 +155,8 @@
             types = [ "python" ];
           };
           revive.enable = true;
+          ruff.enable = true;
+          ruff-format.enable = true;
           rustfmt = {
             enable = true;
             description = "Format Rust code with rustfmt";
