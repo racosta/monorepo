@@ -1,12 +1,14 @@
 load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test")
 
+LIB_NAME = "panics"
+
 rust_library(
-    name = "panics",
+    name = LIB_NAME,
     srcs = ["src/lib.rs"],
     edition = "2021",
 )
 
 rust_test(
-    name = "panics_test",
-    crate = ":panics",
+    name = "{lib_name}_test".format(lib_name = LIB_NAME),
+    crate = ":{lib_name}".format(lib_name = LIB_NAME),
 )

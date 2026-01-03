@@ -25,7 +25,7 @@ gen_rust_project: ## Generate rust-project.json for Rust analyzer
 	bazel run @rules_rust//tools/rust_analyzer:gen_rust_project -- \
 		--workspace=$(REPO_ROOT)
 
-gen_launch_json: ## Generate VSCode launch.json for Rust debugging
+gen_rust_launch_json: ## Generate VSCode launch.json for Rust debugging
 	bazel run @rules_rust//tools/vscode:gen_launch_json -- \
 		--workspace-root=$(REPO_ROOT) \
 		--output=$(REPO_ROOT)/.vscode/launch.json

@@ -1,12 +1,14 @@
 load("@rules_rust//rust:defs.bzl", "rust_library", "rust_test")
 
+LIB_NAME = "if_else"
+
 rust_library(
-    name = "if_else",
+    name = LIB_NAME,
     srcs = ["src/lib.rs"],
     edition = "2021",
 )
 
 rust_test(
-    name = "if_else_test",
-    crate = ":if_else",
+    name = "{lib_name}_test".format(lib_name = LIB_NAME),
+    crate = ":{lib_name}".format(lib_name = LIB_NAME),
 )
