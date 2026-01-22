@@ -1,7 +1,4 @@
-bazel-bin
-bazel-monorepo
-bazel-out
-bazel-testlogs
+/bazel-*
 
 # Coverage report directory
 genhtml
@@ -28,3 +25,6 @@ rust-project.json
 
 # Aspect Rules Py virtual environments
 .*.venv
+
+# Node.js dependencies
+node_modules

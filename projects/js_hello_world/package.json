@@ -1,0 +1,4 @@
+{
+  "name": "@monorepo/js_hello_world",
+  "main": "src/hello.mjs"
+}
