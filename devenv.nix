@@ -76,6 +76,7 @@
 
         hooks = {
           action-validator.enable = true;
+          beautysh.enable = true;
           black.enable = true;
           buildifier = {
             enable = true;
@@ -94,7 +95,10 @@
           # so creates many false positives
           checkmake.enable = false;
           deadnix.enable = true;
+          denofmt.enable = true;
+          denolint.enable = true;
           end-of-file-fixer.enable = true;
+          # eslint.enable = true;
           flake8 = {
             enable = true;
             args = [
