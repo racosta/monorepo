@@ -30,10 +30,17 @@ jobs:
         set -euo pipefail
 
         echo "Removing unwanted software... "
+        echo "  Removing dotnet..."
         sudo rm -rf /usr/share/dotnet
+        echo "  Removing android..."
         sudo rm -rf /usr/local/lib/android
+        echo "  Removing haskell..."
         sudo rm -rf /opt/ghc
+        echo "  Removing CodeQL cache..."
+        sudo rm -rf /opt/hostedtoolcache/codeql
+        echo "  Removing docker images..."
         sudo docker image prune --all --force
+        sudo docker builder prune -a
         echo "... done"
     - name: Disk space report after modification
       shell: bash
