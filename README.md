@@ -1,5 +1,7 @@
 # monorepo
 
+![coverage](coverage.svg)
+
 Starting with a Nix shell and pre-commit hooks, then based on
 [kriscfoster/multi-language-bazel-monorepo](https://github.com/kriscfoster/multi-language-bazel-monorepo).
 

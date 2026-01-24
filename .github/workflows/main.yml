@@ -4,6 +4,8 @@ on:
   # Triggers the workflow on push or pull request events by only for the main branch
   push:
     branches: [main]
+    paths-ignore:
+    - "**/coverage.svg"
   pull_request:
     branches: [main]
   # Allow syou to run this workflow manually from the Actions tab
@@ -69,3 +71,26 @@ jobs:
       run: bazel build //...
     - name: Run tests
       run: bazel test //...
+    - name: Run coverage
+      run: bazel coverage --combined_report=lcov //...
+    - name: Locate the coverage report
+      id: locate_report
+      run: |
+        COVERAGE_DIR=$(bazel info output_path)/_coverage
+        echo "Coverage directory is: $COVERAGE_DIR"
+        REPORT_PATH="$COVERAGE_DIR/_coverage_report.dat"
+        echo "COVERAGE_REPORT_PATH=$REPORT_PATH" >> $GITHUB_OUTPUT
+    - uses: ImBIOS/lcov-coverage-badge@v1.0.1
+      with:
+        file: ${{ steps.locate_report.outputs.COVERAGE_REPORT_PATH }}
+        access_token: ${{ secret.GITHUB_TOKEN }}
+        style: flat
+        icon_name: googlecloud
+        label: 'Coverage'
+        label_color: 'ffffff'
+        critical: 60
+        critical_color: '9c2c9c'
+        warning: 75
+        warning_color: 'd68f0c'
+        success_color: '43ad43'
+        message_color: 'ffffff'
