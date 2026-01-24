@@ -12,6 +12,15 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+    - run: df -h
+    - name: Maximum build space
+      uses: easimon/maximize-build-space@master
+      with:
+        remove-android: 'true'
+        remove-docker-images: 'true'
+        remove-dotnet: 'true'
+        remove-haskell: 'true'
+    - run: df -h
     - uses: actions/checkout@v6.0.0
     - name: Setup Bazel with Caching
       # Use the setup-bazel action for easy configuration and caching
@@ -23,6 +32,7 @@ jobs:
         disk-cache: ${{ github.workflow }}
         # Optional: Enable repository cache
         repository-cache: true
+    - run: df -h
     - name: Build all targets
       run: bazel build //...
     - name: Run tests
