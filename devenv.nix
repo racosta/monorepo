@@ -31,16 +31,11 @@
       packages = with pkgs; [
         bat
         blesh
-        buildifier
         difftastic
         dua
         eza
         git
-        go
-        gofumpt
-        golangci-lint
         jq
-        keep-sorted
         kondo
         lazygit
         lcov
@@ -48,7 +43,6 @@
         onefetch
         openssl
         python3
-        python313Packages.pydocstyle
         readline
         ripgrep
         rustlings
@@ -70,13 +64,12 @@
         onefetch --nerd-fonts --number-of-languages=8
       '';
 
-      git-hooks.package = pkgs.prek;
       git-hooks = {
+        package = pkgs.prek;
         enable = true;
 
         hooks = {
           action-validator.enable = true;
-          beautysh.enable = true;
           black.enable = true;
           buildifier = {
             enable = true;
@@ -121,7 +114,7 @@
             description = "Ensure sections of files are sorted using keep-sorted";
             entry = "${pkgs.keep-sorted}/bin/keep-sorted";
             pass_filenames = true;
-            files = "\\.(bazel|bzl|BUILD|WORKSPACE|nix|in|txt|md|rs|py|go)$";
+            files = "BUILD|WORKSPACE|\\.(bazel|bzl|nix|in|txt|md|rs|py|go)$";
           };
           markdownlint.enable = true;
           # projects/python_calculator/calculator_test.py:3: error: Cannot find implementation or library stub for module named "calculator"  [import-not-found]
@@ -168,9 +161,21 @@
             types = [ "rust" ];
           };
           shellcheck.enable = true;
-          shfmt.enable = true;
+          shfmt = {
+            enable = true;
+            description = "Format shell files.";
+            types = [ "shell" ];
+            entry = "${pkgs.shfmt}/bin/shfmt -w -i 2 -l -s";
+          };
           staticcheck.enable = true;
           trim-trailing-whitespace.enable = true;
+          # ty = {
+          #   enable = true;
+          #   description = "Run 'ty check' for extremely fast Python type checking.";
+          #   entry = "${pkgs.ty}/bin/ty check";
+          #   types = [ "python" ];
+          #   require_serial = true;
+          # };
           update-cargo-lock = {
             enable = true;
             description = "Update Cargo lock file";
