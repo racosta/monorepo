@@ -83,7 +83,7 @@ jobs:
     - uses: ImBIOS/lcov-coverage-badge@v1.0.1
       with:
         file: ${{ steps.locate_report.outputs.COVERAGE_REPORT_PATH }}
-        access_token: ${{ secret.GITHUB_TOKEN }}
+        access_token: ${{ secrets.GITHUB_TOKEN }}
         style: flat
         icon_name: googlecloud
         label: 'Coverage'
