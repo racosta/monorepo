@@ -12,6 +12,47 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
+    - name: Disk space report before modification
+      shell: bash
+      run: |
+        echo "Memory and swap:"
+        sudo free -h
+        echo
+        sudo swapon --show
+        echo
+
+        echo "Available storage:"
+        sudo df -h
+        echo
+    - name: Maximize build disk space
+      shell: bash
+      run: |
+        set -euo pipefail
+
+        echo "Removing unwanted software... "
+        echo "  Removing dotnet..."
+        sudo rm -rf /usr/share/dotnet
+        echo "  Removing android..."
+        sudo rm -rf /usr/local/lib/android
+        echo "  Removing haskell..."
+        sudo rm -rf /opt/ghc
+        echo "  Removing CodeQL cache..."
+        sudo rm -rf /opt/hostedtoolcache/codeql
+        echo "  Removing docker images..."
+        sudo docker image prune --all --force
+        sudo docker builder prune -a
+        echo "... done"
+    - name: Disk space report after modification
+      shell: bash
+      run: |
+        echo "Memory and swap:"
+        sudo free -h
+        echo
+        sudo swapon --show
+        echo
+
+        echo "Available storage:"
+        sudo df -h
     - uses: actions/checkout@v6.0.0
     - name: Setup Bazel with Caching
       # Use the setup-bazel action for easy configuration and caching
@@ -23,6 +64,7 @@ jobs:
         disk-cache: ${{ github.workflow }}
         # Optional: Enable repository cache
         repository-cache: true
+    - run: df -h
     - name: Build all targets
       run: bazel build //...
     - name: Run tests
