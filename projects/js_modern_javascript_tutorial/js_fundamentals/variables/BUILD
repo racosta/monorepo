@@ -2,5 +2,5 @@ load("@aspect_rules_js//js:defs.bzl", "js_binary")
 
 js_binary(
     name = "variables",
-    entry_point = "variables.mjs",
+    entry_point = "src/variables.mjs",
 )

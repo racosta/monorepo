@@ -2,5 +2,5 @@ load("@aspect_rules_js//js:defs.bzl", "js_binary")
 
 js_binary(
     name = "alert",
-    entry_point = "alert.mjs",
+    entry_point = "src/alert.mjs",
 )
