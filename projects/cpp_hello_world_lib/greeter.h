@@ -3,6 +3,6 @@
 
 #include <string>
 
-std::string greet(const std::string& name = "World");
+std::string greet(const std::string &name = "World");
 
-#endif  // PROJECTS_CPP_HELLO_WORLD_LIB_GREETER_H__
+#endif // PROJECTS_CPP_HELLO_WORLD_LIB_GREETER_H__
