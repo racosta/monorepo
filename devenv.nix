@@ -54,6 +54,8 @@
         zlib
       ];
 
+      # difftastic.enable = true;
+
       enterShell = ''
         alias ls='eza --icons'
 
@@ -87,6 +89,13 @@
           # The checkmake tool does not support include directives well,
           # so creates many false positives
           checkmake.enable = false;
+          clang-format = {
+            enable = true;
+            types_or = [
+              "c"
+              "c++"
+            ];
+          };
           deadnix.enable = true;
           denofmt.enable = true;
           denolint.enable = true;
