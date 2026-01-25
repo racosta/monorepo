@@ -35,6 +35,7 @@
         dua
         eza
         git
+        google-java-format
         jq
         kondo
         lazygit
@@ -110,6 +111,13 @@
           gofmt.enable = true;
           golangci-lint.enable = true;
           golines.enable = true;
+          google-java-format = {
+            enable = true;
+            description = "Format Java code with google-java-format";
+            entry = "${pkgs.google-java-format}/bin/google-java-format -i --set-exit-if-changed";
+            pass_filenames = true;
+            types = [ "java" ];
+          };
           govet.enable = true;
           isort = {
             enable = true;

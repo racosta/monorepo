@@ -10,6 +10,7 @@ bazel_dep(name = "gazelle", version = "0.47.0")
 # keep-sorted start
 include("//third_party/cpp:cpp_deps.MODULE.bazel")
 include("//third_party/golang:go_deps.MODULE.bazel")
+include("//third_party/java:java_deps.MODULE.bazel")
 include("//third_party/javascript:javascript_deps.MODULE.bazel")
 include("//third_party/python:python_deps.MODULE.bazel")
 include("//third_party/rust:rust_deps.MODULE.bazel")

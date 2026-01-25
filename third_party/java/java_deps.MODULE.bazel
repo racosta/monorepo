@@ -1,0 +1,17 @@
+"""Java toolchain and third-party dependency configuration for Bazel."""
+
+# keep-sorted start
+bazel_dep(name = "rules_java", version = "9.3.0")
+bazel_dep(name = "rules_jvm_external", version = "6.9")
+# keep-sorted end
+
+# In the Maven support variation, the dependencies are conveniently listed here
+# in the MODULE.bazel file.
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [],
+    known_contributing_modules = [],
+    lock_file = "//:maven_install.json",
+)
+use_repo(maven, "maven")
