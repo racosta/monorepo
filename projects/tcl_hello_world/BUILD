@@ -1,7 +1,0 @@
-load("@rules_tcl//tcl:tcl_binary.bzl", "tcl_binary")
-
-tcl_binary(
-    name = "hello_world",
-    srcs = ["hello_world.tcl"],
-    deps = ["//projects/tcl_hello_world_lib:greetings"],
-)

@@ -1,4 +1,5 @@
 packages:
 - projects/js_*/
+- projects/js/*
 onlyBuiltDependencies:
 - 'esbuild'

@@ -1,0 +1,10 @@
+{
+  "name": "@monorepo/greeter",
+  "main": "greeter.mjs",
+  "type": "module",
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "jest-cli": "30.2.0",
+    "jest-junit": "^16.0.0"
+  }
+}
