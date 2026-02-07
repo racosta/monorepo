@@ -1,0 +1,8 @@
+{
+  "name": "@monorepo/second",
+  "main": "src/lib.js",
+  "dependencies": {
+    "@monorepo/first": "workspace:*",
+    "cowsay": "1.5.0"
+  }
+}

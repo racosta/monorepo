@@ -1,0 +1,7 @@
+{
+  "name": "@monorepo/hello_world",
+  "main": "src/hello.mjs",
+  "dependencies": {
+    "@monorepo/greeter": "workspace:*"
+  }
+}

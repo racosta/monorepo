@@ -1,7 +1,0 @@
-{
-  "name": "@monorepo/js_hello_world",
-  "main": "src/hello.mjs",
-  "dependencies": {
-    "@monorepo/js_hello_world_lib": "workspace:*"
-  }
-}

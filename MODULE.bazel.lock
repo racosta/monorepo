@@ -295,7 +295,7 @@
   "moduleExtensions": {
     "@@aspect_rules_js+//npm:extensions.bzl%pnpm": {
       "general": {
-        "bzlTransitiveDigest": "qnrGD2BG8dmVzyBO2JHXZZykaRaeiEBbvsF5QIQrF0Q=",
+        "bzlTransitiveDigest": "ckbUOpnWywdgi0WRniod2DvtglCLjFRYsvUu1W/zXX0=",
         "usagesDigest": "BxOeL2v/9bA+8nLzS0cLMVjYlyTkI567UtLtuxY0e8U=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},

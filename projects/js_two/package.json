@@ -1,8 +1,0 @@
-{
-  "name": "@monorepo/js_two",
-  "main": "src/lib.js",
-  "dependencies": {
-    "@monorepo/js_first": "workspace:*",
-    "cowsay": "1.5.0"
-  }
-}
