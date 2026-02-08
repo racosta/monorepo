@@ -6,7 +6,7 @@
 {
   # Packages used everywhere (Dev + CI)
   packages = with pkgs; [
-    bazel_8
+    bazelisk
     bazel-buildtools
   ];
 
@@ -21,6 +21,10 @@
       packages = with pkgs; [
         lcov
       ];
+
+      enterShell = ''
+        alias bazel='bazelisk'
+      '';
 
       # You can even disable expensive checks in CI if needed
       git-hooks.hooks.shellcheck.enable = false;
@@ -58,6 +62,7 @@
       # difftastic.enable = true;
 
       enterShell = ''
+        alias bazel='bazelisk'
         alias ls='eza --icons'
 
         source "${pkgs.blesh}/share/blesh/ble.sh"
