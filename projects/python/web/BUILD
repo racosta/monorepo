@@ -18,12 +18,13 @@ py_binary(
 )
 
 py_test(
-    name = "test_add",
+    name = "add_test",
     srcs = [
+        "tests/add_test.py",
         "tests/conftest.py",
-        "tests/test_add.py",
     ],
     imports = ["."],
+    pytest_main = True,
     deps = [
         ":main_lib",
         "@pypi//pytest",

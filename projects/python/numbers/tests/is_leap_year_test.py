@@ -1,5 +1,8 @@
+"""Unit tests for the is_leap_year function."""
+
 import pytest
-from is_leap_year import is_leap_year
+
+from projects.python.numbers import is_leap_year
 
 
 @pytest.mark.parametrize(
@@ -27,12 +30,12 @@ from is_leap_year import is_leap_year
         "2019 :: not divisible by 4",
     ],
 )
-def test_is_leap_year(year, expected):
+def test_is_leap_year(year: int, expected: bool):
+    """Test if a year is a leap year.
+
+    Args:
+        year (int): The year to test.
+        expected (bool): Whether the year is expected to be a leap year.
+    """
     actual = is_leap_year(year)
     assert actual == expected, f"Expected {expected} for year {year}, but got {actual}."
-
-
-if __name__ == "__main__":
-    import pytest
-
-    raise SystemExit(pytest.main([__file__]))

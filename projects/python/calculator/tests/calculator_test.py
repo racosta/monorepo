@@ -18,8 +18,14 @@ from projects.python.calculator import Calculator
         "mixed numbers :: 3 + -7 == -4",
     ],
 )
-def test_sum(a, b, want):
-    """Test computing a sum."""
+def test_sum(a: int, b: int, want: int):
+    """Test computing a sum.
+
+    Args:
+        a (int): The first addend.
+        b (int): The second addend.
+        want (int): The expected sum of a and b.
+    """
     c = Calculator()
     got = c.add(a, b)
 
