@@ -5,7 +5,10 @@ module(
     version = "0.0.0",
 )
 
+bazel_dep(name = "bazel_lib", version = "3.2.0")
 bazel_dep(name = "gazelle", version = "0.47.0")
+bazel_dep(name = "platforms", version = "1.0.0")
+bazel_dep(name = "rules_oci", version = "2.2.7")
 
 # keep-sorted start
 include("//third_party/cpp:cpp_deps.MODULE.bazel")
@@ -16,3 +19,44 @@ include("//third_party/python:python_deps.MODULE.bazel")
 include("//third_party/rust:rust_deps.MODULE.bazel")
 include("//third_party/tcl:tcl_deps.MODULE.bazel")
 # keep-sorted end
+
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
+
+# Declare external images you need to pull, for example:
+oci.pull(
+    name = "distroless_base",
+    # 'latest' is not reproducible, but it's convenient.
+    # During the build we print a WARNING message that includes recommended 'digest' and 'platforms'
+    # values which you can use here in place of 'tag' to pin for reproducibility.
+    # tag = "latest",
+    digest = "sha256:8c8b7cf2a01e2d1c683128b2488d77139fa90ec8cb807f0ae260d57f7022dedd",
+    image = "gcr.io/distroless/base",
+    platforms = [
+        "linux/amd64",
+        # "linux/arm64/v8",
+        # "linux/arm/v7",
+        # "linux/s390x",
+        # "linux/ppc64le",
+    ],
+)
+oci.pull(
+    name = "ubuntu",
+    digest = "sha256:80dd3c3b9c6cecb9f1667e9290b3bc61b78c2678c02cbdae5f0fea92cc6734ab",
+    image = "ubuntu",
+    platforms = [
+        "linux/amd64",
+    ],
+    tag = "latest",
+)
+oci.pull(
+    name = "distroless_python3",
+    digest = "sha256:1f2a297711facbdc0a26c6d1343efaca6009ec5cedbfd7bdda7299b37d232a89",
+    image = "gcr.io/distroless/python3-debian13",
+    platforms = [
+        "linux/amd64",
+    ],
+    tag = "latest",
+)
+
+# For each oci.pull call, repeat the "name" here to expose them as dependencies.
+use_repo(oci, "distroless_base", "distroless_base_linux_amd64", "distroless_python3", "distroless_python3_linux_amd64", "ubuntu", "ubuntu_linux_amd64")

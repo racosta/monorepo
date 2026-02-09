@@ -47,6 +47,7 @@
         mdcat
         onefetch
         openssl
+        podman
         python3
         readline
         ripgrep
