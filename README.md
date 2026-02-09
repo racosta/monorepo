@@ -21,3 +21,9 @@ repo root directory and using `devenv shell`.
 
 Pre-commit hooks are managed in devenv via
 [Git hooks](https://devenv.sh/git-hooks/).
+
+## OCI Containers
+
+### Prequisites
+
+- `sudo apt update && sudo apt install uidmap`
