@@ -6,12 +6,11 @@ module(
 )
 
 bazel_dep(name = "bazel_lib", version = "3.2.0")
-bazel_dep(name = "container_structure_test", version = "1.22.1")
 bazel_dep(name = "gazelle", version = "0.47.0")
 bazel_dep(name = "platforms", version = "1.0.0")
-bazel_dep(name = "rules_oci", version = "2.2.7")
 
 # keep-sorted start
+include("//third_party/containers:containers_deps.MODULE.bazel")
 include("//third_party/cpp:cpp_deps.MODULE.bazel")
 include("//third_party/golang:go_deps.MODULE.bazel")
 include("//third_party/java:java_deps.MODULE.bazel")
@@ -20,39 +19,3 @@ include("//third_party/python:python_deps.MODULE.bazel")
 include("//third_party/rust:rust_deps.MODULE.bazel")
 include("//third_party/tcl:tcl_deps.MODULE.bazel")
 # keep-sorted end
-
-oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
-
-# Declare external images you need to pull.
-# Use 'digest' and 'platforms' for reproducibility.
-# You can use 'tag' for convenience, but it's not reproducible.
-oci.pull(
-    name = "distroless_base",
-    digest = "sha256:8c8b7cf2a01e2d1c683128b2488d77139fa90ec8cb807f0ae260d57f7022dedd",
-    image = "gcr.io/distroless/base",
-    platforms = [
-        "linux/amd64",
-    ],
-    # 'latest' is not reproducible, but it's convenient.
-    # During the build we print a WARNING message that includes recommended 'digest' and 'platforms'
-    # values which you can use here in place of 'tag' to pin for reproducibility.
-    tag = "latest",
-)
-oci.pull(
-    name = "ubuntu",
-    digest = "sha256:80dd3c3b9c6cecb9f1667e9290b3bc61b78c2678c02cbdae5f0fea92cc6734ab",
-    image = "ubuntu",
-    platforms = [
-        "linux/amd64",
-    ],
-    tag = "latest",
-)
-
-# For each oci.pull call, repeat the "name" here to expose them as dependencies.
-use_repo(
-    oci,
-    "distroless_base",
-    "distroless_base_linux_amd64",
-    "ubuntu",
-    "ubuntu_linux_amd64",
-)
