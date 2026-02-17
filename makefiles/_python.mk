@@ -1,4 +1,6 @@
-TEST_OUTPUT_OPTIONS := --test_output=all
+# Use bazelisk if available, otherwise fallback to bazel
+BAZEL := $(shell command -v bazelisk 2> /dev/null || echo bazel)
+TEST_OUTPUT_OPTIONS := --test_output=errors
 
 .PHONY: help all build run test clean pristine
 
@@ -9,14 +11,14 @@ include $(REPO_ROOT)/makefiles/_common.mk
 all: build ## Default target (build)
 
 build: ## Build the first Python binary
-	bazel query "kind('py_binary', ...)" --output=label | \
+	$(BAZEL) query "kind('py_binary', ...)" --output=label | \
 		head -n 1 | \
-		xargs bazel build
+		xargs $(BAZEL) build
 
 run: ## Run first Python binary
-	bazel query "kind('py_binary', ...)" --output=label | \
+	$(BAZEL) query "kind('py_binary', ...)" --output=label | \
 		head -n 1 | \
-		xargs bazel run
+		xargs $(BAZEL) run
 
 test: ## Run bazel test
-	bazel test ${TEST_OUTPUT_OPTIONS} ...
+	$(BAZEL) test ... ${TEST_OUTPUT_OPTIONS}

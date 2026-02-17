@@ -10,9 +10,9 @@
     bazel-buildtools
   ];
 
-  languages.rust = {
-    enable = true;
-  };
+  # languages.rust = {
+  #   enable = true;
+  # };
 
   # 2. Define the Profiles
   profiles = {
@@ -227,5 +227,5 @@
   };
 
   # Global environment variables
-  env.GREETING = "Hello, Nix!";
+  env.STARSHIP_LOG = "ERROR";
 }

@@ -1,0 +1,7 @@
+schemaVersion: "2.0.0"
+fileExistenceTests:
+- name: "Verify app binary"
+  path: ./projects/python/web/main_app
+  shouldExist: true
+metadataTest:
+  entrypoint: ["/projects/python/web/main_app"]
