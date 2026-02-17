@@ -1,5 +1,6 @@
 load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_image_layer", "py_library", "py_test")
 load("@bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
+load("@container_structure_test//:defs.bzl", "container_structure_test")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
 
 py_library(
@@ -72,4 +73,12 @@ filegroup(
     name = "image_load.tar",
     srcs = [":image_load"],
     output_group = "tarball",
+)
+
+container_structure_test(
+    name = "image_test",
+    configs = ["structure_test.yaml"],
+    driver = "tar",
+    image = ":image_load.tar",
+    tags = ["unit"],
 )

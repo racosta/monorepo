@@ -6,6 +6,7 @@ module(
 )
 
 bazel_dep(name = "bazel_lib", version = "3.2.0")
+bazel_dep(name = "container_structure_test", version = "1.22.1")
 bazel_dep(name = "gazelle", version = "0.47.0")
 bazel_dep(name = "platforms", version = "1.0.0")
 bazel_dep(name = "rules_oci", version = "2.2.7")
@@ -22,22 +23,20 @@ include("//third_party/tcl:tcl_deps.MODULE.bazel")
 
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
 
-# Declare external images you need to pull, for example:
+# Declare external images you need to pull.
+# Use 'digest' and 'platforms' for reproducibility.
+# You can use 'tag' for convenience, but it's not reproducible.
 oci.pull(
     name = "distroless_base",
-    # 'latest' is not reproducible, but it's convenient.
-    # During the build we print a WARNING message that includes recommended 'digest' and 'platforms'
-    # values which you can use here in place of 'tag' to pin for reproducibility.
-    # tag = "latest",
     digest = "sha256:8c8b7cf2a01e2d1c683128b2488d77139fa90ec8cb807f0ae260d57f7022dedd",
     image = "gcr.io/distroless/base",
     platforms = [
         "linux/amd64",
-        # "linux/arm64/v8",
-        # "linux/arm/v7",
-        # "linux/s390x",
-        # "linux/ppc64le",
     ],
+    # 'latest' is not reproducible, but it's convenient.
+    # During the build we print a WARNING message that includes recommended 'digest' and 'platforms'
+    # values which you can use here in place of 'tag' to pin for reproducibility.
+    tag = "latest",
 )
 oci.pull(
     name = "ubuntu",
@@ -48,15 +47,12 @@ oci.pull(
     ],
     tag = "latest",
 )
-oci.pull(
-    name = "distroless_python3",
-    digest = "sha256:1f2a297711facbdc0a26c6d1343efaca6009ec5cedbfd7bdda7299b37d232a89",
-    image = "gcr.io/distroless/python3-debian13",
-    platforms = [
-        "linux/amd64",
-    ],
-    tag = "latest",
-)
 
 # For each oci.pull call, repeat the "name" here to expose them as dependencies.
-use_repo(oci, "distroless_base", "distroless_base_linux_amd64", "distroless_python3", "distroless_python3_linux_amd64", "ubuntu", "ubuntu_linux_amd64")
+use_repo(
+    oci,
+    "distroless_base",
+    "distroless_base_linux_amd64",
+    "ubuntu",
+    "ubuntu_linux_amd64",
+)
