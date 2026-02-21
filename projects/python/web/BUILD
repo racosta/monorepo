@@ -3,7 +3,7 @@ load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_test")
 load("@bazel_lib//lib:testing.bzl", "assert_archive_contains")
 load("@bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
 load("@container_structure_test//:defs.bzl", "container_structure_test")
-load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load", "oci_push")
 load("//bazel:java_runtime_layer.bzl", "java_runtime_layer")
 load("//bazel:py_image_layer_owned.bzl", "py_image_layer_owned")
 
@@ -94,7 +94,7 @@ expand_template(
     name = "stamped_img_names",
     out = "_stamped.image_names.txt",
     stamp_substitutions = {"latest": "{{BUILD_EMBED_LABEL}}"},
-    template = ["gcr.io/racosta/monorepo/{}/{}:latest".format(
+    template = ["ghcr.io/racosta/monorepo/{}/{}:latest".format(
         package_name(),
         SERVICE_NAME,
     )],
@@ -104,6 +104,23 @@ oci_load(
     name = "load",
     image = ":platform_image",
     repo_tags = ":stamped_img_names",
+)
+
+expand_template(
+    name = "stamped_tags",
+    out = "_stamped.tags.txt",
+    stamp_substitutions = {"latest": "{{BUILD_EMBED_LABEL}}"},
+    template = ["latest"],
+)
+
+oci_push(
+    name = "push",
+    image = ":platform_image",
+    remote_tags = ":stamped_tags",
+    repository = "ghcr.io/racosta/monorepo/{}/{}".format(
+        package_name(),
+        SERVICE_NAME,
+    ),
 )
 
 assert_archive_contains(
