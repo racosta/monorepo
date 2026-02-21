@@ -66,31 +66,31 @@ def py_image_layer_owned(
             name + "_interpreter.tar.gz",
         ],
         cmd = """
-      # Process each layer and change ownership to {user}:0
-      for src in $(SRCS); do
-        layer_name=$$(basename $$src)
-        case "$$layer_name" in
-          *default*)
-            out=$(location {name}_default.tar.gz)
-            ;;
-          *packages*)
-            out=$(location {name}_packages.tar.gz)
-            ;;
-          *interpreter*)
-            out=$(location {name}_interpreter.tar.gz)
-            ;;
-          *)
-            continue
-            ;;
-        esac
+          # Process each layer and change ownership to {user}:0
+          for src in $(SRCS); do
+            layer_name=$$(basename $$src)
+            case "$$layer_name" in
+              *default*)
+                out=$(location {name}_default.tar.gz)
+                ;;
+              *packages*)
+                out=$(location {name}_packages.tar.gz)
+                ;;
+              *interpreter*)
+                out=$(location {name}_interpreter.tar.gz)
+                ;;
+              *)
+                continue
+                ;;
+            esac
 
-        # Extract, change ownership, repackage
-        tmpdir=$$(mktemp -d)
-        tar -xzf $$src -C $$tmpdir
-        tar --owner={user} --group=0 -czf $$out -C $$tmpdir .
-        rm -rf $$tmpdir
-      done
-    """.format(
+            # Extract, change ownership, repackage
+            tmpdir=$$(mktemp -d)
+            tar -xzf $$src -C $$tmpdir
+            tar --owner={user} --group=0 -czf $$out -C $$tmpdir .
+            rm -rf $$tmpdir
+          done
+        """.format(
             name = name,
             user = user,
         ),

@@ -31,6 +31,17 @@ importers:
       '@monorepo/greeter':
         specifier: workspace:*
         version: link:../greeter
+  projects/js/modern_javascript_tutorial/02_js_fundamentals/2_6_interaction:
+    devDependencies:
+      jest:
+        specifier: 30.2.0
+        version: 30.2.0(@types/node@25.0.10)
+      jest-cli:
+        specifier: 30.2.0
+        version: 30.2.0(@types/node@25.0.10)
+      jest-junit:
+        specifier: 16.0.0
+        version: 16.0.0
   projects/js/second:
     dependencies:
       '@monorepo/first':
