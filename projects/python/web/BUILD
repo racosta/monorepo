@@ -1,7 +1,17 @@
-load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_image_layer", "py_library", "py_test")
+load("@aspect_bazel_lib//lib:expand_template.bzl", "expand_template")
+load("@aspect_rules_py//py:defs.bzl", "py_binary", "py_library", "py_test")
+load("@bazel_lib//lib:testing.bzl", "assert_archive_contains")
 load("@bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
 load("@container_structure_test//:defs.bzl", "container_structure_test")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load")
+load("//bazel:java_runtime_layer.bzl", "java_runtime_layer")
+load("//bazel:py_image_layer_owned.bzl", "py_image_layer_owned")
+
+SERVICE_NAME = "calculator_service"
+
+PY_BINARY_NAME = "main_app"
+
+CONTAINER_IMAGE_USER = "185"
 
 py_library(
     name = "main_lib",
@@ -13,7 +23,7 @@ py_library(
 )
 
 py_binary(
-    name = "main_app",
+    name = PY_BINARY_NAME,
     srcs = ["main.py"],
     deps = [
         ":main_lib",
@@ -34,16 +44,33 @@ py_test(
     ],
 )
 
-py_image_layer(
+py_image_layer_owned(
     name = "app_layer",
-    binary = ":main_app",
+    binary = ":{}".format(PY_BINARY_NAME),
+)
+
+java_runtime_layer(
+    name = "java_layer",
 )
 
 oci_image(
     name = "image",
-    base = "@ubuntu",
-    entrypoint = ["/{}/main_app".format(package_name())],
-    tars = [":app_layer"],
+    base = "@ubi10-minimal",
+    entrypoint = ["/{}/{}".format(
+        package_name(),
+        PY_BINARY_NAME,
+    )],
+    env = {
+        "JAVA_HOME": "/usr/lib/jvm/java-21",
+        "PATH": "/usr/lib/jvm/java-21/bin:$PATH",
+    },
+    tars = [
+        ":java_layer",
+        ":app_layer_default.tar.gz",
+        ":app_layer_packages.tar.gz",
+        ":app_layer_interpreter.tar.gz",
+    ],
+    user = CONTAINER_IMAGE_USER,
 )
 
 platform(
@@ -63,15 +90,79 @@ platform_transition_filegroup(
     }),
 )
 
+expand_template(
+    name = "stamped_img_names",
+    out = "_stamped.image_names.txt",
+    stamp_substitutions = {"latest": "{{BUILD_EMBED_LABEL}}"},
+    template = ["gcr.io/racosta/monorepo/{}/{}:latest".format(
+        package_name(),
+        SERVICE_NAME,
+    )],
+)
+
 oci_load(
-    name = "image_load",
+    name = "load",
     image = ":platform_image",
-    repo_tags = ["gcr.io/oci_python_hello_world:latest"],
+    repo_tags = ":stamped_img_names",
+)
+
+assert_archive_contains(
+    name = "test_java_layer",
+    archive = "java_layer",
+    expected = [
+        "./usr/lib/jvm/java-21/bin/java",
+        "./usr/lib/jvm/java-21/lib/libjava.so",
+        "./usr/lib/jvm/java-21/bin/jar",
+    ],
+    tags = ["unit"],
+    type = "tar",
+)
+
+assert_archive_contains(
+    name = "test_app_layer_packages",
+    archive = "app_layer_base_packages",
+    expected = [
+        "./{}/{}.runfiles/rules_python++pip+pypi_312_flask/site-packages/flask/__init__.py".format(
+            package_name(),
+            PY_BINARY_NAME,
+        ),
+    ],
+    tags = ["unit"],
+    type = "tar",
+)
+
+assert_archive_contains(
+    name = "test_app_layer_interpreter",
+    archive = "app_layer_base_interpreter",
+    expected = [
+        "./{}/{}.runfiles/rules_python++python+python_3_12_x86_64-unknown-linux-gnu/bin/python3.12".format(
+            package_name(),
+            PY_BINARY_NAME,
+        ),
+    ],
+    tags = ["unit"],
+    type = "tar",
+)
+
+assert_archive_contains(
+    name = "test_app_layer_default",
+    archive = "app_layer_base_default",
+    expected = [
+        "./{}/{}".format(
+            package_name(),
+            PY_BINARY_NAME,
+        ),
+        "./{}/main.py".format(
+            package_name(),
+        ),
+    ],
+    tags = ["unit"],
+    type = "tar",
 )
 
 filegroup(
     name = "image_load.tar",
-    srcs = [":image_load"],
+    srcs = [":load"],
     output_group = "tarball",
 )
 
