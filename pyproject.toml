@@ -4,7 +4,10 @@ exclude = [
   "bazel-bin",
   "bazel-monorepo",
   "bazel-out",
-  "bazel-testlogs"
+  "bazel-testlogs",
+  "**/node_modules",
+  "**/__pycache__",
+  "**/.*"
 ]
 
 [tool.flake8]
