@@ -68,6 +68,11 @@
 
         source "${pkgs.blesh}/share/blesh/ble.sh"
 
+        if [[ -n "$GHCR_PAT" ]]; then
+          echo "Logging into GitHub Container Registry with provided GHCR_PAT"
+          echo $GHCR_PAT | podman login ghcr.io -u racosta --password-stdin
+        fi
+
         eval "$(starship init bash)"
 
         onefetch --nerd-fonts --number-of-languages=8
