@@ -1,7 +1,9 @@
+import { greeter } from "./stringUtils.mjs";
+
 const name = "Ilya";
 
-console.log(`hello ${1}`); // hello 1
+console.log(greeter(1)); // hello 1
 
-console.log(`hello ${"name"}`); // hello name
+console.log(greeter("name")); // hello name
 
-console.log(`hello ${name}`); // hello Ilya
+console.log(greeter(name)); // hello Ilya
