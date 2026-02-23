@@ -47,6 +47,7 @@
         mdcat
         onefetch
         openssl
+        perl540Packages.PerlTidy
         podman
         python3
         readline
@@ -172,6 +173,34 @@
               in
               builtins.toString script;
             pass_filenames = false;
+          };
+          perlcritic = {
+            enable = true;
+            description = "Run Perl::Critic linter on Perl code";
+            entry = "${pkgs.perl540Packages.PerlCritic}/bin/perlcritic";
+            args = [
+              "--profile"
+              "/dev/null"
+              "--severity"
+              "5"
+            ];
+            types = [ "perl" ];
+          };
+          perltidy = {
+            enable = true;
+            description = "Format Perl code with perltidy";
+            entry = "${pkgs.perl540Packages.PerlTidy}/bin/perltidy";
+            args = [
+              "--noprofile"
+              "--perl-best-practices"
+              "--nostandard-output"
+              "--warning-output"
+              "--backup-and-modify-in-place"
+              "--backup-file-extension=/"
+              "--indent-columns=2"
+              "--maximum-line-length=120"
+            ];
+            types = [ "perl" ];
           };
           pydocstyle = {
             enable = true;
