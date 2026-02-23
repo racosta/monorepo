@@ -10,6 +10,7 @@ use (
 	./projects/go/learn_go_with_tests/integers
 	./projects/go/learn_go_with_tests/iteration
 	./projects/go/learn_go_with_tests/maps
+	./projects/go/learn_go_with_tests/math
 	./projects/go/learn_go_with_tests/mocking
 	./projects/go/learn_go_with_tests/pointers
 	./projects/go/learn_go_with_tests/reflection
