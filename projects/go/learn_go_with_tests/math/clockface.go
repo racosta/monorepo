@@ -6,32 +6,51 @@ import (
 	"time"
 )
 
+const (
+	secondsInHalfClock = 30
+	minutesInHalfClock = 30
+	minutesInClock     = 2 * minutesInHalfClock
+	hoursInHalfClock   = 6
+	hoursInClock       = 2 * hoursInHalfClock
+)
+
 // A Point represents a two-dimensional Cartesian coordinate
 type Point struct {
 	X float64
 	Y float64
 }
 
-const secondHandLength = 90
-const clockCenterX = 150
-const clockCenterY = 150
-
-// SecondHand is the unit vector of the second hand of an analogue clock at time `t`
-// represented as a Point.
-func SecondHand(t time.Time) Point {
-	p := secondHandPoint(t)
-	p = Point{p.X * secondHandLength, p.Y * secondHandLength}
-	p = Point{p.X, -p.Y}
-	p = Point{p.X + clockCenterX, p.Y + clockCenterY}
-	return p
+// SecondsInRadians returns the angle of the second hand in radians, measured clockwise from 12 o'clock.
+func SecondsInRadians(t time.Time) float64 {
+	return math.Pi / (secondsInHalfClock / float64(t.Second()))
 }
 
-func secondsInRadians(t time.Time) float64 {
-	return math.Pi / (30 / float64(t.Second()))
+// SecondHandPoint returns the point at which the second hand of an analogue clock would end, given a time.
+func SecondHandPoint(t time.Time) Point {
+	return angleToPoint(SecondsInRadians(t))
 }
 
-func secondHandPoint(t time.Time) Point {
-	angle := secondsInRadians(t)
+// MinutesInRadians returns the angle of the minute hand in radians, measured clockwise from 12 o'clock.
+func MinutesInRadians(t time.Time) float64 {
+	return (SecondsInRadians(t) / minutesInClock) + (math.Pi / (minutesInHalfClock / float64(t.Minute())))
+}
+
+// MinuteHandPoint returns the point at which the minute hand of an analogue clock would end, given a time.
+func MinuteHandPoint(t time.Time) Point {
+	return angleToPoint(MinutesInRadians(t))
+}
+
+// HoursInRadians returns the angle of the hour hand in radians, measured clockwise from 12 o'clock.
+func HoursInRadians(t time.Time) float64 {
+	return (MinutesInRadians(t) / hoursInClock) + (math.Pi / (hoursInHalfClock / float64(t.Hour()%hoursInClock)))
+}
+
+// HourHandPoint returns the point at which the hour hand of an analogue clock would end, given a time.
+func HourHandPoint(t time.Time) Point {
+	return angleToPoint(HoursInRadians(t))
+}
+
+func angleToPoint(angle float64) Point {
 	x := math.Sin(angle)
 	y := math.Cos(angle)
 

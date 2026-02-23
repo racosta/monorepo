@@ -1,7 +1,7 @@
 # Use bazelisk if available, otherwise fallback to bazel
 BAZEL := $(shell command -v bazelisk 2> /dev/null || echo bazel)
 
-TEST_OUTPUT_OPTIONS := --test_output=all
+TEST_OUTPUT_OPTIONS := --test_output=errors
 
 .PHONY: help gomod-init gowork-use gazelle all build run test coverage coverage-report benchmark clean pristine
 

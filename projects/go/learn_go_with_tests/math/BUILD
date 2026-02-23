@@ -1,5 +1,7 @@
 load("@rules_go//go:def.bzl", "go_library", "go_test")
 
+# gazelle:go_test file
+
 go_library(
     name = "math",
     srcs = ["clockface.go"],
@@ -8,16 +10,7 @@ go_library(
 )
 
 go_test(
-    name = "math_test",
-    srcs = [
-        "clockface_acceptance_test.go",
-        "clockface_test.go",
-    ],
-    embed = [":math"],
-)
-
-go_test(
-    name = "math_acceptance_test",
-    srcs = ["clockface_acceptance_test.go"],
+    name = "clockface_test",
+    srcs = ["clockface_test.go"],
     embed = [":math"],
 )

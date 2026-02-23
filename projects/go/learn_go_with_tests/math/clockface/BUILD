@@ -5,7 +5,7 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/racosta/monorepo/projects/go/learn_go_with_tests/math/clockface",
     visibility = ["//visibility:private"],
-    deps = ["//projects/go/learn_go_with_tests/math"],
+    deps = ["//projects/go/learn_go_with_tests/math/svg"],
 )
 
 go_binary(
