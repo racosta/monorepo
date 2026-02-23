@@ -5,10 +5,12 @@ module(
     version = "0.0.0",
 )
 
+# keep-sorted start
 bazel_dep(name = "aspect_bazel_lib", version = "2.22.5")
 bazel_dep(name = "bazel_lib", version = "3.2.0")
 bazel_dep(name = "gazelle", version = "0.47.0")
 bazel_dep(name = "platforms", version = "1.0.0")
+# keep-sorted end
 
 # keep-sorted start
 include("//third_party/containers:containers_deps.MODULE.bazel")
@@ -16,6 +18,7 @@ include("//third_party/cpp:cpp_deps.MODULE.bazel")
 include("//third_party/golang:go_deps.MODULE.bazel")
 include("//third_party/java:java_deps.MODULE.bazel")
 include("//third_party/javascript:javascript_deps.MODULE.bazel")
+include("//third_party/perl:perl_deps.MODULE.bazel")
 include("//third_party/python:python_deps.MODULE.bazel")
 include("//third_party/rust:rust_deps.MODULE.bazel")
 include("//third_party/tcl:tcl_deps.MODULE.bazel")
