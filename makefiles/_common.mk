@@ -1,3 +1,7 @@
+TEST_OUTPUT_OPTIONS := --test_output=errors
+
+.PHONY: help clean pristine test
+
 # <target_name>: ## <Help text for the target>
 # For example:
 # build: ## Compiles the project
@@ -12,3 +16,6 @@ clean: ## Clean Bazel output files
 
 pristine: ## Clean and purge all Bazel files
 	bazel clean --expunge
+
+test: ## Run bazel test
+	bazel test ${TEST_OUTPUT_OPTIONS} ...

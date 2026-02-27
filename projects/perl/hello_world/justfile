@@ -1,0 +1,4 @@
+import "../../../justfiles/perl.just"
+
+[private]
+default: help

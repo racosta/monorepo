@@ -5,4 +5,4 @@ include $(REPO_ROOT)/makefiles/_go.mk
 .PHONY: clockface
 
 clockface: ## Run the clockface Go binary
-	$(BAZEL) run clockface:clockface > clock.svg
+	bazel run clockface:clockface > clock.svg
