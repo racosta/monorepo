@@ -12,10 +12,6 @@
 
   scripts.bazel.exec = "bazelisk \"$@\"";
 
-  # languages.rust = {
-  #   enable = true;
-  # };
-
   # 2. Define the Profiles
   profiles = {
     # The 'ci' profile: only adds what's strictly necessary for the runner
@@ -23,10 +19,6 @@
       packages = with pkgs; [
         lcov
       ];
-
-      enterShell = ''
-        alias bazel='bazelisk'
-      '';
 
       # You can even disable expensive checks in CI if needed
       git-hooks.hooks.shellcheck.enable = false;
@@ -50,7 +42,6 @@
         mdcat
         onefetch
         openssl
-        perl540Packages.PerlTidy
         podman
         python3
         readline
@@ -72,7 +63,7 @@
         source "${pkgs.blesh}/share/blesh/ble.sh"
 
         if [[ -n "$GHCR_PAT" ]]; then
-          echo "Logging into GitHub Container Registry with provided GHCR_PAT"
+          echo -n "🔑Logging into GitHub Container Registry with provided GHCR_PAT ... "
           echo $GHCR_PAT | podman login ghcr.io -u racosta --password-stdin
         fi
 
@@ -128,7 +119,11 @@
           google-java-format = {
             enable = true;
             description = "Format Java code with google-java-format";
-            entry = "${pkgs.google-java-format}/bin/google-java-format -i --set-exit-if-changed";
+            entry = "${pkgs.google-java-format}/bin/google-java-format";
+            args = [
+              "-i"
+              "--set-exit-if-changed"
+            ];
             pass_filenames = true;
             types = [ "java" ];
           };
@@ -207,7 +202,10 @@
           pydocstyle = {
             enable = true;
             description = "Run pydocstyle linter on Python code";
-            entry = "${pkgs.python313Packages.pydocstyle}/bin/pydocstyle --convention=google";
+            entry = "${pkgs.python313Packages.pydocstyle}/bin/pydocstyle";
+            args = [
+              "--convention=google"
+            ];
             types = [ "python" ];
           };
           revive.enable = true;
@@ -224,7 +222,13 @@
             enable = true;
             description = "Format shell files.";
             types = [ "shell" ];
-            entry = "${pkgs.shfmt}/bin/shfmt -w -i 2 -l -s";
+            entry = "${pkgs.shfmt}/bin/shfmt";
+            args = [
+              "--write"
+              "--indent=2"
+              "--list"
+              "--simplify"
+            ];
           };
           staticcheck.enable = true;
           trim-trailing-whitespace.enable = true;
