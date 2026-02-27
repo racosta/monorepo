@@ -10,6 +10,8 @@
     bazel-buildtools
   ];
 
+  scripts.bazel.exec = "bazelisk \"$@\"";
+
   # languages.rust = {
   #   enable = true;
   # };
@@ -41,6 +43,7 @@
         git
         google-java-format
         jq
+        just
         kondo
         lazygit
         lcov
@@ -64,7 +67,6 @@
       # difftastic.enable = true;
 
       enterShell = ''
-        alias bazel='bazelisk'
         alias ls='eza --icons'
 
         source "${pkgs.blesh}/share/blesh/ble.sh"

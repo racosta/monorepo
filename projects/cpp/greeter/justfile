@@ -1,0 +1,4 @@
+import "../../../justfiles/cpp.just"
+
+[private]
+default: help
