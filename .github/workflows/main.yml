@@ -8,7 +8,7 @@ on:
     - "**/coverage.svg"
   pull_request:
     branches: [main]
-  # Allow syou to run this workflow manually from the Actions tab
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
   ci:
@@ -80,17 +80,17 @@ jobs:
         echo "Coverage directory is: $COVERAGE_DIR"
         REPORT_PATH="$COVERAGE_DIR/_coverage_report.dat"
         echo "COVERAGE_REPORT_PATH=$REPORT_PATH" >> $GITHUB_OUTPUT
-    - uses: ImBIOS/lcov-coverage-badge@v1.0.1
-      with:
-        file: ${{ steps.locate_report.outputs.COVERAGE_REPORT_PATH }}
-        access_token: ${{ secrets.GITHUB_TOKEN }}
-        style: flat
-        icon_name: googlecloud
-        label: 'Coverage'
-        label_color: 'ffffff'
-        critical: 60
-        critical_color: '9c2c9c'
-        warning: 75
-        warning_color: 'd68f0c'
-        success_color: '43ad43'
-        message_color: 'ffffff'
+    # - uses: ImBIOS/lcov-coverage-badge@v1.0.1
+    #   with:
+    #     file: ${{ steps.locate_report.outputs.COVERAGE_REPORT_PATH }}
+    #     access_token: ${{ secrets.GITHUB_TOKEN }}
+    #     style: flat
+    #     icon_name: googlecloud
+    #     label: 'Coverage'
+    #     label_color: 'ffffff'
+    #     critical: 60
+    #     critical_color: '9c2c9c'
+    #     warning: 75
+    #     warning_color: 'd68f0c'
+    #     success_color: '43ad43'
+    #     message_color: 'ffffff'
