@@ -1,4 +1,5 @@
 TEST_OUTPUT_OPTIONS := --test_output=errors
+PROJECT_DIR := $(shell git rev-parse --show-prefix | sed 's,/$$,,')
 
 .PHONY: help clean pristine test
 
