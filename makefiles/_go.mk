@@ -5,18 +5,18 @@ include $(REPO_ROOT)/makefiles/_common.mk
 .PHONY: gomod-init gowork-use gazelle all build run coverage coverage-report benchmark
 
 gomod-init: ## Initialize a Go module using current directory
-	bazel run @rules_go//go mod init github.com/racosta/monorepo/$(shell git rev-parse --show-prefix | sed 's,/$$,,')
+	bazel run @rules_go//go mod init github.com/racosta/monorepo/$(PROJECT_DIR)
 
 gomod-tidy: ## Tidy the Go module
-	bazel run @rules_go//go mod tidy
+	bazel run @rules_go//go mod tidy -- -e
 
 gowork-use: ## Add current Go module to the Go workspace
 	cd $(shell git rev-parse --show-toplevel) && \
-		bazel run @rules_go//go work use $(shell git rev-parse --show-prefix | sed 's,/$$,,')
+		bazel run @rules_go//go work use $(PROJECT_DIR)
 
 gazelle: ## Run gazelle on current directory
 	cd $(shell git rev-parse --show-toplevel) && \
-		bazel run //:gazelle -- $(shell git rev-parse --show-prefix | sed 's,/$$,,')
+		bazel run //:gazelle -- $(PROJECT_DIR)
 
 all: build ## Default target (build)
 
