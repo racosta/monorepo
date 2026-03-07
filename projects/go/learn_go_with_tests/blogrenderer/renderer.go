@@ -5,6 +5,8 @@ import (
 	"embed"
 	"html/template"
 	"io"
+
+	"github.com/gomarkdown/markdown/parser"
 )
 
 var (
@@ -14,7 +16,8 @@ var (
 
 // A PostRenderer is responsible for rendering blog posts and index pages using HTML templates.
 type PostRenderer struct {
-	templ *template.Template
+	templ    *template.Template
+	mdParser *parser.Parser
 }
 
 // NewPostRenderer creates a new PostRenderer by parsing the embedded HTML templates.
@@ -24,23 +27,18 @@ func NewPostRenderer() (*PostRenderer, error) {
 		return nil, err
 	}
 
-	return &PostRenderer{templ: templ}, nil
+	extensions := parser.CommonExtensions | parser.AutoHeadingIDs
+	parser := parser.NewWithExtensions(extensions)
+
+	return &PostRenderer{templ: templ, mdParser: parser}, nil
 }
 
 // Render renders a single blog post to the provided io.Writer using the "blog.gohtml" template.
 func (r *PostRenderer) Render(w io.Writer, p Post) error {
-	if err := r.templ.ExecuteTemplate(w, "blog.gohtml", p); err != nil {
-		return err
-	}
-
-	return nil
+	return r.templ.ExecuteTemplate(w, "blog.gohtml", newPostViewModel(p, r))
 }
 
 // RenderIndex renders an index page of blog posts to the provided io.Writer using the "index.gohtml" template.
 func (r *PostRenderer) RenderIndex(w io.Writer, posts []Post) error {
-	if err := r.templ.ExecuteTemplate(w, "index.gohtml", posts); err != nil {
-		return err
-	}
-
-	return nil
+	return r.templ.ExecuteTemplate(w, "index.gohtml", posts)
 }
