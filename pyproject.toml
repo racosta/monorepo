@@ -1,17 +1,1 @@
-[tool.pyright]
-include = ["projects"]
-exclude = [
-  "bazel-bin",
-  "bazel-monorepo",
-  "bazel-out",
-  "bazel-testlogs",
-  "**/node_modules",
-  "**/__pycache__",
-  "**/.*"
-]
-
-[tool.flake8]
-max-line-length = 120
-
-[tool.pydocstyle]
-convention = "google"
+third_party/python/pyproject.toml
