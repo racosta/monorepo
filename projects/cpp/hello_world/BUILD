@@ -3,7 +3,10 @@ load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_test")
 cc_binary(
     name = "hello_world",
     srcs = ["hello_world.cpp"],
-    deps = ["//projects/cpp/greeter"],
+    deps = [
+        "//projects/cpp/greeter",
+        "@spdlog",
+    ],
 )
 
 cc_test(
