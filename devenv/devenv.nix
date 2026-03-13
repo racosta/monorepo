@@ -47,7 +47,6 @@
         readline
         ripgrep
         rustlings
-        starship
         tokei
         uv
         vim
@@ -56,19 +55,18 @@
       ];
 
       # difftastic.enable = true;
+      starship.enable = true;
 
       enterShell = ''
         if [[ $- == *i* ]]; then
           alias ls='eza --icons'
 
-          source "${pkgs.blesh}/share/blesh/ble.sh" --noattach
+          source "${pkgs.blesh}/share/blesh/ble.sh"
 
           if [[ -n "$GHCR_PAT" ]]; then
             echo -n "🔑Logging into GitHub Container Registry with provided GHCR_PAT ... "
             echo $GHCR_PAT | podman login ghcr.io -u racosta --password-stdin
           fi
-
-          eval "$(starship init bash)"
 
           onefetch --nerd-fonts --number-of-languages=8
         fi
