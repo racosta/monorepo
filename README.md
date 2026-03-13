@@ -17,6 +17,20 @@ Nix is a prerequisite. Visit
 instructions there. After cloning, start the devenv shell by changing into the
 repo root directory and using `devenv shell`.
 
+### Devenv 2.x
+
+This repo has been upgraded to work with version 2.x of `devenv`. The current
+version (2.0.3) creates a shell script in `/tmp` and tries to execute it during
+the shell environment capture stage. My `/tmp` is mounted with `noexec` (which
+is fairly common), so until that is changed I am setting `$TMPDIR` as a
+workaround.
+
+```bash
+mkdir -p $HOME/tmp
+export TMPDIR=$HOME/tmp
+devenv shell
+```
+
 ## Pre-commit
 
 Pre-commit hooks are managed in devenv via
