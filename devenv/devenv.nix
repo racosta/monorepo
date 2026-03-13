@@ -58,18 +58,20 @@
       # difftastic.enable = true;
 
       enterShell = ''
-        alias ls='eza --icons'
+        if [[ $- == *i* ]]; then
+          alias ls='eza --icons'
 
-        source "${pkgs.blesh}/share/blesh/ble.sh"
+          source "${pkgs.blesh}/share/blesh/ble.sh" --noattach
 
-        if [[ -n "$GHCR_PAT" ]]; then
-          echo -n "🔑Logging into GitHub Container Registry with provided GHCR_PAT ... "
-          echo $GHCR_PAT | podman login ghcr.io -u racosta --password-stdin
+          if [[ -n "$GHCR_PAT" ]]; then
+            echo -n "🔑Logging into GitHub Container Registry with provided GHCR_PAT ... "
+            echo $GHCR_PAT | podman login ghcr.io -u racosta --password-stdin
+          fi
+
+          eval "$(starship init bash)"
+
+          onefetch --nerd-fonts --number-of-languages=8
         fi
-
-        eval "$(starship init bash)"
-
-        onefetch --nerd-fonts --number-of-languages=8
       '';
 
       git-hooks = {
@@ -174,7 +176,7 @@
           perlcritic = {
             enable = true;
             description = "Run Perl::Critic linter on Perl code";
-            entry = "${pkgs.perl540Packages.PerlCritic}/bin/perlcritic";
+            entry = "${pkgs.perl5Packages.PerlCritic}/bin/perlcritic";
             args = [
               "--profile"
               "/dev/null"
@@ -186,7 +188,7 @@
           perltidy = {
             enable = true;
             description = "Format Perl code with perltidy";
-            entry = "${pkgs.perl540Packages.PerlTidy}/bin/perltidy";
+            entry = "${pkgs.perl5Packages.PerlTidy}/bin/perltidy";
             args = [
               "--noprofile"
               "--perl-best-practices"
