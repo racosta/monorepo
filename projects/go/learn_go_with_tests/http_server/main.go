@@ -4,9 +4,34 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
+	"time"
 )
 
+// Repo-relative path to file
+const dbFilename = "projects/go/learn_go_with_tests/http_server/game.db.json"
+
 func main() {
-	server := NewPlayerServer(NewInMemoryPlayerStore())
-	log.Fatal(http.ListenAndServe(":5000", server))
+	db, err := os.OpenFile(dbFilename, os.O_RDWR|os.O_CREATE, 0600)
+
+	if err != nil {
+		log.Fatalf("problem opening %s %v", dbFilename, err)
+	}
+
+	store := NewFileSystemPlayerStore(db)
+	playerServer := NewPlayerServer(store)
+
+	server := &http.Server{
+		Addr:              ":5000",
+		Handler:           playerServer,
+		ReadHeaderTimeout: 5 * time.Second, // Mitigates Slowloris (G112)
+		ReadTimeout:       10 * time.Second,
+		WriteTimeout:      10 * time.Second,
+		IdleTimeout:       60 * time.Second,
+		MaxHeaderBytes:    1 << 20, // 1 MB limit to prevent OOM
+	}
+
+	if err := server.ListenAndServe(); err != nil {
+		log.Fatalf("could not listen on port 5000 %v", err)
+	}
 }

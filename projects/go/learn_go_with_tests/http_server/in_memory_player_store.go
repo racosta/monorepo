@@ -3,7 +3,8 @@ package main
 import (
 	"sync"
 
-	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
+	leagueLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/league"
+	playerLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
 )
 
 type InMemoryPlayerStore struct {
@@ -30,10 +31,10 @@ func (s *InMemoryPlayerStore) GetPlayerScore(name string) int {
 	return s.store[name]
 }
 
-func (s *InMemoryPlayerStore) GetLeague() []player.Player {
-	var league []player.Player
+func (s *InMemoryPlayerStore) GetLeague() leagueLib.League {
+	var league leagueLib.League
 	for name, wins := range s.store {
-		league = append(league, player.Player{Name: name, Wins: wins})
+		league = append(league, playerLib.Player{Name: name, Wins: wins})
 	}
 	return league
 }
