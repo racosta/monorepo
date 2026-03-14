@@ -1,6 +1,10 @@
 package main
 
-import "sync"
+import (
+	"sync"
+
+	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
+)
 
 type InMemoryPlayerStore struct {
 	store map[string]int
@@ -24,4 +28,12 @@ func (s *InMemoryPlayerStore) GetPlayerScore(name string) int {
 	s.lock.RLock()
 	defer s.lock.RUnlock()
 	return s.store[name]
+}
+
+func (s *InMemoryPlayerStore) GetLeague() []player.Player {
+	var league []player.Player
+	for name, wins := range s.store {
+		league = append(league, player.Player{Name: name, Wins: wins})
+	}
+	return league
 }
