@@ -5,12 +5,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
 	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/testutils"
 )
 
 type StubPlayerStore struct {
 	scores   map[string]int
 	winCalls []string
+	league   []player.Player
 }
 
 func (s *StubPlayerStore) GetPlayerScore(name string) int {
@@ -22,6 +24,10 @@ func (s *StubPlayerStore) RecordWin(name string) {
 	s.winCalls = append(s.winCalls, name)
 }
 
+func (s *StubPlayerStore) GetLeague() []player.Player {
+	return s.league
+}
+
 func TestGETPlayers(t *testing.T) {
 	store := StubPlayerStore{
 		map[string]int{
@@ -29,8 +35,9 @@ func TestGETPlayers(t *testing.T) {
 			"Floyd":  10,
 		},
 		nil,
+		nil,
 	}
-	server := &PlayerServer{&store}
+	server := NewPlayerServer(&store)
 
 	tests := []struct {
 		name               string
@@ -75,8 +82,9 @@ func TestStoreWins(t *testing.T) {
 	store := StubPlayerStore{
 		map[string]int{},
 		nil,
+		nil,
 	}
-	server := &PlayerServer{&store}
+	server := NewPlayerServer(&store)
 
 	t.Run("it returns accepted on POST", func(t *testing.T) {
 		player := "Pepper"
@@ -95,5 +103,28 @@ func TestStoreWins(t *testing.T) {
 		if store.winCalls[0] != player {
 			t.Errorf("did not store correct winner got %q want %q", store.winCalls[0], player)
 		}
+	})
+}
+
+func TestLeague(t *testing.T) {
+	t.Run("it returns the league table as JSON", func(t *testing.T) {
+		wantedLeague := []player.Player{
+			{Name: "Cleo", Wins: 32},
+			{Name: "Chris", Wins: 20},
+			{Name: "Tiest", Wins: 14},
+		}
+
+		store := StubPlayerStore{nil, nil, wantedLeague}
+		server := NewPlayerServer(&store)
+
+		request := testutils.NewLeagueRequest()
+		response := httptest.NewRecorder()
+
+		server.ServeHTTP(response, request)
+
+		got := testutils.GetLeagueFromResponse(t, response.Body)
+		testutils.AssertStatus(t, response.Code, http.StatusOK)
+		testutils.AssertContentType(t, response, jsonContentType)
+		testutils.AssertLeague(t, got, wantedLeague)
 	})
 }
