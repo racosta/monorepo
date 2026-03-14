@@ -30,7 +30,7 @@ go_test(
     srcs = ["server_test.go"],
     embed = [":http_server_lib"],
     deps = [
-        "//projects/go/learn_go_with_tests/http_server/internal/player:player_lib",
+        "//projects/go/learn_go_with_tests/http_server/internal/league",
         "//projects/go/learn_go_with_tests/http_server/internal/testutils",
     ],
 )
@@ -40,7 +40,7 @@ go_test(
     srcs = ["server_integration_test.go"],
     embed = [":http_server_lib"],
     deps = [
-        "//projects/go/learn_go_with_tests/http_server/internal/player:player_lib",
+        "//projects/go/learn_go_with_tests/http_server/internal/league",
         "//projects/go/learn_go_with_tests/http_server/internal/testutils",
     ],
 )
@@ -50,7 +50,7 @@ go_test(
     srcs = ["file_system_store_test.go"],
     embed = [":http_server_lib"],
     deps = [
-        "//projects/go/learn_go_with_tests/http_server/internal/player:player_lib",
+        "//projects/go/learn_go_with_tests/http_server/internal/league",
         "//projects/go/learn_go_with_tests/http_server/internal/testutils",
     ],
 )

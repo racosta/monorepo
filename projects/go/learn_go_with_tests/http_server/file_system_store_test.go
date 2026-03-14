@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
+	leagueLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/league"
 	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/testutils"
 )
 
@@ -19,7 +19,7 @@ func TestFileSystemStore(t *testing.T) {
 
 		got := store.GetLeague()
 
-		want := []player.Player{
+		want := leagueLib.League{
 			{Name: "Cleo", Wins: 10},
 			{Name: "Chris", Wins: 33},
 		}

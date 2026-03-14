@@ -11,7 +11,6 @@ import (
 	"testing"
 
 	leagueLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/league"
-	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
 )
 
 // NewGetScoreRequest creates a new GET request for the player's score.
@@ -43,7 +42,7 @@ func NewLeagueRequest() *http.Request {
 }
 
 // GetLeagueFromResponse parses the league table from the HTTP response body.
-func GetLeagueFromResponse(tb testing.TB, body io.Reader) (league []player.Player) {
+func GetLeagueFromResponse(tb testing.TB, body io.Reader) (league leagueLib.League) {
 	tb.Helper()
 	league, _ = leagueLib.NewLeague(body)
 	return league
@@ -79,7 +78,7 @@ func AssertContentType(tb testing.TB, response *httptest.ResponseRecorder, want 
 }
 
 // AssertLeague checks if the league table is as expected.
-func AssertLeague(tb testing.TB, got, want []player.Player) {
+func AssertLeague(tb testing.TB, got, want leagueLib.League) {
 	tb.Helper()
 
 	if !reflect.DeepEqual(got, want) {

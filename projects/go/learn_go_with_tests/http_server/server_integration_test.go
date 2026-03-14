@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	playerLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
+	leagueLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/league"
 	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/testutils"
 )
 
@@ -34,7 +34,7 @@ func TestRecordingWinsAndRetrievingThem(t *testing.T) {
 		testutils.AssertStatus(t, response.Code, http.StatusOK)
 
 		got := testutils.GetLeagueFromResponse(t, response.Body)
-		want := []playerLib.Player{
+		want := leagueLib.League{
 			{Name: "Pepper", Wins: 3},
 		}
 		testutils.AssertLeague(t, got, want)
