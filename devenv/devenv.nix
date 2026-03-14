@@ -105,7 +105,12 @@
           deadnix.enable = true;
           denofmt.enable = true;
           denolint.enable = true;
-          end-of-file-fixer.enable = true;
+          end-of-file-fixer = {
+            enable = true;
+            excludes = [
+              "^coverage.svg$"
+            ];
+          };
           # eslint.enable = true;
           flake8 = {
             enable = true;
@@ -114,7 +119,9 @@
             ];
           };
           gofmt.enable = true;
-          golangci-lint.enable = true;
+          golangci-lint = {
+            enable = true;
+          };
           golines.enable = true;
           google-java-format = {
             enable = true;
@@ -214,7 +221,7 @@
           rustfmt = {
             enable = true;
             description = "Format Rust code with rustfmt";
-            entry = "${pkgs.bazel_8}/bin/bazel run @rules_rust//:rustfmt";
+            entry = "${pkgs.bazelisk}/bin/bazelisk run @rules_rust//:rustfmt";
             types = [ "rust" ];
           };
           shellcheck.enable = true;

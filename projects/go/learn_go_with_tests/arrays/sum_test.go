@@ -28,10 +28,10 @@ func TestSumAll(t *testing.T) {
 }
 
 func TestSumAllTails(t *testing.T) {
-	checkSums := func(t testing.TB, got, want []int) {
-		t.Helper()
+	checkSums := func(tb testing.TB, got, want []int) {
+		tb.Helper()
 		if !reflect.DeepEqual(got, want) {
-			t.Errorf("got %v want %v", got, want)
+			tb.Errorf("got %v want %v", got, want)
 		}
 	}
 
