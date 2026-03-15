@@ -5,14 +5,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
+	leagueLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/league"
 	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/testutils"
 )
 
 type StubPlayerStore struct {
 	scores   map[string]int
 	winCalls []string
-	league   []player.Player
+	league   leagueLib.League
 }
 
 func (s *StubPlayerStore) GetPlayerScore(name string) int {
@@ -24,7 +24,7 @@ func (s *StubPlayerStore) RecordWin(name string) {
 	s.winCalls = append(s.winCalls, name)
 }
 
-func (s *StubPlayerStore) GetLeague() []player.Player {
+func (s *StubPlayerStore) GetLeague() leagueLib.League {
 	return s.league
 }
 
@@ -108,7 +108,7 @@ func TestStoreWins(t *testing.T) {
 
 func TestLeague(t *testing.T) {
 	t.Run("it returns the league table as JSON", func(t *testing.T) {
-		wantedLeague := []player.Player{
+		wantedLeague := leagueLib.League{
 			{Name: "Cleo", Wins: 32},
 			{Name: "Chris", Wins: 20},
 			{Name: "Tiest", Wins: 14},

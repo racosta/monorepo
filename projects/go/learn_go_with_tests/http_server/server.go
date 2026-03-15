@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
+	leagueLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/league"
 )
 
 const jsonContentType = "application/json"
@@ -15,7 +15,7 @@ const jsonContentType = "application/json"
 type PlayerStore interface {
 	GetPlayerScore(name string) int
 	RecordWin(name string)
-	GetLeague() []player.Player
+	GetLeague() leagueLib.League
 }
 
 // PlayerServer is an HTTP interface for player information.
@@ -62,7 +62,7 @@ func (p *PlayerServer) showScore(w http.ResponseWriter, player string) {
 		w.WriteHeader(http.StatusNotFound)
 	}
 
-	_, _ = fmt.Fprint(w, score)
+	_, _ = fmt.Fprint(w, score) //nolint:gosec // Need to update with proper path param parsing
 }
 
 func (p *PlayerServer) processWin(w http.ResponseWriter, player string) {
