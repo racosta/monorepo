@@ -48,6 +48,14 @@ func GetLeagueFromResponse(tb testing.TB, body io.Reader) (league leagueLib.Leag
 	return league
 }
 
+// AssertNoError checks if err is nil as expected.
+func AssertNoError(tb testing.TB, err error) {
+	tb.Helper()
+	if err != nil {
+		tb.Fatalf("didn't expect an error but got one, %v", err)
+	}
+}
+
 // AssertStatus checks if the HTTP status code is as expected.
 func AssertStatus(tb testing.TB, got, want int) {
 	tb.Helper()
@@ -95,7 +103,7 @@ func AssertScoreEquals(tb testing.TB, got, want int) {
 }
 
 // CreateTempFile creates a temporary file with provided data and a function to cleanup
-func CreateTempFile(tb testing.TB, initialData string) (io.ReadWriteSeeker, func()) {
+func CreateTempFile(tb testing.TB, initialData string) (*os.File, func()) {
 	tb.Helper()
 
 	tmpfile, err := os.CreateTemp("", "db")

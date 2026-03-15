@@ -9,6 +9,7 @@ go_library(
         "in_memory_player_store.go",
         "main.go",
         "server.go",
+        "tape.go",
     ],
     importpath = "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server",
     visibility = ["//visibility:public"],
@@ -51,6 +52,15 @@ go_test(
     embed = [":http_server_lib"],
     deps = [
         "//projects/go/learn_go_with_tests/http_server/internal/league",
+        "//projects/go/learn_go_with_tests/http_server/internal/testutils",
+    ],
+)
+
+go_test(
+    name = "tape_test",
+    srcs = ["tape_test.go"],
+    embed = [":http_server_lib"],
+    deps = [
         "//projects/go/learn_go_with_tests/http_server/internal/testutils",
     ],
 )
