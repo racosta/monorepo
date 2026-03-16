@@ -1,8 +1,8 @@
 """Javascript third-party dependency configuration for Bazel."""
 
 # keep-sorted start
-bazel_dep(name = "aspect_rules_jest", version = "0.24.3")
-bazel_dep(name = "aspect_rules_js", version = "2.9.2")
+bazel_dep(name = "aspect_rules_jest", version = "0.25.2")
+bazel_dep(name = "aspect_rules_js", version = "3.0.3")
 bazel_dep(name = "rules_nodejs", version = "6.7.3")
 # keep-sorted end
 
@@ -10,7 +10,7 @@ bazel_dep(name = "rules_nodejs", version = "6.7.3")
 # By default you get the node version from DEFAULT_NODE_VERSION in @rules_nodejs//nodejs:repositories.bzl
 # Optionally you can pin a different node version:
 node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node", dev_dependency = True)
-node.toolchain(node_version = "22.13.0")
+node.toolchain(node_version = "24.13.0")
 #################################
 
 npm = use_extension("@aspect_rules_js//npm:extensions.bzl", "npm", dev_dependency = True)
@@ -24,7 +24,7 @@ use_repo(npm, "npm")
 pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
 pnpm.pnpm(
     name = "pnpm",
-    pnpm_version = "10.22.0",
+    pnpm_version = "10.32.1",
 )
 
 # Allows developers to use the matching pnpm version, for example:

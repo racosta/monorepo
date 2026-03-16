@@ -8,7 +8,7 @@ gazelle(name = "gazelle")
 
 exports_files([".rustfmt.toml"])
 
-npm_link_all_packages(name = "npm")
+npm_link_all_packages()
 
 js_library(
     name = "pkg",

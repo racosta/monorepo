@@ -1,7 +1,7 @@
 load("@aspect_rules_js//js:defs.bzl", "js_library")
 load("@npm//:defs.bzl", "npm_link_all_packages")
 
-npm_link_all_packages(name = "npm")
+npm_link_all_packages()
 
 js_library(
     name = "tsc",
