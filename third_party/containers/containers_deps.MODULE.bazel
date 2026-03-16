@@ -1,7 +1,7 @@
 """Containers third-party dependency configuration for Bazel."""
 
 bazel_dep(name = "container_structure_test", version = "1.22.1")
-bazel_dep(name = "rules_oci", version = "2.2.7")
+bazel_dep(name = "rules_oci", version = "2.3.0")
 
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
 
