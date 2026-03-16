@@ -1,6 +1,6 @@
 """Perl third-party dependency configuration for Bazel."""
 
-bazel_dep(name = "rules_perl", version = "0.5.0")
+bazel_dep(name = "rules_perl", version = "1.0.0")
 
 repos = use_extension("@rules_perl//perl:extensions.bzl", "perl_repositories")
 use_repo(
