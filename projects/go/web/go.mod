@@ -1,6 +1,6 @@
 module github.com/racosta/monorepo/projects/go/web
 
-go 1.25.4
+go 1.26.1
 
 replace github.com/racosta/monorepo/projects/go/hello_world => ../hello_world
 
