@@ -1,4 +1,4 @@
-package main
+package poker
 
 import (
 	"encoding/json"
@@ -11,11 +11,15 @@ import (
 	playerLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/player"
 )
 
+// FileSystemPlayerStore implements PlayerStore and persists data in the filesystem.
 type FileSystemPlayerStore struct {
 	database *json.Encoder
 	league   leagueLib.League
 }
 
+// NewFileSystemPlayerStore initializes a FileSystemPlayerStore with the given file path.
+// If the file does not exist, it will be created. If the file exists but is empty, it will be
+// initialized with an empty league.
 func NewFileSystemPlayerStore(file *os.File) (*FileSystemPlayerStore, error) {
 	err := initializePlayerDBFile(file)
 
@@ -65,6 +69,7 @@ func initializePlayerDBFile(file *os.File) error {
 	return nil
 }
 
+// GetLeague returns the league sorted by wins in descending order.
 func (f *FileSystemPlayerStore) GetLeague() leagueLib.League {
 	sort.Slice(f.league, func(i, j int) bool {
 		return f.league[i].Wins > f.league[j].Wins
@@ -72,6 +77,8 @@ func (f *FileSystemPlayerStore) GetLeague() leagueLib.League {
 	return f.league
 }
 
+// GetPlayerScore returns the score for the given player name.
+// If the player does not exist, it returns 0.
 func (f *FileSystemPlayerStore) GetPlayerScore(name string) int {
 	player := f.league.Find(name)
 
@@ -82,6 +89,8 @@ func (f *FileSystemPlayerStore) GetPlayerScore(name string) int {
 	return 0
 }
 
+// RecordWin records a win for the given player name.
+// If the player does not exist, it creates a new player with 1 win.
 func (f *FileSystemPlayerStore) RecordWin(name string) {
 	player := f.league.Find(name)
 

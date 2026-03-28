@@ -48,6 +48,7 @@
         ripgrep
         rustlings
         tokei
+        tree
         uv
         vim
         workshop-runner
@@ -237,7 +238,6 @@
               "--simplify"
             ];
           };
-          staticcheck.enable = true;
           trim-trailing-whitespace.enable = true;
           # ty = {
           #   enable = true;

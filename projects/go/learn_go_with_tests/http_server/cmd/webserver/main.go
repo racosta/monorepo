@@ -6,10 +6,12 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	poker "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server"
 )
 
 // Repo-relative path to file
-const dbFilename = "projects/go/learn_go_with_tests/http_server/game.db.json"
+const dbFilename = "projects/go/learn_go_with_tests/http_server/cmd/webserver/game.db.json"
 
 func main() {
 	db, err := os.OpenFile(dbFilename, os.O_RDWR|os.O_CREATE, 0600)
@@ -18,11 +20,11 @@ func main() {
 		log.Fatalf("problem opening %s %v", dbFilename, err)
 	}
 
-	store, err := NewFileSystemPlayerStore(db)
+	store, err := poker.NewFileSystemPlayerStore(db)
 	if err != nil {
 		log.Fatalf("problem creating file system player store, %v", err)
 	}
-	playerServer := NewPlayerServer(store)
+	playerServer := poker.NewPlayerServer(store)
 
 	server := &http.Server{
 		Addr:              ":5000",
