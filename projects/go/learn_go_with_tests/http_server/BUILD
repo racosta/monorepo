@@ -5,6 +5,7 @@ load("@rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "http_server",
     srcs = [
+        "cli.go",
         "file_system_store.go",
         "in_memory_player_store.go",
         "player_server.go",
@@ -54,6 +55,15 @@ go_test(
     srcs = ["tape_test.go"],
     embed = [":http_server"],
     deps = [
+        "//projects/go/learn_go_with_tests/http_server/internal/testutils",
+    ],
+)
+
+go_test(
+    name = "cli_test",
+    srcs = ["cli_test.go"],
+    deps = [
+        ":http_server",
         "//projects/go/learn_go_with_tests/http_server/internal/testutils",
     ],
 )
