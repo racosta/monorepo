@@ -2,27 +2,26 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"time"
+
+	poker "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server"
 )
 
 // Repo-relative path to file
-const dbFilename = "projects/go/learn_go_with_tests/http_server/game.db.json"
+const dbFilename = "projects/go/learn_go_with_tests/http_server/cmd/webserver/game.db.json"
 
-func main() {
-	db, err := os.OpenFile(dbFilename, os.O_RDWR|os.O_CREATE, 0600)
+func mainNoExit() error {
+	store, closeFile, err := poker.FileSystemPlayerStoreFromFile(dbFilename)
+	defer closeFile()
 
 	if err != nil {
-		log.Fatalf("problem opening %s %v", dbFilename, err)
+		return fmt.Errorf("error creating player store: %v", err)
 	}
 
-	store, err := NewFileSystemPlayerStore(db)
-	if err != nil {
-		log.Fatalf("problem creating file system player store, %v", err)
-	}
-	playerServer := NewPlayerServer(store)
+	playerServer := poker.NewPlayerServer(store)
 
 	server := &http.Server{
 		Addr:              ":5000",
@@ -35,6 +34,14 @@ func main() {
 	}
 
 	if err := server.ListenAndServe(); err != nil {
-		log.Fatalf("could not listen on port 5000 %v", err)
+		return fmt.Errorf("could not listen on port 5000 %v", err)
+	}
+
+	return nil
+}
+
+func main() {
+	if err := mainNoExit(); err != nil {
+		log.Fatal(err)
 	}
 }

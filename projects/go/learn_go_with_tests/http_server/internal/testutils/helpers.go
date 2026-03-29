@@ -102,6 +102,20 @@ func AssertScoreEquals(tb testing.TB, got, want int) {
 	}
 }
 
+// AssertPlayerWin checks if a win was recorded for the expected player.
+func AssertPlayerWin(tb testing.TB, store *StubPlayerStore, winner string) {
+	tb.Helper()
+
+	if len(store.WinCalls) == 0 {
+		tb.Fatalf("got %d calls to RecordWin want %d", len(store.WinCalls), 1)
+	}
+
+	got := store.WinCalls[0]
+	if got != winner {
+		tb.Errorf("did not store correct winner got %q want %q", got, winner)
+	}
+}
+
 // CreateTempFile creates a temporary file with provided data and a function to cleanup
 func CreateTempFile(tb testing.TB, initialData string) (*os.File, func()) {
 	tb.Helper()

@@ -1,22 +1,14 @@
-package main
+// Package poker provides an HTTP interface for player information.
+package poker
 
 import (
 	"encoding/json"
 	"fmt"
 	"net/http"
 	"strings"
-
-	leagueLib "github.com/racosta/monorepo/projects/go/learn_go_with_tests/http_server/internal/league"
 )
 
 const jsonContentType = "application/json"
-
-// PlayerStore stores score information about players.
-type PlayerStore interface {
-	GetPlayerScore(name string) int
-	RecordWin(name string)
-	GetLeague() leagueLib.League
-}
 
 // PlayerServer is an HTTP interface for player information.
 type PlayerServer struct {
