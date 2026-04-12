@@ -18,8 +18,8 @@ sysroot(
 
 sysroot(
     name = "org_chromium_sysroot_linux_x64_bullseye",
-    sha256 = "5df5be9357b425cdd70d92d4697d07e7d55d7a923f037c22dc80a78e85842d2c",
-    urls = ["https://commondatastorage.googleapis.com/chrome-linux-sysroot/toolchain/4f611ec025be98214164d4bf9fbe8843f58533f7/debian_bullseye_amd64_sysroot.tar.xz"],
+    sha256 = "f6b758d880a6df264e2581788741623320d548508f07ffc2ae6a29d0c13d647d",
+    urls = ["https://commondatastorage.googleapis.com/chrome-linux-sysroot/toolchain/2e7ada854015a4cc60fc812112d261af44213ed0/debian_bullseye_amd64_sysroot.tar.xz"],
 )
 
 # Configure and register the toolchain.
