@@ -5,7 +5,7 @@ bazel_dep(name = "googletest", version = "1.17.0.bcr.2")
 bazel_dep(name = "nlohmann_json", version = "3.12.0.bcr.1")
 bazel_dep(name = "rules_cc", version = "0.2.17")
 bazel_dep(name = "spdlog", version = "1.17.0")
-bazel_dep(name = "toolchains_llvm", version = "1.6.0")
+bazel_dep(name = "toolchains_llvm", version = "1.7.0")
 # keep-sorted end
 
 sysroot = use_repo_rule("@toolchains_llvm//toolchain:sysroot.bzl", "sysroot")
@@ -25,9 +25,10 @@ sysroot(
 # Configure and register the toolchain.
 llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm")
 llvm.toolchain(
-    llvm_version = "21.1.2",
+    llvm_version = "21.1.8",
     stdlib = {
         "linux-x86_64": "stdc++",
+        "": "stdc++",
     },
 )
 llvm.sysroot(
