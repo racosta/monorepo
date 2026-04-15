@@ -1,7 +1,4 @@
 #include "projects/cpp/rapidjson/json_generator.h"
-#include <rapidjson/document.h>
-#include <rapidjson/prettywriter.h>
-#include <rapidjson/stringbuffer.h>
 #include <spdlog/cfg/argv.h>
 #include <spdlog/cfg/env.h>
 #include <spdlog/sinks/stdout_color_sinks.h>

@@ -1,10 +1,8 @@
-#include <nlohmann/json.hpp>
+#include "projects/cpp/nlohmann_json/json_generator.h"
 #include <spdlog/cfg/argv.h>
 #include <spdlog/cfg/env.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
-
-using json = nlohmann::json;
 
 int main(int argc, char *argv[]) {
   // SPDLOG_LEVEL=error
@@ -12,13 +10,8 @@ int main(int argc, char *argv[]) {
   // ./nlohmann_json SPDLOG_LEVEL=error
   spdlog::cfg::load_argv_levels(argc, argv);
 
-  json j;
-  j["project"] = "Bazel Example";
-  j["library"] = "nlohmann/json";
-  j["version"] = "3.12.0";
-  j["status"] = "working";
-
-  spdlog::info("{}", j.dump(2));
+  std::string json_output = projects::cpp::nlohmann_json::GenerateProjectInfo();
+  spdlog::info("{}", json_output);
 
   return 0;
 }
