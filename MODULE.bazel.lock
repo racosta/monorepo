@@ -116,6 +116,8 @@
     "https://bcr.bazel.build/modules/googletest/1.17.0/MODULE.bazel": "dbec758171594a705933a29fcf69293d2468c49ec1f2ebca65c36f504d72df46",
     "https://bcr.bazel.build/modules/helly25_bzl/0.3.1/MODULE.bazel": "3a4be20f6fc13be32ad44643b8252ef5af09eee936f1d943cd4fd7867fa92826",
     "https://bcr.bazel.build/modules/helly25_bzl/0.3.1/source.json": "b129ab1828492de2c163785bbeb4065c166de52d932524b4317beb5b7f917994",
+    "https://bcr.bazel.build/modules/howardhinnant_date/3.0.1/MODULE.bazel": "853d2787b721491a0f8a3de15ea292d0bb48625ed3e7ef17de657494a4676354",
+    "https://bcr.bazel.build/modules/howardhinnant_date/3.0.1/source.json": "bc2e1ae03548bc2038f3cec0256edaa07acdcc7ed945b09cb7c239f5db257006",
     "https://bcr.bazel.build/modules/jq.bzl/0.1.0/MODULE.bazel": "2ce69b1af49952cd4121a9c3055faa679e748ce774c7f1fda9657f936cae902f",
     "https://bcr.bazel.build/modules/jq.bzl/0.4.0/MODULE.bazel": "a7b39b37589f2b0dad53fd6c1ccaabbdb290330caa920d7ef3e6aad068cd4ab2",
     "https://bcr.bazel.build/modules/jq.bzl/0.4.0/source.json": "52ec7530c4618e03f634b30ff719814a68d7d39c235938b7aa2abbfe1eb1c52c",
@@ -354,6 +356,28 @@
             "attributes": {
               "url": "https://github.com/approvals/ApprovalTests.cpp/releases/download/v.10.13.0/ApprovalTests.v.10.13.0.hpp",
               "sha256": "c00f6390b81d9924dc646e9d32b61e1e09abda106c13704f714ac349241bb9ff"
+            }
+          }
+        }
+      }
+    },
+    "//third_party/cpp:pistache.bzl%pistache_extension": {
+      "general": {
+        "bzlTransitiveDigest": "Yks63IrWEtr5wCEIW3/WJJ79sAjxvpN2DF1vSzcYtmg=",
+        "usagesDigest": "n/GW44dD+ZXjngY7s77MsTgI73aNZuSL4T8IatQfcsQ=",
+        "recordedInputs": [
+          "REPO_MAPPING:,bazel_tools bazel_tools"
+        ],
+        "generatedRepoSpecs": {
+          "pistache": {
+            "repoRuleId": "@@bazel_tools//tools/build_defs/repo:http.bzl%http_archive",
+            "attributes": {
+              "urls": [
+                "https://github.com/pistacheio/pistache/archive/refs/tags/v0.4.26.tar.gz"
+              ],
+              "sha256": "29af6562547497acf6f49170661786fe8cf1ed3712ad80e69c53da4661c59544",
+              "strip_prefix": "pistache-0.4.26",
+              "build_file_content": "\nload(\"@rules_cc//cc:defs.bzl\", \"cc_library\")\n\ncc_library(\n    name = \"pistache\",\n    srcs = glob([\"src/**/*.cc\"]),\n    hdrs = glob([\"include/pistache/*.h\", \"include/pistache/**/*.h\"]),\n    includes = [\"include\"],\n    visibility = [\"//visibility:public\"],\n    linkopts = [\"-lpthread\"],\n    deps = [\n        # You may need to add OpenSSL here if you need HTTPS\n        \"@boringssl//:ssl\",\n        \"@howardhinnant_date//:howardhinnant_date\",\n    ],\n)\n"
             }
           }
         }
