@@ -30,6 +30,7 @@
         bat
         blesh
         difftastic
+        dive
         dua
         eza
         git

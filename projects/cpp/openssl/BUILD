@@ -1,10 +1,10 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 
 cc_binary(
-    name = "nlohmann_json",
+    name = "openssl",
     srcs = ["main.cpp"],
     deps = [
-        "@nlohmann_json//:json",
+        "@boringssl//:ssl",
         "@spdlog",
     ],
 )
