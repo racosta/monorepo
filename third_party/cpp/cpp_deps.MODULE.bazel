@@ -2,7 +2,9 @@
 
 # keep-sorted start
 bazel_dep(name = "boringssl", version = "0.20260413.0")
+bazel_dep(name = "fmt", version = "12.1.0")
 bazel_dep(name = "googletest", version = "1.17.0.bcr.2")
+bazel_dep(name = "howardhinnant_date", version = "3.0.1")
 bazel_dep(name = "nlohmann_json", version = "3.12.0.bcr.1")
 bazel_dep(name = "rapidjson", version = "1.1.0.bcr.20250205")
 bazel_dep(name = "rules_cc", version = "0.2.17")
@@ -44,3 +46,6 @@ register_toolchains("@llvm_toolchain//:all")
 
 approval = use_extension("//third_party/cpp:extensions.bzl", "approval_extension")
 use_repo(approval, "approvaltests_cpp")
+
+pistache = use_extension("//third_party/cpp:pistache.bzl", "pistache_extension")
+use_repo(pistache, "pistache")
