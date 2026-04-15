@@ -15,4 +15,6 @@ common --java_runtime_version=remotejdk_17
 # See https://bazel.build/docs/user-manual#tool-java-runtime-version
 common --tool_java_runtime_version=remotejdk_17
 
+build --cxxopt='-std=c++17'
+
 build --@rules_rust//rust/settings:rustfmt.toml=//:.rustfmt.toml
