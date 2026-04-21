@@ -49,3 +49,14 @@ use_repo(approval, "approvaltests_cpp")
 
 pistache = use_extension("//third_party/cpp:pistache.bzl", "pistache_extension")
 use_repo(pistache, "pistache")
+
+# Hedron's Compile Commands Extractor for Bazel
+# https://github.com/hedronvision/bazel-compile-commands-extractor
+bazel_dep(name = "hedron_compile_commands", dev_dependency = True)
+git_override(
+    module_name = "hedron_compile_commands",
+    commit = "2dc498f24587eccc2752f8a892da004d9baa8318",
+    remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
+    # Replace the commit hash (above) with the latest (https://github.com/hedronvision/bazel-compile-commands-extractor/commits/main).
+    # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
+)
