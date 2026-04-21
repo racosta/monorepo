@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "name": "Bazel",
+      "compileCommands": "${workspaceFolder}/compile_commands.json",
+      "intelliSenseMode": "linux-clang-x64"
+    }
+  ],
+  "version": 4
+}
