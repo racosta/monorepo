@@ -12,6 +12,8 @@ cc_binary(
     srcs = ["main.cpp"],
     deps = [
         ":abseil_example_lib",
+        "@abseil-cpp//absl/flags:flag",
+        "@abseil-cpp//absl/flags:parse",
         "@spdlog",
     ],
 )
