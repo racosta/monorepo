@@ -5,6 +5,6 @@
 namespace projects::cpp::rapidjson {
 
 // Returns a pretty-printed JSON string
-std::string GenerateProjectInfo();
+auto GenerateProjectInfo() -> std::string;
 
 } // namespace projects::cpp::rapidjson

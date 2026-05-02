@@ -1,0 +1,8 @@
+Checks: >
+  -*, clang-analyzer-*, bugprone-*, cppcoreguidelines-*, modernize-*, performance-*, readability-*, portability-*
+
+WarningsAsErrors: ''
+ExcludeHeaderFilterRegex: '^external/'
+HeaderFilterRegex: '^projects/cpp/.*'
+ExcludePaths: '(^|/)(external)(/|$)'
+UseColor: true

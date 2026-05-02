@@ -5,6 +5,6 @@
 
 namespace projects::cpp::abseil {
 
-std::string JoinItems(const std::vector<std::string> &items);
+auto JoinItems(const std::vector<std::string> &items) -> std::string;
 
 } // namespace projects::cpp::abseil

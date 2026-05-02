@@ -5,7 +5,7 @@
 
 namespace projects::cpp::rapidjson {
 
-std::string GenerateProjectInfo() {
+auto GenerateProjectInfo() -> std::string {
   ::rapidjson::Document d;
   d.SetObject();
   auto &allocator = d.GetAllocator();

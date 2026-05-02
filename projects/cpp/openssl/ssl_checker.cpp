@@ -4,9 +4,11 @@
 
 namespace projects::cpp::openssl {
 
-std::string GetLibraryVersion() { return OpenSSL_version(OPENSSL_VERSION); }
+auto GetLibraryVersion() -> std::string {
+  return OpenSSL_version(OPENSSL_VERSION);
+}
 
-bool IsBoringSsl() {
+auto IsBoringSsl() -> bool {
   return GetLibraryVersion().find("BoringSSL") != std::string::npos;
 }
 

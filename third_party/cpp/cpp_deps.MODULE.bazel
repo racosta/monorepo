@@ -30,6 +30,10 @@ sysroot(
 # Configure and register the toolchain.
 llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm")
 llvm.toolchain(
+    cxx_standard = {
+        "linux-x86_64": "c++23",
+        "": "c++23",
+    },
     llvm_version = "21.1.8",
     stdlib = {
         "linux-x86_64": "stdc++",

@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
 
   auto console = spdlog::stdout_color_mt("console");
 
-  auto greeting = greet();
+  auto greeting = projects::cpp::greeter::greet();
 
   spdlog::info(greeting);
   console->info(greeting);
