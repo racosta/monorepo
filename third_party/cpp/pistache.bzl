@@ -7,6 +7,10 @@ def _pistache_repo_impl(_module_ctx):
         name = "pistache",
         urls = ["https://github.com/pistacheio/pistache/archive/refs/tags/v0.4.26.tar.gz"],
         sha256 = "29af6562547497acf6f49170661786fe8cf1ed3712ad80e69c53da4661c59544",
+        patch_cmds = [
+            "sed -i '20i#include <exception>' include/pistache/async.h",
+            "sed -i '15i#include <exception>' include/pistache/common.h",
+        ],
         strip_prefix = "pistache-0.4.26",
         build_file_content = """
 load("@rules_cc//cc:defs.bzl", "cc_library")

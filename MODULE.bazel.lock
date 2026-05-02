@@ -365,7 +365,7 @@
     },
     "//third_party/cpp:pistache.bzl%pistache_extension": {
       "general": {
-        "bzlTransitiveDigest": "52wEdn6rUtfdYoi/MfhFZ3axQvmBpC5JjyMMOFE3QGU=",
+        "bzlTransitiveDigest": "wOyOhGSkwDoHSGIzsiVa2sNMNlBqeoEUZ3ietKm5Ros=",
         "usagesDigest": "n/GW44dD+ZXjngY7s77MsTgI73aNZuSL4T8IatQfcsQ=",
         "recordedInputs": [
           "REPO_MAPPING:,bazel_tools bazel_tools"
@@ -378,6 +378,10 @@
                 "https://github.com/pistacheio/pistache/archive/refs/tags/v0.4.26.tar.gz"
               ],
               "sha256": "29af6562547497acf6f49170661786fe8cf1ed3712ad80e69c53da4661c59544",
+              "patch_cmds": [
+                "sed -i '20i#include <exception>' include/pistache/async.h",
+                "sed -i '15i#include <exception>' include/pistache/common.h"
+              ],
               "strip_prefix": "pistache-0.4.26",
               "build_file_content": "\nload(\"@rules_cc//cc:defs.bzl\", \"cc_library\")\n\ncc_library(\n    name = \"pistache\",\n    srcs = glob([\"src/**/*.cc\"]),\n    hdrs = glob([\"include/pistache/*.h\", \"include/pistache/**/*.h\"]),\n    includes = [\"include\"],\n    visibility = [\"//visibility:public\"],\n    linkopts = [\"-lpthread\"],\n    deps = [\n        # You may need to add OpenSSL here if you need HTTPS\n        \"@boringssl//:ssl\",\n        \"@howardhinnant_date//:howardhinnant_date\",\n    ],\n)\n"
             }
