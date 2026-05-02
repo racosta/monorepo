@@ -7,7 +7,7 @@ exclude = [
   "bazel-testlogs",
   "**/node_modules",
   "**/__pycache__",
-  "**/.*"
+  "**/.*",
 ]
 
 [tool.flake8]
