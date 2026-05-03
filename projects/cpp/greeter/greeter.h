@@ -1,8 +1,9 @@
-#ifndef PROJECTS_CPP_HELLO_WORLD_LIB_GREETER_H__
-#define PROJECTS_CPP_HELLO_WORLD_LIB_GREETER_H__
+#pragma once
 
 #include <string>
 
-std::string greet(const std::string &name = "World");
+namespace projects::cpp::greeter {
 
-#endif // PROJECTS_CPP_HELLO_WORLD_LIB_GREETER_H__
+auto greet(const std::string &name = "World") -> std::string;
+
+} // namespace projects::cpp::greeter

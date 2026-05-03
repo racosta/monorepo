@@ -5,9 +5,9 @@
 namespace projects::cpp::openssl {
 
 // Returns the raw version string from the linked library
-std::string GetLibraryVersion();
+auto GetLibraryVersion() -> std::string;
 
 // Returns true if the linked library identifies as BoringSSL
-bool IsBoringSsl();
+auto IsBoringSsl() -> bool;
 
 } // namespace projects::cpp::openssl
