@@ -120,6 +120,7 @@
               "--max-line-length=120"
             ];
           };
+          gitlint.enable = true;
           gofmt.enable = true;
           golangci-lint = {
             enable = true;
