@@ -1,5 +1,7 @@
 """Pytest fixtures for the python_web project."""
 
+from typing import Iterator
+
 import pytest
 from flask import Flask
 from flask.testing import FlaskClient
@@ -7,11 +9,11 @@ from main import create_app
 
 
 @pytest.fixture()
-def app() -> Flask:
+def app() -> Iterator[Flask]:
     """Create and yield a Flask app.
 
-    Returns:
-        Flask : The Flask application.
+    Yields:
+        Flask: The Flask application.
     """
     app = create_app()
 
@@ -19,10 +21,13 @@ def app() -> Flask:
 
 
 @pytest.fixture
-def client(app) -> FlaskClient:
+def client(app: Flask) -> FlaskClient:
     """Access the Flask app's test client.
 
+    Args:
+        app (Flask): The Flask application fixture.
+
     Returns:
-        FlaskClient : The Flask test client.
+        FlaskClient: The Flask test client.
     """
     return app.test_client()

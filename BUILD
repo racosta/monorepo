@@ -6,7 +6,10 @@ load("@npm//:defs.bzl", "npm_link_all_packages")
 # gazelle:build_file_name BUILD,BUILD.bazel
 gazelle(name = "gazelle")
 
-exports_files([".rustfmt.toml"])
+exports_files([
+    ".rustfmt.toml",
+    "pyproject.toml",
+])
 
 npm_link_all_packages()
 
