@@ -1,3 +1,12 @@
+[tool.flake8]
+max-line-length = 120
+
+[tool.pydocstyle]
+convention = "google"
+
+[tool.pydoclint]
+style = "google"
+
 [tool.pyright]
 include = ["projects"]
 exclude = [
@@ -9,12 +18,3 @@ exclude = [
   "**/__pycache__",
   "**/.*",
 ]
-
-[tool.flake8]
-max-line-length = 120
-
-[tool.pydocstyle]
-convention = "google"
-
-[tool.pydoclint]
-style = "google"

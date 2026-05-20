@@ -9,20 +9,20 @@ load("@rules_python//python/entry_points:py_console_script_binary.bzl", "py_cons
 
 package(default_visibility = ["//:__subpackages__"])
 
-py_console_script_binary(
-    name = "bandit",
-    pkg = "@pypi//bandit:pkg",
-)
+# py_console_script_binary(
+#     name = "bandit",
+#     pkg = "@pypi//bandit:pkg",
+# )
 
-py_console_script_binary(
-    name = "flake8",
-    pkg = "@pypi//flake8:pkg",
-)
+# py_console_script_binary(
+#     name = "flake8",
+#     pkg = "@pypi//flake8:pkg",
+# )
 
-py_console_script_binary(
-    name = "pylint",
-    pkg = "@pypi//pylint:pkg",
-)
+# py_console_script_binary(
+#     name = "pylint",
+#     pkg = "@pypi//pylint:pkg",
+# )
 
 py_binary(
     name = "pydoclint",
