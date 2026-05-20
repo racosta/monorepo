@@ -1,3 +1,6 @@
 formatter:
   indent: 2
   indentless_arrays: true
+ignore:
+- .clang-tidy
+- third_party/cpp/.clang-tidy

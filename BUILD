@@ -7,6 +7,7 @@ load("@npm//:defs.bzl", "npm_link_all_packages")
 gazelle(name = "gazelle")
 
 exports_files([
+    ".clang-tidy",
     ".rustfmt.toml",
     "pyproject.toml",
 ])

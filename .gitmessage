@@ -22,7 +22,7 @@
 #   revert:   Reverts a previous commit
 # ---------------------------------------------------------
 # Guidelines:
-# - Limit the subject line to 50 characters
+# - Limit the subject line to 80 characters
 # - Use the imperative mood (e.g., "Add feature" not "Added feature")
 # - Separate subject from body with a blank line
 # - Wrap the body at 72 characters
