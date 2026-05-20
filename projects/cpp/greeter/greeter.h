@@ -4,6 +4,6 @@
 
 namespace projects::cpp::greeter {
 
-auto greet(const std::string &name = "World") -> std::string;
+std::string greet(const std::string &name = "World");
 
 } // namespace projects::cpp::greeter

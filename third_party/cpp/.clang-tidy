@@ -1,8 +1,7 @@
 Checks: >
-  -*, clang-analyzer-*, bugprone-*, cppcoreguidelines-*, modernize-*, performance-*, readability-*, portability-*
+  bugprone-*, -bugprone-exception-escape, clang-analyzer-*, -clang-diagnostic-builtin-macro-redefined, cppcoreguidelines-*, modernize-*, -modernize-use-trailing-return-type, performance-*, portability-*, -portability-avoid-pragma-once, readability-*
 
-WarningsAsErrors: ''
+WarningsAsErrors: '*'
 ExcludeHeaderFilterRegex: '^external/'
 HeaderFilterRegex: '^projects/cpp/.*'
-ExcludePaths: '(^|/)(external)(/|$)'
 UseColor: true
