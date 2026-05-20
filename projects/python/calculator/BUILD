@@ -1,4 +1,5 @@
 load("@aspect_rules_py//py:defs.bzl", "py_library", "py_test")
+load("//tools/lint:linters.bzl", "pydoclint_test")
 
 py_library(
     name = "calculator",
@@ -18,5 +19,19 @@ py_test(
     deps = [
         ":calculator",
         "@pypi//pytest",
+    ],
+)
+
+py_library(
+    name = "test_srcs",
+    srcs = glob(["tests/**/*.py"]),
+    visibility = ["//projects/python/calculator:__subpackages__"],
+)
+
+pydoclint_test(
+    name = "pydoclint_test",
+    srcs = [
+        ":calculator",
+        ":test_srcs",
     ],
 )

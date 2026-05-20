@@ -11,7 +11,7 @@ def create_app() -> Flask:
     """Create a Flask app.
 
     Returns:
-        Flask : The web application
+        Flask: The web application
     """
     app = Flask(__name__)
     my_calculator = Calculator()
@@ -21,7 +21,7 @@ def create_app() -> Flask:
         """Generate two random integers and add them.
 
         Returns:
-            str - Message containing the addition expression.
+            str: Message containing the addition expression.
         """
         num1 = randint(0, 100)
         num2 = randint(0, 100)

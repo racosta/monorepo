@@ -6,6 +6,7 @@ load("@container_structure_test//:defs.bzl", "container_structure_test")
 load("@rules_oci//oci:defs.bzl", "oci_image", "oci_load", "oci_push")
 load("//bazel:java_runtime_layer.bzl", "java_runtime_layer")
 load("//bazel:py_image_layer_owned.bzl", "py_image_layer_owned")
+load("//tools/lint:linters.bzl", "pydoclint_test")
 
 SERVICE_NAME = "calculator_service"
 
@@ -41,6 +42,20 @@ py_test(
     deps = [
         ":main_lib",
         "@pypi//pytest",
+    ],
+)
+
+py_library(
+    name = "test_srcs",
+    srcs = glob(["tests/**/*.py"]),
+    visibility = ["//projects/python/web:__subpackages__"],
+)
+
+pydoclint_test(
+    name = "pydoclint_test",
+    srcs = [
+        ":main_lib",
+        ":test_srcs",
     ],
 )
 
