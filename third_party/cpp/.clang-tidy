@@ -1,5 +1,5 @@
 Checks: >
-  bugprone-*, -bugprone-exception-escape, clang-analyzer-*, -clang-diagnostic-builtin-macro-redefined, cppcoreguidelines-*, modernize-*, -modernize-use-trailing-return-type, performance-*, portability-*, -portability-avoid-pragma-once, readability-*
+  bugprone-*, -bugprone-exception-escape, clang-analyzer-*, -clang-diagnostic-builtin-macro-redefined, cppcoreguidelines-*, -cppcoreguidelines-avoid-non-const-global-variables, modernize-*, -modernize-use-trailing-return-type, performance-*, portability-*, -portability-avoid-pragma-once, readability-*
 
 WarningsAsErrors: '*'
 ExcludeHeaderFilterRegex: '^external/'
