@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
   std::vector<std::string> items = {"apple", "banana", "cherry"};
   std::string result = projects::cpp::abseil::JoinItems(items);
   spdlog::info(
-      "Joined string: {}",
-      result); // NOLINT(clang-analyzer-optin.cplusplus.UninitializedObject)
+      "Joined string: {}", // NOLINT(clang-analyzer-optin.cplusplus.UninitializedObject)
+      result);
   return 0;
 }
