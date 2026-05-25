@@ -1,5 +1,5 @@
 load("@aspect_rules_py//py:defs.bzl", "py_library", "py_test")
-load("//tools/lint:linters.bzl", "pydoclint_test")
+load("//tools/lint:linters.bzl", "bandit_test", "pydoclint_test", "ruff_test")
 
 py_library(
     name = "calculator",
@@ -28,8 +28,23 @@ py_library(
     visibility = ["//projects/python/calculator:__subpackages__"],
 )
 
+bandit_test(
+    name = "bandit_test",
+    srcs = [
+        ":calculator",
+    ],
+)
+
 pydoclint_test(
     name = "pydoclint_test",
+    srcs = [
+        ":calculator",
+        ":test_srcs",
+    ],
+)
+
+ruff_test(
+    name = "ruff_test",
     srcs = [
         ":calculator",
         ":test_srcs",

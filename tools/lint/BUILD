@@ -27,20 +27,20 @@ native_binary(
     out = "clang_tidy",
 )
 
-# py_console_script_binary(
-#     name = "bandit",
-#     pkg = "@pypi//bandit:pkg",
-# )
+py_console_script_binary(
+    name = "bandit",
+    pkg = "@pypi//bandit:pkg",
+)
 
-# py_console_script_binary(
-#     name = "flake8",
-#     pkg = "@pypi//flake8:pkg",
-# )
+py_console_script_binary(
+    name = "flake8",
+    pkg = "@pypi//flake8:pkg",
+)
 
-# py_console_script_binary(
-#     name = "pylint",
-#     pkg = "@pypi//pylint:pkg",
-# )
+py_console_script_binary(
+    name = "pylint",
+    pkg = "@pypi//pylint:pkg",
+)
 
 py_binary(
     name = "pydoclint",
