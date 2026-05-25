@@ -28,13 +28,6 @@ py_library(
     visibility = ["//projects/python/calculator:__subpackages__"],
 )
 
-bandit_test(
-    name = "bandit_test",
-    srcs = [
-        ":calculator",
-    ],
-)
-
 pydoclint_test(
     name = "pydoclint_test",
     srcs = [

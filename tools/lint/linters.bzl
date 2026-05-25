@@ -2,10 +2,8 @@
 
 load("@aspect_rules_lint//lint:bandit.bzl", "lint_bandit_aspect")
 load("@aspect_rules_lint//lint:clang_tidy.bzl", "lint_clang_tidy_aspect")
-load("@aspect_rules_lint//lint:flake8.bzl", "lint_flake8_aspect")
 load("@aspect_rules_lint//lint:lint_test.bzl", "lint_test")
 load("@aspect_rules_lint//lint:pydoclint.bzl", "lint_pydoclint_aspect")
-load("@aspect_rules_lint//lint:pylint.bzl", "lint_pylint_aspect")
 load("@aspect_rules_lint//lint:ruff.bzl", "lint_ruff_aspect")
 load("@aspect_rules_lint//lint:ty.bzl", "lint_ty_aspect")
 
@@ -27,20 +25,6 @@ clang_tidy = lint_clang_tidy_aspect(
 )
 
 clang_tidy_test = lint_test(aspect = clang_tidy)
-
-flake8 = lint_flake8_aspect(
-    binary = Label("//tools/lint:flake8"),
-    config = Label("//:.flake8"),
-)
-
-flake8_test = lint_test(aspect = flake8)
-
-pylint = lint_pylint_aspect(
-    binary = Label("//tools/lint:pylint"),
-    config = Label("//:.pylintrc"),
-)
-
-pylint_test = lint_test(aspect = pylint)
 
 pydoclint = lint_pydoclint_aspect(
     binary = Label("//tools/lint:pydoclint"),

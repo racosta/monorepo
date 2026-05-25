@@ -1,24 +1,5 @@
-[tool.flake8]
-exclude = [
-  "bazel-bin",
-  "bazel-monorepo",
-  "bazel-out",
-  "bazel-testlogs",
-  "external",
-  "**/node_modules",
-  "**/__pycache__",
-  "**/.*",
-]
-max-line-length = 120
-
-[tool.pydocstyle]
-convention = "google"
-
 [tool.pydoclint]
 style = "google"
-
-[tool.pylint.format]
-max-line-length = 120
 
 [tool.pyright]
 include = ["projects"]
