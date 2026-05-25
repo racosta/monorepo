@@ -1,6 +1,6 @@
 {
-  "name": "@monorepo/modern_javascript_tutorial_02_js_fundamentals_2_6_interaction",
-  "main": "src/greeter.mjs",
+  "name": "@monorepo/modern_javascript_tutorial_02_js_fundamentals_2_8_operators",
+  "main": "src/addition.mjs",
   "type": "module",
   "devDependencies": {
     "jest": "30.4.2",
