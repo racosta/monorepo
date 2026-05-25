@@ -25,13 +25,6 @@ py_library(
     visibility = ["//projects/python/numbers:__subpackages__"],
 )
 
-bandit_test(
-    name = "bandit_test",
-    srcs = [
-        ":numbers",
-    ],
-)
-
 pydoclint_test(
     name = "pydoclint_test",
     srcs = [

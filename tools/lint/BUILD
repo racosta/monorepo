@@ -32,16 +32,6 @@ py_console_script_binary(
     pkg = "@pypi//bandit:pkg",
 )
 
-py_console_script_binary(
-    name = "flake8",
-    pkg = "@pypi//flake8:pkg",
-)
-
-py_console_script_binary(
-    name = "pylint",
-    pkg = "@pypi//pylint:pkg",
-)
-
 py_binary(
     name = "pydoclint",
     srcs = ["pydoclint_wrapper.py"],
