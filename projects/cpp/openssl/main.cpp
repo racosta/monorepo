@@ -17,8 +17,7 @@ int main(int argc, char *argv[]) {
   if (projects::cpp::openssl::IsBoringSsl()) {
     spdlog::info("RESULT: Success. Using BoringSSL.");
     return 0;
-  } else {
-    spdlog::error("RESULT: Failure. Not linked to BoringSSL.");
-    return 1;
   }
+  spdlog::error("RESULT: Failure. Not linked to BoringSSL.");
+  return 1;
 }
