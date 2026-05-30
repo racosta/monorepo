@@ -1,5 +1,5 @@
 load("@aspect_rules_py//py:defs.bzl", "py_library", "py_test")
-load("//tools/lint:linters.bzl", "bandit_test", "pydoclint_test", "ruff_test")
+load("//tools/lint:linters.bzl", "pydoclint_test", "ruff_test", "ty_test")
 
 py_library(
     name = "numbers",
@@ -38,5 +38,13 @@ ruff_test(
     srcs = [
         ":numbers",
         ":test_srcs",
+    ],
+)
+
+ty_test(
+    name = "ty_test",
+    srcs = [
+        ":is_leap_year_test",
+        ":numbers",
     ],
 )
