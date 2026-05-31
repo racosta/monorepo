@@ -107,6 +107,8 @@
     "https://bcr.bazel.build/modules/buildozer/8.5.1/source.json": "e3386e6ff4529f2442800dee47ad28d3e6487f36a1f75ae39ae56c70f0cd2fbd",
     "https://bcr.bazel.build/modules/container_structure_test/1.22.1/MODULE.bazel": "da58a98f9f6d47e702532fdfec0431bd60e417d3f004471f409a4543cae0e61e",
     "https://bcr.bazel.build/modules/container_structure_test/1.22.1/source.json": "75873f230014ff7a6f30e9f81b9e31ee4593c71353ffa8d5f8fe4ad4aba21160",
+    "https://bcr.bazel.build/modules/cython/3.2.4/MODULE.bazel": "fb1798d44ae7314650d35098783e367ced0a2a53d059fdead51a4f6b2da95de3",
+    "https://bcr.bazel.build/modules/cython/3.2.4/source.json": "9520cb447ad63fb1a584ed68391282dafb47171161cde1d9b6e82c4b3a648381",
     "https://bcr.bazel.build/modules/diff.bzl/0.5.1/MODULE.bazel": "bad8dd444e512b6fcbcd969d6385cd6bc093d4c12e5640fb1f0ace2282f99ef9",
     "https://bcr.bazel.build/modules/diff.bzl/0.5.1/source.json": "64571044143273ff8adb322c0f7acefca36f9589ff37a743e3cac9c35ce6b010",
     "https://bcr.bazel.build/modules/fmt/12.1.0/MODULE.bazel": "c6b460c936f408b371bf12ccee5ecbd5aed8f6abfb6e8b63fad0c622715fd458",
