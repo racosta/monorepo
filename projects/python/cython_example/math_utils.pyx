@@ -1,7 +1,14 @@
 # cython: language_level=3
 
-def fast_factorial(int n):
-    """A fast factorial implementation using Cython C types."""
+def fast_factorial(int n) -> int:
+    """A fast factorial implementation using Cython C types.
+
+    Args:
+        n (int): The number to compute the factorial of.
+
+    Returns:
+        int: The factorial of n.
+    """
     if n < 0:
         raise ValueError("Factorial not defined for negative numbers.")
 
