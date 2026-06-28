@@ -2,7 +2,7 @@
   description = "Development environment using devenv, equivalent to the original shell.nix";
 
   inputs = {
-    nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/nixos-25.11.tar.gz";
+    nixpkgs.url = "https://github.com/NixOS/nixpkgs/archive/nixos-26.05.tar.gz";
     devenv.url = "github:cachix/devenv";
     flake-utils.url = "github:numtide/flake-utils";
   };
