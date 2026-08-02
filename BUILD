@@ -9,6 +9,7 @@ gazelle(name = "gazelle")
 exports_files([
     ".clang-tidy",
     ".rustfmt.toml",
+    "maven_install.json",
     "pyproject.toml",
 ])
 

@@ -1,0 +1,9 @@
+load("@rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
+
+nogo(
+    name = "nogo",
+    config = "nogo_config.json",
+    visibility = ["//visibility:public"],
+    deps = TOOLS_NOGO + [
+    ],
+)

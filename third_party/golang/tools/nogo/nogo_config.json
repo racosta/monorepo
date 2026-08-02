@@ -1,0 +1,13 @@
+{
+  "shadow": {
+    "only_files": {
+      ".*\\.go$": "Run on all Go files"
+    },
+    "exclude_files": {
+      ".*\\.pb\\.go$": "Exclude generated proto files"
+    }
+  },
+  "lostcancel": {
+    "enabled": true
+  }
+}
