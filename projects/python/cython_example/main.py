@@ -19,6 +19,9 @@ def slow_factorial(n: int) -> int:
 
     Returns:
         int: The factorial of n.
+
+    Raises:
+        ValueError: If n is negative.
     """
     if n < 0:
         raise ValueError("Factorial not defined for negative numbers.")
