@@ -18,3 +18,13 @@ common --tool_java_runtime_version=remotejdk_21
 build --cxxopt='-std=c++23'
 
 build --@rules_rust//rust/settings:rustfmt.toml=//:.rustfmt.toml
+
+# Enable linting on build or test commands
+# build:lint --aspects=//tools/lint:linters.bzl%bandit
+# build:lint --aspects=//tools/lint:linters.bzl%clang_tidy
+build:lint --aspects=//tools/lint:linters.bzl%pydoclint
+build:lint --aspects=//tools/lint:linters.bzl%ruff
+build:lint --aspects=//tools/lint:linters.bzl%ty
+build:lint --output_groups=rules_lint_human
+
+build:lint --@aspect_rules_lint//lint:fail_on_violation
