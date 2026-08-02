@@ -33,6 +33,7 @@
         dive
         dua
         eza
+        gawk
         git
         google-java-format
         jq
@@ -63,12 +64,12 @@
         if [[ $- == *i* ]]; then
           alias ls='eza --icons'
 
-          source "${pkgs.blesh}/share/blesh/ble.sh"
+          #if [[ -n "$GHCR_PAT" ]]; then
+          #  echo -n "🔑Logging into GitHub Container Registry with provided GHCR_PAT ... "
+          #  echo $GHCR_PAT | podman login ghcr.io -u racosta --password-stdin
+          #fi
 
-          if [[ -n "$GHCR_PAT" ]]; then
-            echo -n "🔑Logging into GitHub Container Registry with provided GHCR_PAT ... "
-            echo $GHCR_PAT | podman login ghcr.io -u racosta --password-stdin
-          fi
+          #source "${pkgs.blesh}/share/blesh/ble.sh"
 
           onefetch --nerd-fonts --number-of-languages=8
         fi
