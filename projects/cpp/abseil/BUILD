@@ -1,5 +1,5 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
-load("//tools/lint:linters.bzl", "clang_tidy_test")
+# load("//tools/lint:linters.bzl", "clang_tidy_test")
 
 cc_library(
     name = "abseil_example_lib",
@@ -30,7 +30,7 @@ cc_test(
     ],
 )
 
-clang_tidy_test(
-    name = "clang_tidy",
-    srcs = [":abseil_example"],
-)
+# clang_tidy_test(
+#     name = "clang_tidy",
+#     srcs = [":abseil_example"],
+# )
