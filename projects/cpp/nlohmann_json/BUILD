@@ -1,5 +1,4 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
-# load("//tools/lint:linters.bzl", "clang_tidy_test")
 
 cc_library(
     name = "nlohmann_json_lib",
@@ -30,8 +29,3 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
-
-# clang_tidy_test(
-#     name = "clang_tidy",
-#     srcs = [":nlohmann_json"],
-# )

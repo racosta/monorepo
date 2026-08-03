@@ -1,8 +1,7 @@
 """Define Python linter aspects"""
 
 load("@aspect_rules_lint//lint:bandit.bzl", "lint_bandit_aspect")
-
-# load("@aspect_rules_lint//lint:clang_tidy.bzl", "lint_clang_tidy_aspect")
+load("@aspect_rules_lint//lint:clang_tidy.bzl", "lint_clang_tidy_aspect")
 load("@aspect_rules_lint//lint:lint_test.bzl", "lint_test")
 load("@aspect_rules_lint//lint:pydoclint.bzl", "lint_pydoclint_aspect")
 load("@aspect_rules_lint//lint:ruff.bzl", "lint_ruff_aspect")
@@ -15,17 +14,17 @@ bandit = lint_bandit_aspect(
 
 bandit_test = lint_test(aspect = bandit)
 
-# clang_tidy = lint_clang_tidy_aspect(
-#     binary = Label("//tools/lint:clang_tidy"),
-#     configs = [
-#         Label("//:.clang-tidy"),
-#     ],
-#     lint_target_headers = True,
-#     angle_includes_are_system = False,
-#     verbose = False,
-# )
+clang_tidy = lint_clang_tidy_aspect(
+    binary = Label("//tools/lint:clang_tidy"),
+    configs = [
+        Label("//:.clang-tidy"),
+    ],
+    lint_target_headers = True,
+    angle_includes_are_system = False,
+    verbose = False,
+)
 
-# clang_tidy_test = lint_test(aspect = clang_tidy)
+clang_tidy_test = lint_test(aspect = clang_tidy)
 
 pydoclint = lint_pydoclint_aspect(
     binary = Label("//tools/lint:pydoclint"),
