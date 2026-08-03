@@ -1,0 +1,9 @@
+# Target shell scripts (.sh, .bash) or extensionless files via shell syntax
+[*.{sh,bash}]
+# ------------------------------------------------------------------------------
+# Standard EditorConfig Properties (Recognized by shfmt)
+# ------------------------------------------------------------------------------
+indent_style = space          # Use 'space' or 'tab'
+indent_size = 2               # Number of spaces per indent level (ignored if tab)
+end_of_line = lf              # Enforce Unix-style line endings
+insert_final_newline = true   # Ensure files end with a trailing newline

@@ -6,9 +6,19 @@ load("@npm//:defs.bzl", "npm_link_all_packages")
 # gazelle:build_file_name BUILD,BUILD.bazel
 gazelle(name = "gazelle")
 
+alias(
+    name = "format",
+    actual = "//tools/format:format",
+)
+
 exports_files([
     ".clang-tidy",
+    ".editorconfig",
     ".rustfmt.toml",
+    ".shellcheckrc",
+    ".taplo.toml",
+    ".yamlfmt.yaml",
+    ".yamllint.yaml",
     "maven_install.json",
     "pyproject.toml",
 ])

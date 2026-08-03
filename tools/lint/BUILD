@@ -40,3 +40,8 @@ py_binary(
         "@pypi//pydoclint",
     ],
 )
+
+py_console_script_binary(
+    name = "yamllint",
+    pkg = "@pypi//yamllint",
+)
