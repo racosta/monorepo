@@ -1,9 +1,9 @@
 [workspace]
 [package]
-name = "all_crate_deps"
-version = "0.0.2"
 edition = "2024"
+name    = "all_crate_deps"
 publish = false
+version = "0.0.2"
 
 [lib]
 path = "fake.rs"

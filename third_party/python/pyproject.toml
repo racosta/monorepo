@@ -2,7 +2,6 @@
 style = "google"
 
 [tool.pyright]
-include = ["projects"]
 exclude = [
   "bazel-bin",
   "bazel-monorepo",
@@ -13,6 +12,7 @@ exclude = [
   "**/__pycache__",
   "**/.*",
 ]
+include = ["projects"]
 
 [tool.ruff]
 line-length = 120

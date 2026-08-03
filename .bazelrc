@@ -21,10 +21,12 @@ build --@rules_rust//rust/settings:rustfmt.toml=//:.rustfmt.toml
 
 # Enable linting on build or test commands
 # build:lint --aspects=//tools/lint:linters.bzl%bandit
+build:lint --aspects=//tools/lint:linters.bzl%buildifier
 build:lint --aspects=//tools/lint:linters.bzl%clang_tidy
 build:lint --aspects=//tools/lint:linters.bzl%pydoclint
 build:lint --aspects=//tools/lint:linters.bzl%ruff
 build:lint --aspects=//tools/lint:linters.bzl%ty
+build:lint --aspects=//tools/lint:linters.bzl%yamllint
 build:lint --output_groups=rules_lint_human
 
 build:lint --@aspect_rules_lint//lint:fail_on_violation

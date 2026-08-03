@@ -121,6 +121,12 @@
               "--max-line-length=120"
             ];
           };
+          format = {
+            enable = true;
+            description = "Format code with various formatters";
+            entry = "${pkgs.bazelisk}/bin/bazelisk run //:format";
+            pass_filenames = false;
+          };
           gitlint.enable = true;
           gofmt.enable = true;
           golangci-lint = {
@@ -241,28 +247,13 @@
               "--simplify"
             ];
           };
-          taplo.enable = true;
           trim-trailing-whitespace.enable = true;
-          # ty = {
-          #   enable = true;
-          #   description = "Run 'ty check' for extremely fast Python type checking.";
-          #   entry = "${pkgs.ty}/bin/ty check";
-          #   types = [ "python" ];
-          #   require_serial = true;
-          # };
           update-cargo-lock = {
             enable = true;
             description = "Update Cargo lock file";
             entry = "${pkgs.cargo}/bin/cargo generate-lockfile";
             files = "^third_party/rust/Cargo\\.toml$";
             pass_filenames = false;
-          };
-          yamlfmt = {
-            enable = true;
-            settings = {
-              configPath = ".yamlfmt.yaml";
-              lint-only = false;
-            };
           };
           yamllint = {
             enable = true;
