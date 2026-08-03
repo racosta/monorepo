@@ -14,8 +14,12 @@ exclude = [
   "**/.*",
 ]
 
+[tool.ruff]
+line-length = 120
+
 [tool.ruff.lint]
 select = ["E", "F", "W", "S"]
+# extend-select = ["I"]
 
 [tool.ruff.lint.per-file-ignores]
 "**/tests/**/*.py" = ["S"]
