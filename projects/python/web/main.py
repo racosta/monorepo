@@ -23,8 +23,8 @@ def create_app() -> Flask:
         Returns:
             str: Message containing the addition expression.
         """
-        num1 = randint(0, 100)  # noqa: S311
-        num2 = randint(0, 100)  # noqa: S311
+        num1 = randint(0, 100)  # noqa: S311 # nosec B311
+        num2 = randint(0, 100)  # noqa: S311 # nosec B311
         message = f"{num1} + {num2} = {my_calculator.add(num1, num2)}"
         return message
 
