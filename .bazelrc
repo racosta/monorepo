@@ -20,7 +20,7 @@ build --cxxopt='-std=c++23'
 build --@rules_rust//rust/settings:rustfmt.toml=//:.rustfmt.toml
 
 # Enable linting on build or test commands
-# build:lint --aspects=//tools/lint:linters.bzl%bandit
+build:lint --aspects=//tools/lint:linters.bzl%bandit
 build:lint --aspects=//tools/lint:linters.bzl%buildifier
 build:lint --aspects=//tools/lint:linters.bzl%clang_tidy
 build:lint --aspects=//tools/lint:linters.bzl%pydoclint

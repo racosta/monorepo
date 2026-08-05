@@ -27,6 +27,7 @@ expand_template(
 
 format_multirun(
     name = "format",
+    python = "@aspect_rules_lint//format:ruff",
     shell = "@aspect_rules_lint//format:shfmt",
     toml = ":taplo_wrapper",
     yaml = "@aspect_rules_lint//format:yamlfmt",
