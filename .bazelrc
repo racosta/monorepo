@@ -15,6 +15,8 @@ common --java_runtime_version=remotejdk_21
 # See https://bazel.build/docs/user-manual#tool-java-runtime-version
 common --tool_java_runtime_version=remotejdk_21
 
+common --incompatible_default_to_explicit_init_py
+
 build --cxxopt='-std=c++23'
 
 build --@rules_rust//rust/settings:rustfmt.toml=//:.rustfmt.toml
