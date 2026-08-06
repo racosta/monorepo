@@ -27,6 +27,6 @@ build:lint --aspects=//tools/lint:linters.bzl%pydoclint
 build:lint --aspects=//tools/lint:linters.bzl%ruff
 build:lint --aspects=//tools/lint:linters.bzl%ty
 build:lint --aspects=//tools/lint:linters.bzl%yamllint
-build:lint --output_groups=rules_lint_human
+build:lint --output_groups=+lint
 
 build:lint --@aspect_rules_lint//lint:fail_on_violation
