@@ -1,9 +1,9 @@
 """Javascript third-party dependency configuration for Bazel."""
 
 # keep-sorted start
-bazel_dep(name = "aspect_rules_jest", version = "0.25.2")
-bazel_dep(name = "aspect_rules_js", version = "3.1.2")
-bazel_dep(name = "rules_nodejs", version = "6.7.4")
+bazel_dep(name = "aspect_rules_jest", version = "0.26.0")
+bazel_dep(name = "aspect_rules_js", version = "3.3.1")
+bazel_dep(name = "rules_nodejs", version = "6.7.5")
 # keep-sorted end
 
 ####### Node.js version #########

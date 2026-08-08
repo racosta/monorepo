@@ -1,8 +1,8 @@
 """Java toolchain and third-party dependency configuration for Bazel."""
 
 # keep-sorted start
-bazel_dep(name = "rules_java", version = "9.6.1")
-bazel_dep(name = "rules_jvm_external", version = "6.9")
+bazel_dep(name = "rules_java", version = "9.7.0")
+bazel_dep(name = "rules_jvm_external", version = "7.1")
 # keep-sorted end
 
 # In the Maven support variation, the dependencies are conveniently listed here

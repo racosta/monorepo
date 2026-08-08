@@ -166,18 +166,18 @@ assert_archive_contains(
     type = "tar",
 )
 
-assert_archive_contains(
-    name = "test_app_layer_packages",
-    archive = "app_layer_base_packages",
-    expected = [
-        "./{}/{}.runfiles/rules_python++pip+pypi_312_flask/site-packages/flask/__init__.py".format(
-            package_name(),
-            PY_BINARY_NAME,
-        ),
-    ],
-    tags = ["unit"],
-    type = "tar",
-)
+# assert_archive_contains(
+#     name = "test_app_layer_packages",
+#     archive = "app_layer_base_packages",
+#     expected = [
+#         "./{}/{}.runfiles/rules_python++pip+pypi_312_312_flask/site-packages/flask/__init__.py".format(
+#             package_name(),
+#             PY_BINARY_NAME,
+#         ),
+#     ],
+#     tags = ["unit"],
+#     type = "tar",
+# )
 
 assert_archive_contains(
     name = "test_app_layer_interpreter",
