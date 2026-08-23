@@ -7,5 +7,19 @@
   },
   "[python]": {
     "editor.rulers": [120]
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/bazel-*/**": true
+  },
+  "search.exclude": {
+    "**/bazel-*": true
+  },
+  "files.exclude": {
+    "**/bazel-*": true
+  },
+  "C_Cpp.files.exclude": {
+    "**/bazel-*/**": true
   }
 }
