@@ -1,6 +1,11 @@
 """Test the root endpoint of the FastAPI application."""
 
-from fastapi.testclient import TestClient
+from __future__ import annotations
+
+import typing
+
+if typing.TYPE_CHECKING:
+    from fastapi.testclient import TestClient
 
 
 def test_read_root(client: TestClient):
