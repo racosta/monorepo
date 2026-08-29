@@ -1,0 +1,51 @@
+codecov:
+  require_head_to_pass: yes
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 1%
+    patch:
+      default:
+        target: auto
+# Split monorepo paths into logical components
+component_management:
+  default_rules:
+    statuses:
+    - type: project
+      target: auto
+  # Automatically generate components based on top-level folders in apps/ and packages/
+  individual_components:
+  - component_id: projects_cpp
+    name: C++ Projects
+    paths:
+    - projects/cpp/**
+  - component_id: projects_go
+    name: Go Projects
+    paths:
+    - projects/go/**
+  - component_id: projects_java
+    name: Java Projects
+    paths:
+    - projects/java/**
+  - component_id: projects_js
+    name: JavaScript Projects
+    paths:
+    - projects/js/**
+  - component_id: projects_perl
+    name: Perl Projects
+    paths:
+    - projects/perl/**
+  - component_id: projects_python
+    name: Python Projects
+    paths:
+    - projects/python/**
+  - component_id: projects_rust
+    name: Rust Projects
+    paths:
+    - projects/rust/**
+  - component_id: projects_tcl
+    name: Tcl Projects
+    paths:
+    - projects/tcl/**
