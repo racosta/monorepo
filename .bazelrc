@@ -32,3 +32,8 @@ build:lint --aspects=//tools/lint:linters.bzl%yamllint
 build:lint --output_groups=+lint
 
 build:lint --@aspect_rules_lint//lint:fail_on_violation
+
+coverage --collect_code_coverage
+coverage --copt=-g
+coverage --copt=-O0
+coverage --experimental_generate_llvm_lcov
