@@ -78,6 +78,11 @@ jobs:
         echo "Coverage directory is: $COVERAGE_DIR"
         REPORT_PATH="$COVERAGE_DIR/_coverage_report.dat"
         echo "COVERAGE_REPORT_PATH=$REPORT_PATH" >> $GITHUB_OUTPUT
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ${{ steps.locate_report.outputs.COVERAGE_REPORT_PATH }}
     # - uses: ImBIOS/lcov-coverage-badge@v1.0.1
     #   with:
     #     file: ${{ steps.locate_report.outputs.COVERAGE_REPORT_PATH }}

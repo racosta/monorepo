@@ -30,6 +30,7 @@ py_test(
         ":fastapi_lib",
         "@pypi//httpx2",
         "@pypi//pytest",
+        "@pypi//pytest_cov",
     ],
 )
 

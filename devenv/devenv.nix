@@ -8,6 +8,7 @@
   packages = with pkgs; [
     bazelisk
     bazel-buildtools
+    pycobertura
   ];
 
   scripts.bazel.exec = "bazelisk \"$@\"";

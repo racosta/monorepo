@@ -19,6 +19,7 @@ py_test(
     deps = [
         ":calculator",
         "@pypi//pytest",
+        "@pypi//pytest_cov",
     ],
 )
 
