@@ -1,6 +1,6 @@
 # monorepo
 
-![coverage](coverage.svg)
+[![codecov](https://codecov.io/github/racosta/monorepo/graph/badge.svg?token=RDAV9JMLG5)](https://codecov.io/github/racosta/monorepo)
 
 Starting with a Nix shell and pre-commit hooks, then based on
 [kriscfoster/multi-language-bazel-monorepo](https://github.com/kriscfoster/multi-language-bazel-monorepo).
