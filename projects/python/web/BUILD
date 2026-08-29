@@ -42,6 +42,7 @@ py_test(
     deps = [
         ":main_lib",
         "@pypi//pytest",
+        "@pypi//pytest_cov",
     ],
 )
 

@@ -16,6 +16,7 @@ py_test(
     deps = [
         ":numbers",
         "@pypi//pytest",
+        "@pypi//pytest_cov",
     ],
 )
 
