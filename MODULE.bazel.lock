@@ -260,6 +260,8 @@
     "https://bcr.bazel.build/modules/rules_cc/0.2.4/MODULE.bazel": "1ff1223dfd24f3ecf8f028446d4a27608aa43c3f41e346d22838a4223980b8cc",
     "https://bcr.bazel.build/modules/rules_cc/0.2.8/MODULE.bazel": "f1df20f0bf22c28192a794f29b501ee2018fa37a3862a1a2132ae2940a23a642",
     "https://bcr.bazel.build/modules/rules_cc/0.2.9/MODULE.bazel": "34263f1dca62ea664265438cef714d7db124c03e1ed55ebb4f1dc860164308d1",
+    "https://bcr.bazel.build/modules/rules_cpan/1.1.0/MODULE.bazel": "b4645241ac1cf382b2069941def55a2cac3e888dfe5b4255674a7bdf7768f5f2",
+    "https://bcr.bazel.build/modules/rules_cpan/1.1.0/source.json": "4b0887c9d00ab98aa20bc703eb95d0e0e4a75c10d2bd6354d3078e3b301e9cbd",
     "https://bcr.bazel.build/modules/rules_foreign_cc/0.9.0/MODULE.bazel": "c9e8c682bf75b0e7c704166d79b599f93b72cfca5ad7477df596947891feeef6",
     "https://bcr.bazel.build/modules/rules_fuzzing/0.5.2/MODULE.bazel": "40c97d1144356f52905566c55811f13b299453a14ac7769dfba2ac38192337a8",
     "https://bcr.bazel.build/modules/rules_go/0.33.0/MODULE.bazel": "a2b11b64cd24bf94f57454f53288a5dacfe6cb86453eee7761b7637728c1910c",
@@ -330,6 +332,7 @@
     "https://bcr.bazel.build/modules/rules_nodejs/6.7.5/source.json": "d60ee5a76258b1c8f99545ed24172b44d43ba64ca1a2dfc04371ef203df19fdf",
     "https://bcr.bazel.build/modules/rules_oci/2.3.0/MODULE.bazel": "49075197960c924c0a4d759b7c765c3d00a41d2fdd4a943b42823c1d016ab4ec",
     "https://bcr.bazel.build/modules/rules_oci/2.3.0/source.json": "47710c28446211b5e61a24015a4669c50c6862d5f91e6bdbc710de8d750cf613",
+    "https://bcr.bazel.build/modules/rules_perl/0.2.4/MODULE.bazel": "5f5af7be4bf5fb88d91af7469518f0fd2161718aefc606188f7cd51f436ca938",
     "https://bcr.bazel.build/modules/rules_perl/1.1.2/MODULE.bazel": "7ccaaa5c42fa272d6e7d391a756b3d378fed645f0481baa55cfac0b97d6298af",
     "https://bcr.bazel.build/modules/rules_perl/1.1.2/source.json": "6facc4dceb7d8eeb54f712399b9b933d5498e1906deffc06e66b5526c85ebe27",
     "https://bcr.bazel.build/modules/rules_pkg/0.7.0/MODULE.bazel": "df99f03fc7934a4737122518bb87e667e62d780b610910f0447665a7e2be62dc",
@@ -637,6 +640,24 @@
             "attributes": {
               "version": "v1.47.2",
               "sha256": "1b37b75dc0a777a0cba17fa2604bc9906e55bb4c578823d8b7a8fe3fc9fe4439"
+            }
+          }
+        }
+      }
+    },
+    "@@rules_cpan+//cpan:extensions.bzl%cpan": {
+      "general": {
+        "bzlTransitiveDigest": "fhHYWzI95xWnyP377O6qOLX0EIHj0uHMl2gD+5ezkGA=",
+        "usagesDigest": "M4HNbKt+TTJwM3zkaTUGMXmxYIVcQrHoe+NbWJSsRs0=",
+        "recordedInputs": [
+          "REPO_MAPPING:rules_cpan+,rules_cpan rules_cpan+"
+        ],
+        "generatedRepoSpecs": {
+          "cpan_deps": {
+            "repoRuleId": "@@rules_cpan+//cpan:install.bzl%install",
+            "attributes": {
+              "lock": "@@//:cpanfile.snapshot.lock.json",
+              "main_target_name": "cpan_deps"
             }
           }
         }

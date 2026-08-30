@@ -1,0 +1,12 @@
+import "../../justfiles/perl.just"
+
+[private]
+default: help
+
+# Generate cpanfile.snapshot from cpanfile
+cpanfile-update:
+  TMP_DIR=$(mktemp -d) && carton install --path="$TMP_DIR" && rm -rf "$TMP_DIR"
+
+# Generate cpanfile.snapshot.lock.json
+cpanfile-update-lock: cpanfile-update
+  bazel run @rules_cpan//lock -- cpanfile.snapshot cpanfile.snapshot.lock.json

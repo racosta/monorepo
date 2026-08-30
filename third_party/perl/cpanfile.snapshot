@@ -1,0 +1,313 @@
+# carton snapshot format: version 1.0
+DISTRIBUTIONS
+  Clone-0.50
+    pathname: A/AT/ATOOMIC/Clone-0.50.tar.gz
+    provides:
+      Clone 0.50
+    requirements:
+      ExtUtils::MakeMaker 0
+  Devel-Cover-1.52
+    pathname: P/PJ/PJCJ/Devel-Cover-1.52.tar.gz
+    provides:
+      Devel::Cover 1.52
+      Devel::Cover::Annotation::Git 1.52
+      Devel::Cover::Annotation::Random 1.52
+      Devel::Cover::Base::Editor 1.52
+      Devel::Cover::Base::Editor::Template::Provider 1.52
+      Devel::Cover::Branch 1.52
+      Devel::Cover::Collection 1.52
+      Devel::Cover::Collection::Template::Provider 1.52
+      Devel::Cover::Condition 1.52
+      Devel::Cover::Condition_and_2 1.52
+      Devel::Cover::Condition_and_3 1.52
+      Devel::Cover::Condition_or_2 1.52
+      Devel::Cover::Condition_or_3 1.52
+      Devel::Cover::Condition_xor_4 1.52
+      Devel::Cover::Criterion 1.52
+      Devel::Cover::DB 1.52
+      Devel::Cover::DB::Criterion 1.52
+      Devel::Cover::DB::Digests 1.52
+      Devel::Cover::DB::File 1.52
+      Devel::Cover::DB::IO 1.52
+      Devel::Cover::DB::IO::Base 1.52
+      Devel::Cover::DB::IO::JSON 1.52
+      Devel::Cover::DB::IO::Sereal 1.52
+      Devel::Cover::DB::IO::Storable 1.52
+      Devel::Cover::DB::Run 1.52
+      Devel::Cover::DB::Structure 1.52
+      Devel::Cover::Html_Common 1.52
+      Devel::Cover::Op 1.52
+      Devel::Cover::Pod 1.52
+      Devel::Cover::Report::Compilation 1.52
+      Devel::Cover::Report::Html 1.52
+      Devel::Cover::Report::Html_basic 1.52
+      Devel::Cover::Report::Html_basic::Template::Provider 1.52
+      Devel::Cover::Report::Html_minimal 1.52
+      Devel::Cover::Report::Html_subtle 1.52
+      Devel::Cover::Report::Html_subtle::Template::Provider 1.52
+      Devel::Cover::Report::Json 1.52
+      Devel::Cover::Report::Nvim 1.52
+      Devel::Cover::Report::Sort 1.52
+      Devel::Cover::Report::Text 1.52
+      Devel::Cover::Report::Text2 1.52
+      Devel::Cover::Report::Vim 1.52
+      Devel::Cover::Statement 1.52
+      Devel::Cover::Subroutine 1.52
+      Devel::Cover::Test 1.52
+      Devel::Cover::Time 1.52
+      Devel::Cover::Truth_Table 1.52
+      Devel::Cover::Truth_Table::Row 1.52
+      Devel::Cover::Util 1.52
+      Devel::Cover::Web 1.52
+    requirements:
+      Digest::MD5 0
+      ExtUtils::MakeMaker 0
+      HTML::Entities 3.69
+      Storable 0
+      Test::More 0
+      perl 5.020
+  Encode-Locale-1.05
+    pathname: G/GA/GAAS/Encode-Locale-1.05.tar.gz
+    provides:
+      Encode::Locale 1.05
+    requirements:
+      Encode 2
+      Encode::Alias 0
+      ExtUtils::MakeMaker 0
+      perl 5.008
+  HTML-Parser-3.85
+    pathname: O/OA/OALDERS/HTML-Parser-3.85.tar.gz
+    provides:
+      HTML::Entities 3.85
+      HTML::Filter 3.85
+      HTML::HeadParser 3.85
+      HTML::LinkExtor 3.85
+      HTML::Parser 3.85
+      HTML::PullParser 3.85
+      HTML::TokeParser 3.85
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.52
+      HTML::Tagset 0
+      HTTP::Headers 0
+      IO::File 0
+      URI 0
+      URI::URL 0
+      XSLoader 0
+      strict 0
+  HTML-Tagset-3.24
+    pathname: P/PE/PETDANCE/HTML-Tagset-3.24.tar.gz
+    provides:
+      HTML::Tagset 3.24
+    requirements:
+      ExtUtils::MakeMaker 6.46
+      perl 5.010001
+  HTTP-Date-6.08
+    pathname: O/OA/OALDERS/HTTP-Date-6.08.tar.gz
+    provides:
+      HTTP::Date 6.08
+    requirements:
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Time::Local 1.28
+      Time::Zone 0
+      perl 5.006002
+      strict 0
+  HTTP-Message-7.04
+    pathname: O/OA/OALDERS/HTTP-Message-7.04.tar.gz
+    provides:
+      HTTP::Config 7.04
+      HTTP::Headers 7.04
+      HTTP::Headers::Auth 7.04
+      HTTP::Headers::ETag 7.04
+      HTTP::Headers::Util 7.04
+      HTTP::Message 7.04
+      HTTP::Request 7.04
+      HTTP::Request::Common 7.04
+      HTTP::Response 7.04
+      HTTP::Status 7.04
+    requirements:
+      Carp 0
+      Clone 0.46
+      Compress::Raw::Bzip2 0
+      Compress::Raw::Zlib 2.062
+      Encode 3.01
+      Encode::Locale 1
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      File::Spec 0
+      HTTP::Date 6
+      IO::Compress::Bzip2 2.021
+      IO::Compress::Deflate 0
+      IO::Compress::Gzip 0
+      IO::HTML 0
+      IO::Uncompress::Inflate 0
+      IO::Uncompress::RawInflate 0
+      LWP::MediaTypes 6
+      MIME::Base64 2.1
+      MIME::QuotedPrint 0
+      URI 1.10
+      parent 0
+      perl 5.008001
+      strict 0
+      warnings 0
+  IO-HTML-1.004
+    pathname: C/CJ/CJM/IO-HTML-1.004.tar.gz
+    provides:
+      IO::HTML 1.004
+    requirements:
+      Carp 0
+      Encode 2.10
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      perl 5.008
+  LWP-MediaTypes-6.04
+    pathname: O/OA/OALDERS/LWP-MediaTypes-6.04.tar.gz
+    provides:
+      LWP::MediaTypes 6.04
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      Scalar::Util 0
+      perl 5.006002
+      strict 0
+  MIME-Base32-1.303
+    pathname: R/RE/REHSACK/MIME-Base32-1.303.tar.gz
+    provides:
+      MIME::Base32 1.303
+    requirements:
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      perl 5.008001
+      utf8 0
+  TimeDate-2.35
+    pathname: A/AT/ATOOMIC/TimeDate-2.35.tar.gz
+    provides:
+      Date::Format 2.35
+      Date::Format::Generic 2.35
+      Date::Language 2.35
+      Date::Language::Afar 2.35
+      Date::Language::Amharic 2.35
+      Date::Language::Arabic 2.35
+      Date::Language::Austrian 2.35
+      Date::Language::Brazilian 2.35
+      Date::Language::Bulgarian 2.35
+      Date::Language::Chinese 2.35
+      Date::Language::Chinese_GB 2.35
+      Date::Language::Czech 2.35
+      Date::Language::Danish 2.35
+      Date::Language::Dutch 2.35
+      Date::Language::English 2.35
+      Date::Language::Finnish 2.35
+      Date::Language::French 2.35
+      Date::Language::Gedeo 2.35
+      Date::Language::German 2.35
+      Date::Language::Greek 2.35
+      Date::Language::Hungarian 2.35
+      Date::Language::Icelandic 2.35
+      Date::Language::Italian 2.35
+      Date::Language::Norwegian 2.35
+      Date::Language::Occitan 2.35
+      Date::Language::Oromo 2.35
+      Date::Language::Portuguese 2.35
+      Date::Language::Romanian 2.35
+      Date::Language::Russian 2.35
+      Date::Language::Russian_cp1251 2.35
+      Date::Language::Russian_koi8r 2.35
+      Date::Language::Sidama 2.35
+      Date::Language::Somali 2.35
+      Date::Language::Spanish 2.35
+      Date::Language::Swedish 2.35
+      Date::Language::Tigrinya 2.35
+      Date::Language::TigrinyaEritrean 2.35
+      Date::Language::TigrinyaEthiopian 2.35
+      Date::Language::Turkish 2.35
+      Date::Parse 2.35
+      Time::Zone 2.35
+      TimeDate 2.35
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+  URI-5.36
+    pathname: O/OA/OALDERS/URI-5.36.tar.gz
+    provides:
+      URI 5.36
+      URI::Escape 5.36
+      URI::Heuristic 5.36
+      URI::IRI 5.36
+      URI::QueryParam 5.36
+      URI::Split 5.36
+      URI::URL 5.36
+      URI::WithBase 5.36
+      URI::data 5.36
+      URI::file 5.36
+      URI::file::Base 5.36
+      URI::file::FAT 5.36
+      URI::file::Mac 5.36
+      URI::file::OS2 5.36
+      URI::file::QNX 5.36
+      URI::file::Unix 5.36
+      URI::file::Win32 5.36
+      URI::ftp 5.36
+      URI::ftpes 5.36
+      URI::ftps 5.36
+      URI::geo 5.36
+      URI::gopher 5.36
+      URI::http 5.36
+      URI::https 5.36
+      URI::icap 5.36
+      URI::icaps 5.36
+      URI::irc 5.36
+      URI::ircs 5.36
+      URI::ldap 5.36
+      URI::ldapi 5.36
+      URI::ldaps 5.36
+      URI::mailto 5.36
+      URI::mms 5.36
+      URI::news 5.36
+      URI::nntp 5.36
+      URI::nntps 5.36
+      URI::otpauth 5.36
+      URI::pop 5.36
+      URI::rlogin 5.36
+      URI::rsync 5.36
+      URI::rtsp 5.36
+      URI::rtspu 5.36
+      URI::scp 5.36
+      URI::sftp 5.36
+      URI::sip 5.36
+      URI::sips 5.36
+      URI::smb 5.36
+      URI::smtp 5.36
+      URI::snews 5.36
+      URI::ssh 5.36
+      URI::telnet 5.36
+      URI::tn3270 5.36
+      URI::urn 5.36
+      URI::urn::isbn 5.36
+      URI::urn::oid 5.36
+      URI::ws 5.36
+      URI::wss 5.36
+    requirements:
+      Carp 0
+      Cwd 0
+      Data::Dumper 0
+      Encode 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      MIME::Base32 0
+      MIME::Base64 2
+      Net::Domain 0
+      Scalar::Util 0
+      Unicode::Normalize 0
+      constant 0
+      integer 0
+      overload 0
+      parent 0
+      perl 5.008001
+      strict 0
+      utf8 0
+      warnings 0

@@ -1,0 +1,62 @@
+{
+  "Clone": {
+    "release": "Clone-0.50",
+    "url": "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.50.tar.gz",
+    "sha256": "f9732a4a857974db30905233589113003301b585b0cecda29a21cfba5bb014f9"
+  },
+  "Devel-Cover": {
+    "release": "Devel-Cover-1.52",
+    "url": "https://cpan.metacpan.org/authors/id/P/PJ/PJCJ/Devel-Cover-1.52.tar.gz",
+    "sha256": "9d90b44ab602ca373fa221255708de4d19df86026f4d7110bef608846eed44fb"
+  },
+  "Encode-Locale": {
+    "release": "Encode-Locale-1.05",
+    "url": "https://cpan.metacpan.org/authors/id/G/GA/GAAS/Encode-Locale-1.05.tar.gz",
+    "sha256": "176fa02771f542a4efb1dbc2a4c928e8f4391bf4078473bd6040d8f11adb0ec1"
+  },
+  "HTML-Parser": {
+    "release": "HTML-Parser-3.85",
+    "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTML-Parser-3.85.tar.gz",
+    "sha256": "fd42ba6abe07241cf0ad57be246c3980065f683e4465e59b46af9efebc8e0c71"
+  },
+  "HTML-Tagset": {
+    "release": "HTML-Tagset-3.24",
+    "url": "https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/HTML-Tagset-3.24.tar.gz",
+    "sha256": "eb89e145a608ed1f8f141a57472ee5f69e67592a432dcd2e8b1dbb445f2b230b"
+  },
+  "HTTP-Date": {
+    "release": "HTTP-Date-6.08",
+    "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Date-6.08.tar.gz",
+    "sha256": "b57d80ca6d821c6949ca48b27467d45aba7a9c77346562306facca781a003e44"
+  },
+  "HTTP-Message": {
+    "release": "HTTP-Message-7.04",
+    "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Message-7.04.tar.gz",
+    "sha256": "699f3350dbb7bd8fdc9f3b013b0c91b7c059783708443e39bc395fa33352f006"
+  },
+  "IO-HTML": {
+    "release": "IO-HTML-1.004",
+    "url": "https://cpan.metacpan.org/authors/id/C/CJ/CJM/IO-HTML-1.004.tar.gz",
+    "sha256": "c87b2df59463bbf2c39596773dfb5c03bde0f7e1051af339f963f58c1cbd8bf5"
+  },
+  "LWP-MediaTypes": {
+    "release": "LWP-MediaTypes-6.04",
+    "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-MediaTypes-6.04.tar.gz",
+    "sha256": "8f1bca12dab16a1c2a7c03a49c5e58cce41a6fec9519f0aadfba8dad997919d9"
+  },
+  "MIME-Base32": {
+    "release": "MIME-Base32-1.303",
+    "url": "https://cpan.metacpan.org/authors/id/R/RE/REHSACK/MIME-Base32-1.303.tar.gz",
+    "sha256": "ab21fa99130e33a0aff6cdb596f647e5e565d207d634ba2ef06bdbef50424e99"
+  },
+  "TimeDate": {
+    "release": "TimeDate-2.35",
+    "url": "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/TimeDate-2.35.tar.gz",
+    "sha256": "baddd0306ae2e86e9ec28d3de5439e514643e80b3735e43bd0fbb426d73304de"
+  },
+  "URI": {
+    "release": "URI-5.36",
+    "url": "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.36.tar.gz",
+    "sha256": "32719e57413db6e18492e104707b95c2210df637614c512e7368c9ec3c2f783b"
+  }
+}

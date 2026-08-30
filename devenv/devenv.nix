@@ -45,6 +45,9 @@
         mdcat
         onefetch
         openssl
+        perl
+        perlPackages.Carton
+        perlPackages.Appcpanminus
         podman
         python3
         readline

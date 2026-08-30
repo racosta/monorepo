@@ -19,6 +19,7 @@ exports_files([
     ".taplo.toml",
     ".yamlfmt.yaml",
     ".yamllint.yaml",
+    "cpanfile.snapshot.lock.json",
     "maven_install.json",
     "pyproject.toml",
 ])
