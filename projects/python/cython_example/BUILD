@@ -4,7 +4,11 @@ load("//tools/lint:linters.bzl", "pydoclint_test", "ruff_test", "ty_test")
 
 cython_library(
     name = "math_utils",
-    srcs = ["math_utils.pyx"],
+    srcs = [
+        "__init__.py",
+        "math_utils.pyi",
+        "math_utils.pyx",
+    ],
 )
 
 py_binary(
@@ -27,6 +31,10 @@ py_library(
     name = "test_srcs",
     srcs = glob(["tests/**/*.py"]),
     visibility = ["//projects/python/cython_example:__subpackages__"],
+    deps = [
+        ":math_utils",
+        "@pypi//pytest",
+    ],
 )
 
 pydoclint_test(

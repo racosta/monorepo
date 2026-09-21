@@ -24,6 +24,10 @@ py_library(
     name = "test_srcs",
     srcs = glob(["tests/**/*.py"]),
     visibility = ["//projects/python/numbers:__subpackages__"],
+    deps = [
+        ":numbers",
+        "@pypi//pytest",
+    ],
 )
 
 pydoclint_test(

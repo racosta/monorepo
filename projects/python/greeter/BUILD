@@ -2,22 +2,21 @@ load("@aspect_rules_py//py:defs.bzl", "py_library", "py_test")
 load("//tools/lint:linters.bzl", "pydoclint_test", "ruff_test", "ty_test")
 
 py_library(
-    name = "calculator",
+    name = "greeter",
     srcs = [
         "__init__.py",
-        "calculator.py",
+        "greeter.py",
     ],
     imports = ["."],
-    visibility = ["//projects/python/web:__pkg__"],
-    deps = [],
+    visibility = ["//visibility:public"],
 )
 
 py_test(
-    name = "calculator_test",
-    srcs = ["tests/calculator_test.py"],
+    name = "greeter_test",
+    srcs = ["tests/greeter_test.py"],
     pytest_main = True,
     deps = [
-        ":calculator",
+        ":greeter",
         "@pypi//pytest",
         "@pypi//pytest_cov",
     ],
@@ -26,9 +25,9 @@ py_test(
 py_library(
     name = "test_srcs",
     srcs = glob(["tests/**/*.py"]),
-    visibility = ["//projects/python/calculator:__subpackages__"],
+    visibility = ["//projects/python/greeter:__subpackages__"],
     deps = [
-        ":calculator",
+        ":greeter",
         "@pypi//pytest",
     ],
 )
@@ -36,7 +35,7 @@ py_library(
 pydoclint_test(
     name = "pydoclint_test",
     srcs = [
-        ":calculator",
+        ":greeter",
         ":test_srcs",
     ],
 )
@@ -44,7 +43,7 @@ pydoclint_test(
 ruff_test(
     name = "ruff_test",
     srcs = [
-        ":calculator",
+        ":greeter",
         ":test_srcs",
     ],
 )
@@ -52,7 +51,7 @@ ruff_test(
 ty_test(
     name = "ty_test",
     srcs = [
-        ":calculator",
-        ":calculator_test",
+        ":greeter",
+        ":greeter_test",
     ],
 )

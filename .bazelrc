@@ -18,6 +18,7 @@ common --tool_java_runtime_version=remotejdk_21
 common --incompatible_default_to_explicit_init_py
 
 build --cxxopt='-std=c++23'
+build --copt=-Wno-unused-command-line-argument
 
 build --@rules_rust//rust/settings:rustfmt.toml=//:.rustfmt.toml
 
@@ -29,7 +30,9 @@ build:lint --aspects=//tools/lint:linters.bzl%pydoclint
 build:lint --aspects=//tools/lint:linters.bzl%ruff
 build:lint --aspects=//tools/lint:linters.bzl%ty
 build:lint --aspects=//tools/lint:linters.bzl%yamllint
+build:lint --aspects=//tools/lint:linters.bzl%pyrefly_aspect
 build:lint --output_groups=+lint
+build:lint --output_groups=+pyrefly
 
 build:lint --@aspect_rules_lint//lint:fail_on_violation
 

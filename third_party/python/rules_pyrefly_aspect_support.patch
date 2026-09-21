@@ -1,0 +1,100 @@
+diff --git a/pyrefly/private/pyrefly.bzl b/pyrefly/private/pyrefly.bzl
+index 6bb4128..44e54ed 100644
+--- a/pyrefly/private/pyrefly.bzl
++++ b/pyrefly/private/pyrefly.bzl
+@@ -105,8 +105,20 @@ def _repository_roots(files, workspace_name, import_all_repositories):
+         roots[_repository_root(src, workspace_name)] = True
+     return sorted(roots.keys())
+
+-def _direct_sources(target):
+-    return _filter_owned_files(target[PyInfo].direct_original_sources.to_list(), "py", target)
++def _direct_sources(target, ctx):
++    py_info = target[PyInfo]
++    if hasattr(py_info, "direct_original_sources") and py_info.direct_original_sources.to_list():
++        sources = py_info.direct_original_sources.to_list()
++    elif hasattr(py_info, "direct_sources") and py_info.direct_sources.to_list():
++        sources = py_info.direct_sources.to_list()
++    elif hasattr(ctx.rule.attr, "srcs"):
++        sources = [f for src in ctx.rule.attr.srcs for f in src.files.to_list()]
++    elif DefaultInfo in target:
++        sources = target[DefaultInfo].files.to_list()
++    else:
++        sources = []
++    # Use _filter_files to ensure correct short_path resolution without dropping files due to workspace matching
++    return _filter_files(sources, "py")
+
+ def _direct_stubs(target):
+     py_info = target[PyInfo]
+@@ -115,7 +127,13 @@ def _direct_stubs(target):
+     return _filter_owned_files(py_info.direct_pyi_files.to_list(), "pyi", target)
+
+ def _transitive_sources(py_info):
+-    return _filter_files(py_info.transitive_original_sources.to_list(), "py")
++    sources = []
++    if hasattr(py_info, "transitive_original_sources"):
++        sources.extend(py_info.transitive_original_sources.to_list())
++    if hasattr(py_info, "transitive_sources"):
++        sources.extend(py_info.transitive_sources.to_list())
++    # Return all .py files without filtering out external sandbox paths
++    return [f for f in sources if f.extension == "py"]
+
+ def _transitive_stubs(py_info):
+     if not hasattr(py_info, "transitive_pyi_files"):
+@@ -222,7 +240,7 @@ def _config_info(ctx):
+
+ def _bazel_check_input(target, ctx):
+     py_info = target[PyInfo]
+-    direct_sources = _direct_sources(target)
++    direct_sources = _direct_sources(target, ctx)
+     direct_stubs = _direct_stubs(target)
+     transitive_files = _transitive_sources(py_info) + _transitive_stubs(py_info)
+
+@@ -237,9 +255,28 @@ def _bazel_check_input(target, ctx):
+         "target": _target_info(target, ctx),
+     }
+
+-def _bazel_check_inputs(target):
++def _bazel_check_inputs(target, ctx):
+     py_info = target[PyInfo]
+-    return _transitive_sources(py_info) + _transitive_stubs(py_info)
++    direct_sources = _direct_sources(target, ctx)
++    direct_stubs = _direct_stubs(target)
++    trans_sources = _transitive_sources(py_info)
++    trans_stubs = _transitive_stubs(py_info)
++
++    # Collect extra files from direct dependencies (like third-party @pypi packages)
++    dep_files = []
++    if hasattr(ctx.rule.attr, "deps"):
++        for dep in ctx.rule.attr.deps:
++            if DefaultInfo in dep:
++                dep_files.extend([f for f in dep[DefaultInfo].files.to_list() if f.extension in ("py", "pyi")])
++
++    # Collect .pyi files passed via `data` attributes (e.g. from cython_library)
++    data_stubs = []
++    if hasattr(ctx.rule.attr, "data"):
++        for data_target in ctx.rule.attr.data:
++            if DefaultInfo in data_target:
++                data_stubs.extend([f for f in data_target[DefaultInfo].files.to_list() if f.extension == "pyi"])
++
++    return direct_sources + direct_stubs + trans_sources + trans_stubs + data_stubs
+
+ def _resolve_pyrefly_executable(ctx):
+     if hasattr(ctx.attr, "_pyrefly_cli") and ctx.attr._pyrefly_cli:
+@@ -265,7 +302,7 @@ def _pyrefly_impl(target, ctx):
+     if not _opt_in(ctx.attr._opt_in_tags, rule_tags):
+         return []
+
+-    if not _direct_sources(target) and not _direct_stubs(target):
++    if not _direct_sources(target, ctx) and not _direct_stubs(target):
+         return []
+
+     input_json = ctx.actions.declare_file(ctx.rule.attr.name + ".pyrefly-input.json")
+@@ -288,7 +325,7 @@ def _pyrefly_impl(target, ctx):
+     ctx.actions.run(
+         executable = _resolve_pyrefly_executable(ctx),
+         arguments = [args],
+-        inputs = depset([input_json] + _bazel_check_inputs(target)),
++        inputs = depset([input_json] + _bazel_check_inputs(target, ctx)),
+         outputs = [diagnostics_json],
+         mnemonic = "PyreflyBazelCheck",
+         progress_message = "Pyrefly checking %{label}",

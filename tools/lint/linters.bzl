@@ -9,6 +9,7 @@ load("@aspect_rules_lint//lint:ruff.bzl", "lint_ruff_aspect")
 load("@aspect_rules_lint//lint:shellcheck.bzl", "lint_shellcheck_aspect")
 load("@aspect_rules_lint//lint:ty.bzl", "lint_ty_aspect")
 load("@aspect_rules_lint//lint:yamllint.bzl", "lint_yamllint_aspect")
+load("@rules_pyrefly//pyrefly:pyrefly.bzl", "pyrefly")
 
 bandit = lint_bandit_aspect(
     binary = Label("//tools/lint:bandit"),
@@ -41,6 +42,10 @@ pydoclint = lint_pydoclint_aspect(
 )
 
 pydoclint_test = lint_test(aspect = pydoclint)
+
+pyrefly_aspect = pyrefly(
+    min_severity = "info",
+)
 
 ruff = lint_ruff_aspect(
     binary = Label("@aspect_rules_lint//lint:ruff_bin"),

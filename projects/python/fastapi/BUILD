@@ -37,7 +37,13 @@ py_test(
 py_library(
     name = "test_srcs",
     srcs = glob(["tests/**/*.py"]),
+    imports = ["."],
     visibility = ["//projects/python/fastapi:__subpackages__"],
+    deps = [
+        ":fastapi_lib",
+        "@pypi//httpx2",
+        "@pypi//pytest",
+    ],
 )
 
 pydoclint_test(

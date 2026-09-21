@@ -737,6 +737,32 @@
         }
       }
     },
+    "@@rules_pyrefly+//pyrefly:extensions.bzl%pyrefly": {
+      "general": {
+        "bzlTransitiveDigest": "BIeEYorO0BlxU9RUKEgauKxbkSEQ1br+Y2zTJxysncM=",
+        "usagesDigest": "jfyOaf676JfNirbkWSiHkSddUBcznnoI1TPVweguF+U=",
+        "recordedInputs": [],
+        "generatedRepoSpecs": {
+          "pyrefly_linux_x86_64": {
+            "repoRuleId": "@@rules_pyrefly+//pyrefly/private:toolchain_repo.bzl%pyrefly_release_binary_repo",
+            "attributes": {
+              "asset": "pyrefly-linux-x86_64-musl.tar.gz",
+              "base_url": "",
+              "executable": "pyrefly",
+              "sha256": "4859097cc9b00b8719993dc8228d2bffcc8659414d32494bb752ccf9d535dc21",
+              "version": "1.3.1"
+            }
+          },
+          "pyrefly_toolchains": {
+            "repoRuleId": "@@rules_pyrefly+//pyrefly/private:toolchain_repo.bzl%pyrefly_toolchains_repo",
+            "attributes": {
+              "platforms_json": "[{\"constraints\":[\"@platforms//os:linux\",\"@platforms//cpu:x86_64\"],\"executable\":\"pyrefly\",\"name\":\"linux_x86_64\"}]",
+              "version": "1.3.1"
+            }
+          }
+        }
+      }
+    },
     "@@rules_python+//python/uv:uv.bzl%uv": {
       "general": {
         "bzlTransitiveDigest": "ELjwPp2kLku5M3S/gpjjVjy3TwT760/zVEQ70nJreHU=",
