@@ -3,6 +3,16 @@
 bazel_dep(name = "aspect_rules_py", version = "1.11.7")
 bazel_dep(name = "cython", version = "3.2.8")
 bazel_dep(name = "rules_python", version = "2.2.0")
+bazel_dep(name = "rules_pyrefly", version = "0.1.0")
+archive_override(
+    module_name = "rules_pyrefly",
+    integrity = "sha256-kcNfiyx74SCtWLw2U0amuUhJ1jWZCyR3675GOClXcsI=",
+    patch_strip = 1,
+    patches = ["//third_party/python:rules_pyrefly_aspect_support.patch"],
+    strip_prefix = "rules_pyrefly-0.1.0",
+    urls = ["https://github.com/facebook/rules_pyrefly/archive/refs/tags/v0.1.0.tar.gz"],
+)
+
 bazel_dep(name = "rules_uv", version = "0.89.2")
 
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
@@ -46,3 +56,14 @@ pip.parse(
 )
 pip.default(default_hub = "pypi_312")
 use_repo(pip, "pypi")
+
+pyrefly = use_extension("@rules_pyrefly//pyrefly:extensions.bzl", "pyrefly")
+pyrefly.toolchain(
+    sha256 = {
+        "pyrefly-linux-x86_64-musl.tar.gz": "4859097cc9b00b8719993dc8228d2bffcc8659414d32494bb752ccf9d535dc21",
+    },
+    version = "1.3.1",
+)
+use_repo(pyrefly, "pyrefly_toolchains")
+
+register_toolchains("@pyrefly_toolchains//:all")

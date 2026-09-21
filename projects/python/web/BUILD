@@ -49,7 +49,12 @@ py_test(
 py_library(
     name = "test_srcs",
     srcs = glob(["tests/**/*.py"]),
+    imports = ["."],
     visibility = ["//projects/python/web:__subpackages__"],
+    deps = [
+        ":main_lib",
+        "@pypi//pytest",
+    ],
 )
 
 pydoclint_test(

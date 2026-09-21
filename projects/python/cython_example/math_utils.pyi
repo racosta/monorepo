@@ -1,0 +1,3 @@
+"""Math utilities for Cython example."""
+
+def fast_factorial(n: int) -> int: ...
