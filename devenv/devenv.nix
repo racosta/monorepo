@@ -46,6 +46,7 @@
         onefetch
         openssl
         podman
+        pokeget-rs
         python3
         readline
         ripgrep
